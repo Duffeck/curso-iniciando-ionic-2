@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -13,7 +13,7 @@ export class MyApp {
   pages : Array<{component: any, title: string, icon: string}>;
   rootPage:any = HomePage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController) {
 
     this.pages = [
       {component: HomePage, title: 'Home', icon: 'home'},
@@ -30,5 +30,6 @@ export class MyApp {
 
   openPage(page: any) : void{
     this.rootPage = page.component;
+    this.menuCtrl.close();
   }
 }

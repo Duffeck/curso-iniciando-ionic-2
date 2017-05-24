@@ -16,7 +16,14 @@ import { MenuTestPage } from '../pages/menu-test/menu-test';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp,{
+    menuType: 'push',
+    platforms: {
+      ios: {
+        menuType: 'overlay',
+      }
+    }
+  })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
