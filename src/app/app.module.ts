@@ -7,12 +7,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MenuTestPage } from '../pages/menu-test/menu-test';
+import { EventListPage } from '../pages/event-list/event-list';
+import { ConnectionServiceProvider } from '../providers/connection-service/connection-service';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    MenuTestPage
+    MenuTestPage,
+    EventListPage
   ],
   imports: [
     BrowserModule,
@@ -29,12 +32,14 @@ import { MenuTestPage } from '../pages/menu-test/menu-test';
   entryComponents: [
     MyApp,
     HomePage,
-    MenuTestPage
+    MenuTestPage,
+    EventListPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ConnectionServiceProvider
   ]
 })
 export class AppModule {}
