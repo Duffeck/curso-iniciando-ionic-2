@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MenuTestPage } from '../pages/menu-test/menu-test';
 import { EventListPage } from '../pages/event-list/event-list';
+import { EventNewPage } from '../pages/event-new/event-new';
 import { ConnectionServiceProvider } from '../providers/connection-service/connection-service';
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ConnectionServiceProvider } from '../providers/connection-service/conne
     MyApp,
     HomePage,
     MenuTestPage,
-    EventListPage
+    EventListPage,
+    EventNewPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { ConnectionServiceProvider } from '../providers/connection-service/conne
     MyApp,
     HomePage,
     MenuTestPage,
-    EventListPage
+    EventListPage,
+    EventNewPage
   ],
   providers: [
     StatusBar,
