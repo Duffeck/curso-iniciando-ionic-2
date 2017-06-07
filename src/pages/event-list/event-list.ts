@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ConnectionServiceProvider } from '../../providers/connection-service/connection-service';
 import { EventNewPage } from '../event-new/event-new';
 import { Event } from '../objects/event'
+import { EventResource } from '../objects/eventResource'
 
 /**
  * Generated class for the EventListPage page.
@@ -19,6 +20,7 @@ export class EventListPage {
   eventos : Array<Event>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    /*
     var evento = new Event();
     evento.nome = "Fórum Municipal Lixo Zero";
     evento.bairro = "Prado Velho";
@@ -45,6 +47,8 @@ export class EventListPage {
     evento.data = "12/07/2017"
 
     this.eventos.push(evento);
+    */
+    this.eventos = EventResource.getInstance().getEventos();
   }
 
   ionViewDidLoad() {

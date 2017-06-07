@@ -18,36 +18,40 @@
 
     <ion-item>
       <ion-label floating>Nome</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="eventForm.nome" name="nome"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Cidade</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="text" [(ngModel)]="eventForm.cidade" name="cidade"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Estado</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="text" [(ngModel)]="eventForm.estado" name="estado"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Bairro</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="text" [(ngModel)]="eventForm.bairro"name="bairro"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Rua</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="text" [(ngModel)]="eventForm.rua" name="rua"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Número</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="numeric" [(ngModel)]="eventForm.numero" name="numero"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Descrição</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="text" [(ngModel)]="eventForm.descricao" name="descricao"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Url foto</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="text" [(ngModel)]="eventForm.urlFoto" name="urlFoto"></ion-input>
     </ion-item>
   </ion-list>
+  <button ion-button color="light" left (click)="cancelarEvent()">
+    <ion-icon name="close"></ion-icon>&nbsp;Cancelar</button>
+  <button ion-button color="corYouSustainable" right (click)="salvarEvent(event)">
+    <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar</button>
 </ion-content>
