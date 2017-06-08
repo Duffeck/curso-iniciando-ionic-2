@@ -15,43 +15,48 @@
 
 <ion-content padding>
   <ion-list>
-
     <ion-item>
-      <ion-label floating>Nome</ion-label>
+      <ion-label stacked>Nome</ion-label>
       <ion-input type="text" [(ngModel)]="eventForm.nome" name="nome"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Cidade</ion-label>
+      <ion-label stacked>Cidade</ion-label>
       <ion-input type="text" [(ngModel)]="eventForm.cidade" name="cidade"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Estado</ion-label>
-      <ion-input type="text" [(ngModel)]="eventForm.estado" name="estado"></ion-input>
+      <!--<span (click)="openListEstados()">Estado</span>-->
+      <ion-label stacked>Estado&nbsp;<ion-icon name="search"></ion-icon></ion-label>
+      <ion-input type="text" [(ngModel)]="eventForm.estado" name="estado" (click)="openListEstados()"></ion-input>
     </ion-item>
+    <!--
     <ion-item>
-      <ion-label floating>Bairro</ion-label>
+      <ion-icon name="search" (click)="openListEstados()"></ion-icon>
+    </ion-item>
+  -->
+    <ion-item>
+      <ion-label stacked>Bairro</ion-label>
       <ion-input type="text" [(ngModel)]="eventForm.bairro"name="bairro"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Rua</ion-label>
+      <ion-label stacked>Rua</ion-label>
       <ion-input type="text" [(ngModel)]="eventForm.rua" name="rua"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Número</ion-label>
+      <ion-label stacked>Número</ion-label>
       <ion-input type="numeric" [(ngModel)]="eventForm.numero" name="numero"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Descrição</ion-label>
-      <ion-input type="text" [(ngModel)]="eventForm.descricao" name="descricao"></ion-input>
+      <ion-label stacked>Url foto</ion-label>
+      <ion-input type="url" [(ngModel)]="eventForm.urlFoto" name="urlFoto"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Url foto</ion-label>
-      <ion-input type="text" [(ngModel)]="eventForm.urlFoto" name="urlFoto"></ion-input>
+      <ion-label stacked>Descrição</ion-label>
+      <ion-textarea type="text" [(ngModel)]="eventForm.descricao" name="descricao"></ion-textarea>
     </ion-item>
   </ion-list>
   <button ion-button color="light" left (click)="cancelarEvent()">
     <ion-icon name="close"></ion-icon>&nbsp;Cancelar</button>
-  <button ion-button color="corYouSustainable" right (click)="salvarEvent(event)">
+  <button ion-button color="corYouSustainable" right (click)="salvarEvent(eventForm)">
     <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar</button>
 </ion-content>

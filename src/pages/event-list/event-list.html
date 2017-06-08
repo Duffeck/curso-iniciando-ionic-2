@@ -10,12 +10,13 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Eventos</ion-title>
+    <!--<ion-icon right name="search"></ion-icon>-->
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let evento of eventos">
+  <ion-card *ngFor="let evento of eventos" (click)="eventDetail(evento)">
     <img src="{{evento.urlFoto}}"/>
     <ion-card-header>
       {{evento.nome}}

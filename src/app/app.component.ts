@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { MenuTestPage } from '../pages/menu-test/menu-test';
 import { EventListPage } from '../pages/event-list/event-list';
+//import { EventDetailPage } from '../pages/event-detail/event-detail';
 
 @Component({
   templateUrl: 'app.html'

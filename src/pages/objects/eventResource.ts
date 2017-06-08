@@ -13,7 +13,7 @@ export class EventResource {
     evento.estado = "Paraná";
     evento.numero = 1551;
     evento.rua = "Rua Chile";
-    evento.urlFoto = "https://www.albacora.com.br/blog/wp-content/uploads/2016/05/Capa_evento_Oficial.jpg";
+    evento.urlFoto = "https://casadasustentabilidade.files.wordpress.com/2016/09/forum-municipal-lixo-zero-01.jpg?w=676";
     evento.data = "04/06/2017"
 
     this.eventos = [];
@@ -27,7 +27,7 @@ export class EventResource {
     evento.estado = "Paraná";
     evento.numero = 4283;
     evento.rua = "Alameda das Palmas";
-    evento.urlFoto = "https://casadasustentabilidade.files.wordpress.com/2016/09/forum-municipal-lixo-zero-01.jpg?w=676";
+    evento.urlFoto = "https://www.albacora.com.br/blog/wp-content/uploads/2016/05/Capa_evento_Oficial.jpg";
     evento.data = "12/07/2017"
 
     this.eventos.push(evento);
