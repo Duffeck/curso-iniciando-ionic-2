@@ -1,0 +1,50 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="corYouSustainable">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 class="center">
+        <button ion-button color="light-grey" (click)="loginUsuario()">
+        <ion-icon name="checkmark"></ion-icon>&nbsp;Cadastre-se</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-5><hr float-right width="100%"/></ion-col>
+      <ion-col col-2 class="center">ou</ion-col>
+      <ion-col col-5><hr float-right width="100%"/></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="center">Acesse</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <ion-label stacked>Usuário</ion-label>
+            <ion-input type="text" ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>Senha</ion-label>
+            <ion-input type="password"></ion-input>
+          </ion-item>
+          <button float-right ion-button color="corYouSustainable" (click)="loginUsuario()">
+          <ion-icon name="checkmark"></ion-icon>&nbsp;Acessar</button>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

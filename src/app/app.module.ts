@@ -11,6 +11,7 @@ import { EventListPage } from '../pages/event-list/event-list';
 import { EventNewPage } from '../pages/event-new/event-new';
 import { EventDetailPage } from '../pages/event-detail/event-detail';
 import { EstadosRadioPage } from '../pages/estados-radio/estados-radio';
+import { LoginPage } from '../pages/login/login';
 import { ConnectionServiceProvider } from '../providers/connection-service/connection-service';
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ConnectionServiceProvider } from '../providers/connection-service/conne
     EventListPage,
     EventNewPage,
     EventDetailPage,
-    EstadosRadioPage
+    EstadosRadioPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { ConnectionServiceProvider } from '../providers/connection-service/conne
     EventListPage,
     EventNewPage,
     EventDetailPage,
-    EstadosRadioPage
+    EstadosRadioPage,
+    LoginPage
   ],
   providers: [
     StatusBar,

@@ -11,6 +11,12 @@
         {{p.title}}
       </button>
     </ion-list>
+    <ion-list>
+      <button ion-item (click)="openPage(loginPage)">
+        <ion-icon name="{{loginPage.icon}}"></ion-icon>
+        {{loginPage.title}}
+      </button>
+    </ion-list>
   </ion-content>
 </ion-menu>
 <!--

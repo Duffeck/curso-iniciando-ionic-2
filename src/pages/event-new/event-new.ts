@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
+import { DatePipe } from '@angular/common';
 
 import { EventListPage} from '../event-list/event-list';
 import { Event } from '../objects/event';
@@ -32,7 +33,8 @@ export class EventNewPage {
     event.nome = eventForm.nome;
     event.bairro = eventForm.bairo;
     event.cidade = eventForm.cidade;
-    event.data = eventForm.data;
+    var datePipe = new DatePipe("pt-BR");
+    event.data = datePipe.transform(eventForm.data, 'dd/MM/yyyy');
     event.descricao = eventForm.descricao;
     event.estado = eventForm.estado;
     event.numero = eventForm.numero;
@@ -40,6 +42,7 @@ export class EventNewPage {
     event.urlFoto = eventForm.urlFoto;
 
     EventResource.getInstance().addEvento(event);
+    this.navCtrl.pop();
   }
 
   ionViewDidLoad() {
