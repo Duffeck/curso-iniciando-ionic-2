@@ -12,7 +12,7 @@ import { EventNewPage } from '../pages/event-new/event-new';
 import { EventDetailPage } from '../pages/event-detail/event-detail';
 import { EstadosRadioPage } from '../pages/estados-radio/estados-radio';
 import { LoginPage } from '../pages/login/login';
-import { ConnectionServiceProvider } from '../providers/connection-service/connection-service';
+import { UsuarioNewPage } from '../pages/usuario-new/usuario-new';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { ConnectionServiceProvider } from '../providers/connection-service/conne
     EventNewPage,
     EventDetailPage,
     EstadosRadioPage,
-    LoginPage
+    LoginPage,
+    UsuarioNewPage
   ],
   imports: [
     BrowserModule,
@@ -45,13 +46,13 @@ import { ConnectionServiceProvider } from '../providers/connection-service/conne
     EventNewPage,
     EventDetailPage,
     EstadosRadioPage,
-    LoginPage
+    LoginPage,
+    UsuarioNewPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ConnectionServiceProvider
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

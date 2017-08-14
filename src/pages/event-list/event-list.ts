@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ConnectionServiceProvider } from '../../providers/connection-service/connection-service';
 import { EventNewPage } from '../event-new/event-new';
 import { EventDetailPage } from '../event-detail/event-detail';
 import { Event } from '../objects/event'
@@ -65,14 +64,4 @@ export class EventListPage {
     this.navCtrl.push(EventDetailPage, {evento: event});
     //EventDetailPage.setEvent(event.nome);
   }
-/*
-  buscarCEP(): void{
-    this.connectionService.getCep('83010120').then(
-      (res) => {
-        console.log(res);
-      }).catch((err) => {
-        console.log(err);
-      });
-  }
-  */
 }
