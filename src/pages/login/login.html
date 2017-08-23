@@ -35,13 +35,13 @@
         <ion-list>
           <ion-item>
             <ion-label stacked>Email</ion-label>
-            <ion-input type="email" ></ion-input>
+            <ion-input type="email" [(ngModel)]="userForm.email" name="email"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label stacked>Senha</ion-label>
-            <ion-input type="password"></ion-input>
+            <ion-input type="password" [(ngModel)]="userForm.senha" name="senha"></ion-input>
           </ion-item>
-          <button float-right ion-button color="corYouSustainable" (click)="loginUsuario()">
+          <button float-right ion-button color="corYouSustainable" (click)="loginUsuario(userForm)">
           <ion-icon name="checkmark"></ion-icon>&nbsp;Acessar</button>
         </ion-list>
       </ion-col>

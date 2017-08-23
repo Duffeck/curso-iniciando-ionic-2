@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -13,6 +14,7 @@ import { EventDetailPage } from '../pages/event-detail/event-detail';
 import { EstadosRadioPage } from '../pages/estados-radio/estados-radio';
 import { LoginPage } from '../pages/login/login';
 import { UsuarioNewPage } from '../pages/usuario-new/usuario-new';
+import { UserProvider } from '../providers/user/user';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { UsuarioNewPage } from '../pages/usuario-new/usuario-new';
         menuType: 'overlay',
       }
     }
-  })
+  }),
+  HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +55,8 @@ import { UsuarioNewPage } from '../pages/usuario-new/usuario-new';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserProvider
   ]
 })
 export class AppModule {}
