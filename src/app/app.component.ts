@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { MenuTestPage } from '../pages/menu-test/menu-test';
 import { EventListPage } from '../pages/event-list/event-list';
 import { LoginPage } from '../pages/login/login';
+import { ResiduosPage } from '../pages/residuos/residuos';
 //import { EventDetailPage } from '../pages/event-detail/event-detail';
 
 @Component({
@@ -22,7 +23,8 @@ export class MyApp {
     this.pages = [
       {component: HomePage, title: 'Home', icon: 'home'},
       //{component: MenuTestPage, title: 'Menu Teste', icon: 'home'},
-      {component: EventListPage, title: 'Eventos', icon: 'calendar'}
+      {component: EventListPage, title: 'Eventos', icon: 'calendar'},
+      {component: ResiduosPage, title: 'Resíduos', icon: 'trash'}
     ];
 
     platform.ready().then(() => {

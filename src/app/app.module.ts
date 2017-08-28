@@ -15,6 +15,9 @@ import { EstadosRadioPage } from '../pages/estados-radio/estados-radio';
 import { LoginPage } from '../pages/login/login';
 import { UsuarioNewPage } from '../pages/usuario-new/usuario-new';
 import { UserProvider } from '../providers/user/user';
+import { EventoServiceProvider } from '../providers/evento-service/evento-service';
+import { ResiduosPage } from '../pages/residuos/residuos';
+import { CategoriaSelecionarPage } from '../pages/categoria-selecionar/categoria-selecionar';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { UserProvider } from '../providers/user/user';
     EventDetailPage,
     EstadosRadioPage,
     LoginPage,
-    UsuarioNewPage
+    UsuarioNewPage,
+    ResiduosPage,
+    CategoriaSelecionarPage
   ],
   imports: [
     BrowserModule,
@@ -50,13 +55,16 @@ import { UserProvider } from '../providers/user/user';
     EventDetailPage,
     EstadosRadioPage,
     LoginPage,
-    UsuarioNewPage
+    UsuarioNewPage,
+    ResiduosPage,
+    CategoriaSelecionarPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider
+    UserProvider,
+    EventoServiceProvider
   ]
 })
 export class AppModule {}
