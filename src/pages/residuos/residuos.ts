@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
 import { CategoriaSelecionarPage } from '../categoria-selecionar/categoria-selecionar';
+import { Categoria } from '../objects/categoria';
 /**
  * Generated class for the ResiduosPage page.
  *
@@ -14,7 +15,8 @@ import { CategoriaSelecionarPage } from '../categoria-selecionar/categoria-selec
   templateUrl: 'residuos.html',
 })
 export class ResiduosPage {
-
+  listCategorias = new Categoria().tiposCategorias;
+  shownGroup = null;
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController) {
   }
 
@@ -22,8 +24,19 @@ export class ResiduosPage {
     console.log('ionViewDidLoad ResiduosPage');
   }
 
-  presentPopover() {
-     let popover = this.popoverCtrl.create(CategoriaSelecionarPage);
+  presentPopover(categoria: string) {
+     let popover = this.popoverCtrl.create(CategoriaSelecionarPage, {categoria});
      popover.present();
    }
+
+  toggleGroup(group) {
+    if (this.isGroupShown(group)) {
+      this.shownGroup = null;
+    } else {
+      this.shownGroup = group;
+    }
+  };
+  isGroupShown(group) {
+    return this.shownGroup === group;
+  };
 }
