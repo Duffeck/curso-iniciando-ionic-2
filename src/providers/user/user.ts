@@ -41,7 +41,14 @@ export class UserProvider {
       url = url + '&email=' + user.email;
       console.log(url);
       var response = this.http.get(url).map(res => res.json());
+      if(response){
+        localStorage.setItem('user', JSON.stringify(user));
+      }
       console.log(response);
       return response;
+  }
+
+  retornarUsuario() {
+    return JSON.parse(localStorage.getItem('user'))
   }
 }

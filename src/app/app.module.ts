@@ -18,6 +18,7 @@ import { UserProvider } from '../providers/user/user';
 import { EventoServiceProvider } from '../providers/evento-service/evento-service';
 import { ResiduosPage } from '../pages/residuos/residuos';
 import { CategoriaSelecionarPage } from '../pages/categoria-selecionar/categoria-selecionar';
+import { CategoriaServiceProvider } from '../providers/categoria-service/categoria-service';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { CategoriaSelecionarPage } from '../pages/categoria-selecionar/categoria
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
-    EventoServiceProvider
+    EventoServiceProvider,
+    CategoriaServiceProvider
   ]
 })
 export class AppModule {}

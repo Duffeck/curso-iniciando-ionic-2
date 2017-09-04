@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EventNewPage } from '../event-new/event-new';
 import { EventDetailPage } from '../event-detail/event-detail';
-import { Event } from '../objects/event'
-import { EventResource } from '../objects/eventResource'
+import { Event } from '../objects/event';
+import { EventResource } from '../objects/eventResource';
+import { UserProvider } from '../../providers/user/user';
 
 /**
  * Generated class for the EventListPage page.
@@ -19,7 +20,7 @@ import { EventResource } from '../objects/eventResource'
 export class EventListPage {
   eventos : Array<Event>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private userService: UserProvider) {
     /*
     var evento = new Event();
     evento.nome = "Fórum Municipal Lixo Zero";
@@ -52,6 +53,9 @@ export class EventListPage {
   }
 
   ionViewDidLoad() {
+    let user = this.userService.retornarUsuario();
+    console.log(user);
+    console.log('feito');
     console.log('ionViewDidLoad EventListPage');
   }
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UsuarioNewPage } from '../usuario-new/usuario-new';
 import { UserProvider } from '../../providers/user/user';
+import { HomePage } from '../home/home';
 import { Usuario } from '../objects/usuario';
 
 /**
@@ -17,7 +18,6 @@ import { Usuario } from '../objects/usuario';
 })
 export class LoginPage {
   userForm: Usuario;
-  retorno: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private userProvider : UserProvider) {
       this.userForm = new Usuario();
   }
@@ -30,21 +30,21 @@ export class LoginPage {
       this.userProvider.loginUsuario(user).subscribe(
           data => {
               console.log(data);
-              this.retorno = data;
+              this.navCtrl.setRoot(HomePage);
           },
           err => {
               console.log(err);
           },
           () => console.log('Completou Requisição')
       );
-      for(var i=0; i<1000;i++)
-      {
-        if(this.retorno){
-          this.navCtrl.pop();
-        }else{
-          console.log('Deu pau');
-        }
-      }
+  }
+
+  registrarUsuario(user:Usuario, sucesso: boolean){
+    if(sucesso){
+      this.navCtrl.pop();
+    }else{
+      console.log('Deu pau');
+    }
   }
 
   cadastrarUsuario(){

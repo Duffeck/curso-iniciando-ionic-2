@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Categoria } from  '../objects/categoria';
+import { CategoriaServiceProvider } from '../../providers/categoria-service/categoria-service'
 
 /**
  * Generated class for the CategoriaSelecionarPage page.
@@ -13,8 +15,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'categoria-selecionar.html',
 })
 export class CategoriaSelecionarPage {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private categoriaService: CategoriaServiceProvider) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
     console.log(navParams.data.categoria);
   }
 
