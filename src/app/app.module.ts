@@ -7,7 +7,6 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { MenuTestPage } from '../pages/menu-test/menu-test';
 import { EventListPage } from '../pages/event-list/event-list';
 import { EventNewPage } from '../pages/event-new/event-new';
 import { EventDetailPage } from '../pages/event-detail/event-detail';
@@ -19,12 +18,12 @@ import { EventoServiceProvider } from '../providers/evento-service/evento-servic
 import { ResiduosPage } from '../pages/residuos/residuos';
 import { CategoriaSelecionarPage } from '../pages/categoria-selecionar/categoria-selecionar';
 import { CategoriaServiceProvider } from '../providers/categoria-service/categoria-service';
+import { FileChooser } from '@ionic-native/file-chooser';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    MenuTestPage,
     EventListPage,
     EventNewPage,
     EventDetailPage,
@@ -50,7 +49,6 @@ import { CategoriaServiceProvider } from '../providers/categoria-service/categor
   entryComponents: [
     MyApp,
     HomePage,
-    MenuTestPage,
     EventListPage,
     EventNewPage,
     EventDetailPage,
@@ -66,7 +64,8 @@ import { CategoriaServiceProvider } from '../providers/categoria-service/categor
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     EventoServiceProvider,
-    CategoriaServiceProvider
+    CategoriaServiceProvider,
+    FileChooser
   ]
 })
 export class AppModule {}

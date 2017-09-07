@@ -22,7 +22,6 @@ export class MyApp {
     this.loginPage = {component: LoginPage, title: 'Login', icon: 'log-in'};
     this.pages = [
       {component: HomePage, title: 'Home', icon: 'home'},
-      //{component: MenuTestPage, title: 'Menu Teste', icon: 'home'},
       {component: EventListPage, title: 'Eventos', icon: 'calendar'},
       {component: ResiduosPage, title: 'Resíduos', icon: 'trash'}
     ];

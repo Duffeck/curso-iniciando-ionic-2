@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 import { DatePipe } from '@angular/common';
+import { FileChooser } from '@ionic-native/file-chooser';
 
 import { EventListPage} from '../event-list/event-list';
 import { Event } from '../objects/event';
@@ -20,7 +21,7 @@ import { EstadosRadioPage } from '../estados-radio/estados-radio';
 })
 export class EventNewPage {
   eventForm : Event;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private fileChooser: FileChooser) {
     this.eventForm = new Event();
   }
 
@@ -59,5 +60,15 @@ export class EventNewPage {
 
   setEstado(uf: string){
 
+  }
+
+  abrirImagem(){
+    this.fileChooser.open()
+    .then(uri => this.inserirURIImagem(uri))
+    .catch(e => console.log(e));
+  }
+
+  inserirURIImagem(uri: string){
+    this.eventForm.urlFoto = uri;
   }
 }
