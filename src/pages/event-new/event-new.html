@@ -53,8 +53,9 @@
       <ion-label stacked>Url foto</ion-label>
       <ion-input type="url" [(ngModel)]="eventForm.urlFoto" name="urlFoto"></ion-input>
     </ion-item>-->
-    <!--<button float-right ion-button color="corYouSustainable" right (click)="abrirImagem()">-->
-    <button float-right ion-button color="corYouSustainable" right (click)="inserirURIImagem('supertestetestando')">
+    <ion-item><img src="{{eventForm.urlFoto}}"/></ion-item>
+    <button item-list float-right ion-button color="corYouSustainable" right (click)="abrirImagem()">
+    <!--<button float-right ion-button color="corYouSustainable" right (click)="inserirURIImagem('supertestetestando')">-->
       <ion-icon name="camera"></ion-icon>&nbsp;Imagem</button>
     <ion-item>
       <ion-label stacked>Descrição</ion-label>

@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 import { DatePipe } from '@angular/common';
-import { FileChooser } from '@ionic-native/file-chooser';
+//import { FileChooser } from '@ionic-native/file-chooser';
+import { ImagePicker } from '@ionic-native/image-picker';
 
 import { EventListPage} from '../event-list/event-list';
 import { Event } from '../objects/event';
 import { EventResource} from '../objects/eventResource';
 import { EstadosRadioPage } from '../estados-radio/estados-radio';
+import { EventoServiceProvider } from '../../providers/evento-service/evento-service';
 //src
 /**
  * Generated class for the EventNewPage page.
@@ -21,7 +23,7 @@ import { EstadosRadioPage } from '../estados-radio/estados-radio';
 })
 export class EventNewPage {
   eventForm : Event;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private fileChooser: FileChooser) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private imagePicker: ImagePicker, private eventoService : EventoServiceProvider) {
     this.eventForm = new Event();
   }
 
@@ -30,6 +32,7 @@ export class EventNewPage {
   }
 
   salvarEvent(eventForm){
+    /*
     var event = new Event();
     event.nome = eventForm.nome;
     event.bairro = eventForm.bairo;
@@ -43,6 +46,16 @@ export class EventNewPage {
     event.urlFoto = eventForm.urlFoto;
 
     EventResource.getInstance().addEvento(event);
+    */
+    this.eventoService.cadastrarEvento(eventForm).subscribe(
+          data => {
+            console.log(data);
+          },
+          err => {
+            console.log(err);
+          },
+          () => console.log('Completou Requisição')
+      );
     this.navCtrl.pop();
   }
 
@@ -63,9 +76,23 @@ export class EventNewPage {
   }
 
   abrirImagem(){
+    console.log('wtffff');
+    /*
     this.fileChooser.open()
     .then(uri => this.inserirURIImagem(uri))
-    .catch(e => console.log(e));
+    .catch(e => console.log(e));*/
+    if(!this.imagePicker.hasReadPermission()){
+      this.imagePicker.requestReadPermission();
+    }
+    this.imagePicker.getPictures({maximumImagesCount: 1, width: 800, height: 800, quality: 80}).then((results) => {
+      /*for (var i = 0; i < results.length; i++) {
+          console.log('Image URI: ' + results[i]);
+      }*/
+      console.log(results);
+    },
+    (err) => {
+      console.log(err);
+    });
   }
 
   inserirURIImagem(uri: string){

@@ -12,7 +12,7 @@ import { Config } from '../config'
 */
 @Injectable()
 export class EventoServiceProvider {
-  urlPart = "Event/";
+  urlPart = "Evento/";
   constructor(public http: Http) {
     console.log('Hello EventoServiceProvider Provider');
   }
@@ -20,14 +20,14 @@ export class EventoServiceProvider {
   cadastrarEvento(evento: Event){
       var url = Config.url+this.urlPart+'CadastrarEvento?';
       url = url + 'nome=' + evento.bairro;
-      url = url + 'cidade=' + evento.cidade;
-      url = url + 'data=' + evento.data;
-      url = url + 'descricao=' + evento.descricao;
-      url = url + 'estado=' + evento.estado;
-      url = url + 'nome=' + evento.nome;
-      url = url + 'numero=' + evento.numero;
-      url = url + 'rua=' + evento.rua;
-      url = url + 'urlFoto=' + evento.urlFoto;
+      url = url + '&cidade=' + evento.cidade;
+      url = url + '&data=' + evento.data;
+      url = url + '&descricao=' + evento.descricao;
+      url = url + '&estado=' + evento.estado;
+      url = url + '&nome=' + evento.nome;
+      url = url + '&numero=' + evento.numero;
+      url = url + '&rua=' + evento.rua;
+      url = url + '&urlFoto=' + evento.urlFoto;
       console.log(url);
       var response = this.http.get(url).map(res => res.json());
       console.log(response);

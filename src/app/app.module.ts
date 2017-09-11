@@ -19,6 +19,7 @@ import { ResiduosPage } from '../pages/residuos/residuos';
 import { CategoriaSelecionarPage } from '../pages/categoria-selecionar/categoria-selecionar';
 import { CategoriaServiceProvider } from '../providers/categoria-service/categoria-service';
 import { FileChooser } from '@ionic-native/file-chooser';
+import { ImagePicker } from '@ionic-native/image-picker';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { FileChooser } from '@ionic-native/file-chooser';
     UserProvider,
     EventoServiceProvider,
     CategoriaServiceProvider,
-    FileChooser
+    FileChooser,
+    ImagePicker
   ]
 })
 export class AppModule {}
