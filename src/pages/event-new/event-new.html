@@ -49,11 +49,7 @@
       <ion-label stacked>Número</ion-label>
       <ion-input type="numeric" [(ngModel)]="eventForm.numero" name="numero"></ion-input>
     </ion-item>
-    <!--<ion-item>
-      <ion-label stacked>Url foto</ion-label>
-      <ion-input type="url" [(ngModel)]="eventForm.urlFoto" name="urlFoto"></ion-input>
-    </ion-item>-->
-    <ion-item><img src="{{eventForm.urlFoto}}"/></ion-item>
+    <ion-item *ngIf="eventForm.urlFoto"><img alt="Erro ao carregar imagem, tente novamente" [src]="eventForm.urlFoto | safeurl"/></ion-item>
     <button item-list float-right ion-button color="corYouSustainable" right (click)="abrirImagem()">
     <!--<button float-right ion-button color="corYouSustainable" right (click)="inserirURIImagem('supertestetestando')">-->
       <ion-icon name="camera"></ion-icon>&nbsp;Imagem</button>

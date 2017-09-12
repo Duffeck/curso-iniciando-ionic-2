@@ -3,12 +3,15 @@ import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-an
 import { DatePipe } from '@angular/common';
 //import { FileChooser } from '@ionic-native/file-chooser';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { Base64 } from '@ionic-native/base64';
 
 import { EventListPage} from '../event-list/event-list';
 import { Event } from '../objects/event';
-import { EventResource} from '../objects/eventResource';
+//import { EventResource} from '../objects/eventResource';
 import { EstadosRadioPage } from '../estados-radio/estados-radio';
 import { EventoServiceProvider } from '../../providers/evento-service/evento-service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 //src
 /**
  * Generated class for the EventNewPage page.
@@ -23,7 +26,7 @@ import { EventoServiceProvider } from '../../providers/evento-service/evento-ser
 })
 export class EventNewPage {
   eventForm : Event;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private imagePicker: ImagePicker, private eventoService : EventoServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private imagePicker: ImagePicker, private eventoService : EventoServiceProvider, private base64: Base64, private _sanitizer: DomSanitizer) {
     this.eventForm = new Event();
   }
 
@@ -49,9 +52,11 @@ export class EventNewPage {
     */
     this.eventoService.cadastrarEvento(eventForm).subscribe(
           data => {
+            console.log('Resposta');
             console.log(data);
           },
           err => {
+            console.log('Erro');
             console.log(err);
           },
           () => console.log('Completou Requisição')
@@ -76,19 +81,19 @@ export class EventNewPage {
   }
 
   abrirImagem(){
-    console.log('wtffff');
-    /*
-    this.fileChooser.open()
-    .then(uri => this.inserirURIImagem(uri))
-    .catch(e => console.log(e));*/
     if(!this.imagePicker.hasReadPermission()){
       this.imagePicker.requestReadPermission();
     }
-    this.imagePicker.getPictures({maximumImagesCount: 1, width: 800, height: 800, quality: 80}).then((results) => {
-      /*for (var i = 0; i < results.length; i++) {
-          console.log('Image URI: ' + results[i]);
-      }*/
-      console.log(results);
+    this.imagePicker.getPictures({maximumImagesCount: 1}).then((results) => {
+      if(results.length > 0){
+        this.base64.encodeFile(results[0]).then((base64File: string) => {
+          this.inserirURIImagem(base64File);
+        }, (err) => {
+          console.log(err);
+        });
+      }else{
+        console.log('nao');
+      }
     },
     (err) => {
       console.log(err);
@@ -96,6 +101,7 @@ export class EventNewPage {
   }
 
   inserirURIImagem(uri: string){
-    this.eventForm.urlFoto = uri;
+    this.eventForm.urlFoto =uri;
+    //console.log(this.eventForm.urlFoto);
   }
 }

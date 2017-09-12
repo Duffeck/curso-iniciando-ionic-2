@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Event } from '../../pages/objects/event';
-import { Config } from '../config'
+import { Config } from '../config';
 
 /*
   Generated class for the EventoServiceProvider provider.
@@ -30,7 +30,16 @@ export class EventoServiceProvider {
       url = url + '&urlFoto=' + evento.urlFoto;
       console.log(url);
       var response = this.http.get(url).map(res => res.json());
-      console.log(response);
+      console.log(JSON.stringify(response));
       return response;
+  }
+
+  listarEventos(id_evento: number){
+    var url = Config.url+this.urlPart+'ListarEventos?';
+    url = url + 'id_evento='+ id_evento
+    console.log(url);
+    var response = this.http.get(url).map(res => res.json());
+    console.log(JSON.stringify(response));
+    return response;
   }
 }

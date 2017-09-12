@@ -20,6 +20,8 @@ import { CategoriaSelecionarPage } from '../pages/categoria-selecionar/categoria
 import { CategoriaServiceProvider } from '../providers/categoria-service/categoria-service';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { Base64 } from '@ionic-native/base64';
+import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     LoginPage,
     UsuarioNewPage,
     ResiduosPage,
-    CategoriaSelecionarPage
+    CategoriaSelecionarPage,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     EventoServiceProvider,
     CategoriaServiceProvider,
     FileChooser,
-    ImagePicker
+    ImagePicker,
+    Base64
   ]
 })
 export class AppModule {}

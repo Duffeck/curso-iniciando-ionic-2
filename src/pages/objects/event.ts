@@ -5,7 +5,7 @@ export class Event {
   public estado : string;
   public bairro : string;
   public rua : string;
-  public urlFoto : string;
+  public urlFoto : any;
   public numero : number;
   public data : string;
 
