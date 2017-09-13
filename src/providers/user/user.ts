@@ -14,7 +14,7 @@ import { Config } from '../config'
 export class UserProvider {
   urlPart = "User/";
   constructor(public http: Http) {
-    console.log('Hello UserProvider Provider');
+    //console.log('Hello UserProvider Provider');
   }
 
 /*
@@ -41,14 +41,15 @@ export class UserProvider {
       url = url + '&email=' + user.email;
       console.log(url);
       var response = this.http.get(url).map(res => res.json());
-      if(response){
-        localStorage.setItem('user', JSON.stringify(user));
-      }
-      console.log(response);
       return response;
   }
 
   retornarUsuario() {
-    return JSON.parse(localStorage.getItem('user'))
+    var stringUser = localStorage.getItem('user');
+    if(stringUser!="{}"){
+      return JSON.parse(stringUser);
+    }else{
+      return false;
+    }
   }
 }

@@ -28,7 +28,7 @@
     </ion-card-content>
   </ion-card>
 
-<ion-fab bottom right>
+<ion-fab *ngIf="usuario" bottom right>
   <button ion-fab color="corYouSustainable" (click)="newEvent()"><ion-icon name="add"></ion-icon></button>
 </ion-fab>
 </ion-content>

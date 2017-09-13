@@ -13,3 +13,15 @@ export class Event {
   }
 
 }
+
+export interface Event{
+  nome : string;
+  descricao : string;
+  cidade  : string;
+  estado : string;
+  bairro : string;
+  rua : string;
+  urlFoto : any;
+  numero : number;
+  data : string;
+}
