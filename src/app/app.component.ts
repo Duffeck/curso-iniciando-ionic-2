@@ -8,7 +8,8 @@ import { MenuTestPage } from '../pages/menu-test/menu-test';
 import { EventListPage } from '../pages/event-list/event-list';
 import { LoginPage } from '../pages/login/login';
 import { ResiduosPage } from '../pages/residuos/residuos';
-//import { EventDetailPage } from '../pages/event-detail/event-detail';
+import { Usuario } from '../pages/objects/usuario';
+import { UserProvider } from '../providers/user/user';
 
 @Component({
   templateUrl: 'app.html'
@@ -17,8 +18,10 @@ export class MyApp {
   pages : Array<{component: any, title: string, icon: string}>;
   rootPage:any = HomePage;
   loginPage: {component: any, title: string, icon: string};
+  user : Usuario;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController, private userService: UserProvider) {
+    this.user = this.userService.retornarUsuario();
     this.loginPage = {component: LoginPage, title: 'Login', icon: 'log-in'};
     this.pages = [
       {component: HomePage, title: 'Home', icon: 'home'},
@@ -35,6 +38,8 @@ export class MyApp {
   }
 
   openPage(page: any) : void{
+    this.user = this.userService.retornarUsuario();
+    console.log(this.user);
     this.rootPage = page.component;
     this.menuCtrl.close();
   }

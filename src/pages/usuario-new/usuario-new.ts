@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Usuario } from '../objects/usuario';
 import { UserProvider } from '../../providers/user/user'
-
+import { ToastController } from 'ionic-angular';
 /**
  * Generated class for the UsuarioNewPage page.
  *
@@ -16,7 +16,7 @@ import { UserProvider } from '../../providers/user/user'
 })
 export class UsuarioNewPage {
   usuarioForm: Usuario;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private userProvider: UserProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private userProvider: UserProvider, public toastCtrl: ToastController) {
     this.usuarioForm = new Usuario();
   }
 
@@ -28,12 +28,24 @@ export class UsuarioNewPage {
       this.userProvider.cadastrarUsuario(user).subscribe(
           data => {
               console.log(data);
+              if(data){
+                this.apresentarToast('Cadastro efetuado com sucesso');
+                this.navCtrl.pop();
+              }
           },
           err => {
               console.log(err);
           },
           () => console.log('Completou Requisição')
       );
+  }
+
+  apresentarToast(mensagem: string){
+    this.toastCtrl.create({
+      message: mensagem,
+      duration: 3000,
+      position: 'top'
+    }).present();
   }
 
 }

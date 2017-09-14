@@ -17,13 +17,14 @@
 
 <ion-content padding>
   <ion-card *ngFor="let evento of eventos" (click)="eventDetail(evento)">
-    <img src="{{evento.urlFoto}}"/>
+    <img *ngIf="evento.urlFoto" [src]="evento.urlFoto | safeurl"/>
     <ion-card-header>
       {{evento.nome}}
     </ion-card-header>
 
     <ion-card-content>
       {{evento.cidade}} - {{evento.data}}
+      <br />
       {{evento.descricao}}
     </ion-card-content>
   </ion-card>

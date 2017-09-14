@@ -28,15 +28,19 @@ export class EventListPage {
   }
 
   ionViewDidLoad() {
-    this.usuario = this.userService.retornarUsuario();    
+    this.usuario = this.userService.retornarUsuario();
     this.eventoService.listarEventos(0).subscribe(
       data =>{
         console.log('Data:'+ data.length);
-        console.log(data);
-        if(data.length>0){
-          for(var i=0; i < data.length; i++){
-            this.adicionarEventoLista(<Event>data[i]);
+        console.log(JSON.parse(data));
+        let eventosResponse = JSON.parse(data);
+        if(eventosResponse.length>0){
+          for(var i=0; i < eventosResponse.length; i++){
+            var ev = new Event();
+            ev.eventoFromJSON(eventosResponse[i]);
+            this.adicionarEventoLista(ev);
           }
+          console.log('lengthok');
         }else{
           console.log('0');
         }
@@ -53,6 +57,7 @@ export class EventListPage {
     this.navCtrl.push(EventNewPage);
   }
   adicionarEventoLista(evento: Event){
+    //console.log(evento);
     if(this.eventos == null){
       this.eventos = new Array(0);
     }

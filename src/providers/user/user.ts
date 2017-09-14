@@ -35,7 +35,7 @@ export class UserProvider {
       return response;
   }
 
-    loginUsuario(user: Usuario){
+  loginUsuario(user: Usuario){
       var url = Config.url+this.urlPart+'EfetuarLogin?';
       url = url + '&senha=' + user.senha;
       url = url + '&email=' + user.email;

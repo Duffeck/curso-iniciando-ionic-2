@@ -31,7 +31,9 @@ export class LoginPage {
       this.userProvider.loginUsuario(user).subscribe(
           data => {
             if(data){
-              localStorage.setItem('user', JSON.stringify(user));
+              var usuario = new Usuario();
+              usuario.usuarioFromJSON(JSON.parse(data));
+              localStorage.setItem('user', JSON.stringify(usuario));
               this.apresentarToast('Login efetuado com sucesso');
               this.navCtrl.setRoot(HomePage);
             }else{

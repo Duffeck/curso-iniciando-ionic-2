@@ -12,9 +12,19 @@
       </button>
     </ion-list>
     <ion-list>
+      <!--
       <button ion-item (click)="openPage(loginPage)">
         <ion-icon name="{{loginPage.icon}}"></ion-icon>
         {{loginPage.title}}
+      </button>
+    -->
+      <button *ngIf='!user' ion-item (click)="openPage(loginPage)">
+        <ion-icon name="{{loginPage.icon}}"></ion-icon>
+        {{loginPage.title}}
+      </button>
+      <button *ngIf=user ion-item (click)="openPage(loginPage)">
+        <ion-icon name="contact"></ion-icon>
+        {{user.nome}}
       </button>
     </ion-list>
   </ion-content>
