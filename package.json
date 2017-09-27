@@ -22,6 +22,7 @@
         "@angular/platform-browser-dynamic": "4.1.0",
         "@ionic-native/base64": "^4.2.1",
         "@ionic-native/core": "3.7.0",
+        "@ionic-native/date-picker": "^4.2.1",
         "@ionic-native/file-chooser": "^4.2.1",
         "@ionic-native/file-transfer": "^4.2.1",
         "@ionic-native/image-picker": "^4.2.1",
@@ -32,6 +33,7 @@
         "com.synconset.imagepicker": "~2.1.8",
         "cordova-android": "^6.2.3",
         "cordova-plugin-console": "^1.0.5",
+        "cordova-plugin-datepicker": "^0.9.3",
         "cordova-plugin-device": "^1.1.4",
         "cordova-plugin-file": "^4.0.0",
         "cordova-plugin-file-transfer": "^1.6.3",
@@ -70,7 +72,8 @@
             "com.synconset.imagepicker": {
                 "PHOTO_LIBRARY_USAGE_DESCRIPTION": "Selecionar imagem"
             },
-            "com-badrit-base64": {}
+            "com-badrit-base64": {},
+            "cordova-plugin-datepicker": {}
         },
         "platforms": [
             "android"

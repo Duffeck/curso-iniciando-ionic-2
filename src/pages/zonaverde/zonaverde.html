@@ -1,0 +1,36 @@
+<!--
+  Generated template for the ZonaverdePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="corYouSustainable">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Zona Verde</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="zonaForm.nome" name="nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Descrição</ion-label>
+      <ion-textarea type="text" [(ngModel)]="zonaForm.descricao" name="descricao"></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <button ion-button color="light" left (click)="cancelarZonaVerde()">
+    <ion-icon name="close"></ion-icon>&nbsp;Cancelar</button>
+  <button float-right ion-button color="corYouSustainable" right (click)="salvarZonaVerde(zonaForm)">
+    <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar</button>
+
+</ion-content>

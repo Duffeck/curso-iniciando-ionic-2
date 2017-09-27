@@ -12,6 +12,7 @@ import { EstadosRadioPage } from '../estados-radio/estados-radio';
 import { EventoServiceProvider } from '../../providers/evento-service/evento-service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
+import { DatePicker } from '@ionic-native/date-picker';
 //src
 /**
  * Generated class for the EventNewPage page.
@@ -26,7 +27,7 @@ import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 })
 export class EventNewPage {
   eventForm : Event;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private imagePicker: ImagePicker, private eventoService : EventoServiceProvider, private base64: Base64, private _sanitizer: DomSanitizer) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private imagePicker: ImagePicker, private eventoService : EventoServiceProvider, private base64: Base64, private _sanitizer: DomSanitizer, private datePicker: DatePicker) {
     this.eventForm = new Event();
   }
 
@@ -103,5 +104,16 @@ export class EventNewPage {
   inserirURIImagem(uri: string){
     this.eventForm.urlFoto =uri;
     //console.log(this.eventForm.urlFoto);
+  }
+
+  selecionarData(){
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'date',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
+    }).then(
+      date => console.log('Got date: ', date),
+      err => console.log('Error occurred while getting date: ', err)
+    );
   }
 }

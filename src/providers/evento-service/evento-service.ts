@@ -19,7 +19,7 @@ export class EventoServiceProvider {
 
   cadastrarEvento(evento: Event){
       var url = Config.url+this.urlPart+'CadastrarEvento?';
-      url = url + 'nome=' + evento.bairro;
+      url = url + 'bairro=' + evento.bairro;
       url = url + '&cidade=' + evento.cidade;
       url = url + '&data=' + evento.data;
       url = url + '&descricao=' + evento.descricao;

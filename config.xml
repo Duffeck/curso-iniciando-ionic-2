@@ -3,12 +3,15 @@
     <name>MyApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://10.97.226.34:8100" />
+    <content original-src="index.html" src="http://10.97.246.88:8101" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
     <allow-navigation href="http://192.168.0.19:8100" />
     <allow-navigation href="http://10.97.226.214:8100" />
     <allow-navigation href="http://10.97.226.34:8100" />
+    <allow-navigation href="http://10.97.224.231:8100" />
+    <allow-navigation href="http://10.97.246.88:8100" />
+    <allow-navigation href="http://10.97.246.88:8101" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -86,6 +89,7 @@
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="Selecionar imagem" />
     </plugin>
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
+    <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
     <plugin name="cordova-plugin-file-transfer" spec="^1.6.3" />
     <plugin name="cordova-plugin-filechooser" spec="^1.0.1" />

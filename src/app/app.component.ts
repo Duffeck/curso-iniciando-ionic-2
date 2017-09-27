@@ -8,8 +8,10 @@ import { MenuTestPage } from '../pages/menu-test/menu-test';
 import { EventListPage } from '../pages/event-list/event-list';
 import { LoginPage } from '../pages/login/login';
 import { ResiduosPage } from '../pages/residuos/residuos';
+import { InformativoListPage } from '../pages/informativo-list/informativo-list'
 import { Usuario } from '../pages/objects/usuario';
 import { UserProvider } from '../providers/user/user';
+import { ZonaVerdePage } from '../pages/zonaverde/zonaverde';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +28,9 @@ export class MyApp {
     this.pages = [
       {component: HomePage, title: 'Home', icon: 'home'},
       {component: EventListPage, title: 'Eventos', icon: 'calendar'},
-      {component: ResiduosPage, title: 'Resíduos', icon: 'trash'}
+      {component: ResiduosPage, title: 'Resíduos', icon: 'trash'},
+      {component: InformativoListPage, title: 'Informativos', icon: 'alert'},
+      {component: ZonaVerdePage, title: 'Zona Verde', icon: 'leaf'}
     ];
 
     platform.ready().then(() => {
@@ -43,4 +47,6 @@ export class MyApp {
     this.rootPage = page.component;
     this.menuCtrl.close();
   }
+
+
 }

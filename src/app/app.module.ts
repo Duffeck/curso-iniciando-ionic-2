@@ -22,6 +22,12 @@ import { FileChooser } from '@ionic-native/file-chooser';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
 import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
+import { DatePicker } from '@ionic-native/date-picker';
+import { InformativoProvider } from '../providers/informativo/informativo';
+import { InformativoNewPage } from '../pages/informativo-new/informativo-new';
+import { InformativoListPage } from '../pages/informativo-list/informativo-list';
+import { ZonaverdeProvider } from '../providers/zonaverde/zonaverde';
+import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,10 @@ import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
     UsuarioNewPage,
     ResiduosPage,
     CategoriaSelecionarPage,
-    SafeUrlPipe
+    SafeUrlPipe,
+    InformativoNewPage,
+    InformativoListPage,
+    ZonaVerdePage
   ],
   imports: [
     BrowserModule,
@@ -60,7 +69,10 @@ import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
     LoginPage,
     UsuarioNewPage,
     ResiduosPage,
-    CategoriaSelecionarPage
+    CategoriaSelecionarPage,
+    InformativoNewPage,
+    InformativoListPage,
+    ZonaVerdePage
   ],
   providers: [
     StatusBar,
@@ -71,7 +83,10 @@ import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
     CategoriaServiceProvider,
     FileChooser,
     ImagePicker,
-    Base64
+    Base64,
+    DatePicker,
+    InformativoProvider,
+    ZonaverdeProvider
   ]
 })
 export class AppModule {}

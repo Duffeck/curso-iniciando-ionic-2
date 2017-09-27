@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Usuario } from '../../pages/objects/usuario';
-import { Config } from '../config'
+import { Config } from '../config';
 
 /*
   Generated class for the UserProvider provider.
