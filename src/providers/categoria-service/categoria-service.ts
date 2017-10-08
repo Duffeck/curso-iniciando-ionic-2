@@ -15,14 +15,31 @@ export class CategoriaServiceProvider {
     console.log('Hello CategoriaServiceProvider Provider');
   }
 
-  listarCategoriaPorTipo(tipoCategorias: string){
-    /*
-      var url = Config.url+this.urlPart+'CadastrarUsuario?';
-      url = url + 'tipo_categoria=' + tipoCategorias;
+  listarComponentesCategoria(componente: string){
+    var url = "";
+    switch(componente){
+      case "origem":
+        url = Config.url + this.urlPart + "/ListarOrigens/";
+        break;
+      case "composicao":
+        url = Config.url + this.urlPart + "/ListarComposicaoQuimica/";
+        break;
+      case "periculosidade":
+        url = Config.url + this.urlPart + "/ListarPericulosidades/";
+      break;
+      case "tipo":
+        url = Config.url + this.urlPart + "/ListarTipos/";
+      break;
+      default:
+      break;
+    }
+    if(url != ""){
       console.log(url);
       var response = this.http.get(url).map(res => res.json());
       console.log(response);
       return response;
-      */
+    }else{
+      return null;
+    }
   }
 }

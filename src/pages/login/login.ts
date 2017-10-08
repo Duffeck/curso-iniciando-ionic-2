@@ -30,18 +30,22 @@ export class LoginPage {
   loginUsuario(user: Usuario){
       this.userProvider.loginUsuario(user).subscribe(
           data => {
+            console.log('a');
             if(data){
+              console.log('b');
               var usuario = new Usuario();
               usuario.usuarioFromJSON(JSON.parse(data));
               localStorage.setItem('user', JSON.stringify(usuario));
               this.apresentarToast('Login efetuado com sucesso');
               this.navCtrl.setRoot(HomePage);
             }else{
+              console.log('c');
               localStorage.setItem('user', JSON.stringify(null));
               this.apresentarToast('Erro ao fazer login');
             }
           },
           err => {
+            console.log('d');
               console.log(err);
           },
           () => console.log('Completou Requisição')
