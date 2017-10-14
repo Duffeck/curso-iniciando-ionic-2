@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { DatePipe } from '@angular/common';
 //import { FileChooser } from '@ionic-native/file-chooser';
 import { ImagePicker } from '@ionic-native/image-picker';
@@ -27,7 +27,7 @@ import { DatePicker } from '@ionic-native/date-picker';
 })
 export class EventNewPage {
   eventForm : Event;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private imagePicker: ImagePicker, private eventoService : EventoServiceProvider, private base64: Base64, private _sanitizer: DomSanitizer, private datePicker: DatePicker) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private imagePicker: ImagePicker, private eventoService : EventoServiceProvider, private base64: Base64, private _sanitizer: DomSanitizer, private datePicker: DatePicker) {
     this.eventForm = new Event();
   }
 
@@ -70,7 +70,7 @@ export class EventNewPage {
   }
 
   openListEstados(){
-    let popover = this.popoverCtrl.create(EstadosRadioPage);
+    let popover = this.modalCtrl.create(EstadosRadioPage);
     popover.onDidDismiss(data => {
      this.eventForm.estado = data;
    });

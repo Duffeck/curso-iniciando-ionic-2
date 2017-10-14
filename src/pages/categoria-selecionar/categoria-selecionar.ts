@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { Categoria } from  '../objects/categoria';
 import { CategoriaServiceProvider } from '../../providers/categoria-service/categoria-service'
 
@@ -16,9 +16,11 @@ import { CategoriaServiceProvider } from '../../providers/categoria-service/cate
 })
 export class CategoriaSelecionarPage {
   categorias : Array<any>;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private categoriaService: CategoriaServiceProvider) {
+  categoriasSelecionadas: Array<any>;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private categoriaService: CategoriaServiceProvider, public viewCtrl: ViewController) {
     var categoria = new Categoria();
     this.categorias = new Array();
+    this.categoriasSelecionadas = new Array();
     console.log(navParams.data.categoria);
     categoriaService.listarComponentesCategoria(navParams.data.categoria).subscribe(
       data => {
@@ -36,6 +38,16 @@ export class CategoriaSelecionarPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CategoriaSelecionarPage');
+  }
+
+  close(){
+    this.viewCtrl.dismiss();
+  }
+
+  selecionarCategoria(value, teste){
+    console.log(teste);
+    console.log(value);
+    //console.log(this.categoriasSelecionadas);
   }
 
 }

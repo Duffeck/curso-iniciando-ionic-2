@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { CategoriaSelecionarPage } from '../categoria-selecionar/categoria-selecionar';
 import { Categoria } from '../objects/categoria';
 /**
@@ -17,7 +16,7 @@ import { Categoria } from '../objects/categoria';
 export class ResiduosPage {
   listCategorias = new Categoria().tiposCategorias;
   shownGroup = null;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -25,7 +24,7 @@ export class ResiduosPage {
   }
 
   presentPopover(categoria: string) {
-     let popover = this.popoverCtrl.create(CategoriaSelecionarPage, {categoria});
+     let popover = this.modalCtrl.create(CategoriaSelecionarPage, {categoria});
      popover.present();
    }
 
