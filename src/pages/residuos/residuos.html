@@ -24,4 +24,7 @@
       </ion-list-header>
     </ion-item-group>
     </ion-list>
+    <ion-fab *ngIf="usuario" bottom right>
+      <button ion-fab color="corYouSustainable" (click)="novoResiduo()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
 </ion-content>

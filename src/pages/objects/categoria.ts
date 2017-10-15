@@ -9,6 +9,11 @@ export class Categoria{
   codGrafico: string;
   cor: string;
   tiposCategorias: [{categoria: string}];
+  origens: Array<any>;
+  periculosidades: Array<any>;
+  composicoesQuimicas: Array<any>;
+  tipos: Array<any>;
+
   constructor(){
     this.tiposCategorias = [
       {categoria: 'origem'},
@@ -16,6 +21,11 @@ export class Categoria{
       {categoria: 'composicao'},
       {categoria: 'periculosidade'}
     ]
+
+    this.origens = new Array();
+    this.periculosidades = new Array();
+    this.composicoesQuimicas = new Array();
+    this.tipos = new Array();
   }
 
   componenteCategoriaFromJSON(componente: any, tipo: string){
@@ -36,6 +46,7 @@ export class Categoria{
         break;
     }
     if(comp!= null){
+      comp.id = componente.Id;
       comp.descricao = componente.Descricao;
       comp.peso = componente.Peso;
     }

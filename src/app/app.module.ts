@@ -28,6 +28,7 @@ import { InformativoNewPage } from '../pages/informativo-new/informativo-new';
 import { InformativoListPage } from '../pages/informativo-list/informativo-list';
 import { ZonaverdeProvider } from '../providers/zonaverde/zonaverde';
 import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
+import { ResiduosNewPage } from '../pages/residuos-new/residuos-new';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
     SafeUrlPipe,
     InformativoNewPage,
     InformativoListPage,
-    ZonaVerdePage
+    ZonaVerdePage,
+    ResiduosNewPage
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,8 @@ import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
     CategoriaSelecionarPage,
     InformativoNewPage,
     InformativoListPage,
-    ZonaVerdePage
+    ZonaVerdePage,
+    ResiduosNewPage
   ],
   providers: [
     StatusBar,

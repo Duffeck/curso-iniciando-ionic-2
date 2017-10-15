@@ -16,12 +16,15 @@ import { CategoriaServiceProvider } from '../../providers/categoria-service/cate
 })
 export class CategoriaSelecionarPage {
   categorias : Array<any>;
+  selecao: Array<any>;
   categoriasSelecionadas: Array<any>;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private categoriaService: CategoriaServiceProvider, public viewCtrl: ViewController) {
     var categoria = new Categoria();
     this.categorias = new Array();
+    this.selecao = new Array();
     this.categoriasSelecionadas = new Array();
-    console.log(navParams.data.categoria);
+
     categoriaService.listarComponentesCategoria(navParams.data.categoria).subscribe(
       data => {
         var categoria_json = JSON.parse(data);
@@ -34,6 +37,7 @@ export class CategoriaSelecionarPage {
       err => {},
       () => console.log('Completou Requisição')
     );
+    console.log(this.categorias);
   }
 
   ionViewDidLoad() {
@@ -41,13 +45,17 @@ export class CategoriaSelecionarPage {
   }
 
   close(){
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss(this.categoriasSelecionadas);
   }
 
-  selecionarCategoria(value, teste){
-    console.log(teste);
-    console.log(value);
-    //console.log(this.categoriasSelecionadas);
+  selecionarCategoria(value){
+    this.categoriasSelecionadas = new Array();
+    for(let categoria of this.categorias){
+      if(this.selecao[categoria.id]){
+        this.categoriasSelecionadas.push(categoria);
+      }
+    }
+    console.log(this.categoriasSelecionadas);
   }
 
 }
