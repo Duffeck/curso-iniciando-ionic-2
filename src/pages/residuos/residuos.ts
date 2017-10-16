@@ -5,6 +5,7 @@ import { Categoria } from '../objects/categoria';
 import { ResiduosNewPage } from '../residuos-new/residuos-new';
 import { UserProvider } from '../../providers/user/user';
 import { Usuario } from '../objects/usuario';
+import { Residuo } from '../objects/residuo';
 /**
  * Generated class for the ResiduosPage page.
  *
@@ -32,17 +33,6 @@ export class ResiduosPage {
      let popover = this.modalCtrl.create(CategoriaSelecionarPage, {categoria});
      popover.present();
    }
-
-  toggleGroup(group) {
-    if (this.isGroupShown(group)) {
-      this.shownGroup = null;
-    } else {
-      this.shownGroup = group;
-    }
-  };
-  isGroupShown(group) {
-    return this.shownGroup === group;
-  };
 
   novoResiduo(){
     this.navCtrl.push(ResiduosNewPage);

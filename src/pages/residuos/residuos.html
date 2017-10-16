@@ -18,12 +18,12 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item-group *ngFor="let cateogira of listCategorias;let i=index" text-wrap [ngClass]="{active: isGroupShown(i)}">
+    <ion-item-group *ngFor="let cateogira of listCategorias;let i=index" text-wrap>
       <ion-list-header color="light">
           <ion-row><ion-col class="primeiraMaiuscula">{{cateogira.categoria}}</ion-col><ion-col style="text-align:right"><ion-icon right name="add-circle" (click)="presentPopover(cateogira.categoria)"></ion-icon></ion-col></ion-row>
       </ion-list-header>
     </ion-item-group>
-    </ion-list>
+  </ion-list>
     <ion-fab *ngIf="usuario" bottom right>
       <button ion-fab color="corYouSustainable" (click)="novoResiduo()"><ion-icon name="add"></ion-icon></button>
     </ion-fab>

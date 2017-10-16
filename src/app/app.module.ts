@@ -29,6 +29,9 @@ import { InformativoListPage } from '../pages/informativo-list/informativo-list'
 import { ZonaverdeProvider } from '../providers/zonaverde/zonaverde';
 import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
 import { ResiduosNewPage } from '../pages/residuos-new/residuos-new';
+import { Camera } from '@ionic-native/camera';
+import { ResiduoProvider } from '../providers/residuo/residuo';
+import { FotoServiceProvider } from '../providers/foto-service/foto-service';
 
 @NgModule({
   declarations: [
@@ -89,7 +92,10 @@ import { ResiduosNewPage } from '../pages/residuos-new/residuos-new';
     Base64,
     DatePicker,
     InformativoProvider,
-    ZonaverdeProvider
+    ZonaverdeProvider,
+    Camera,
+    ResiduoProvider,
+    FotoServiceProvider
   ]
 })
 export class AppModule {}

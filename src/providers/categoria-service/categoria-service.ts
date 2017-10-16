@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Config } from '../config'
+import { Config } from '../config';
 /*
   Generated class for the CategoriaServiceProvider provider.
 

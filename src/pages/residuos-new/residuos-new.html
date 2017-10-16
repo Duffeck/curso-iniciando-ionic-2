@@ -14,5 +14,36 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item-group *ngFor="let cateogira of listCategorias;let i=index" text-wrap>
+      <ion-list-header color="light">
+          <ion-row><ion-col class="primeiraMaiuscula">{{cateogira.categoria}}</ion-col><ion-col style="text-align:right"><ion-icon right name="add-circle" (click)="presentPopover(cateogira.categoria)"></ion-icon></ion-col></ion-row>
+      </ion-list-header>
+    </ion-item-group>
+    <ion-item>
+      <ion-label>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="residuoForm.nome" name="nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descricao</ion-label>
+      <ion-input type="text" [(ngModel)]="residuoForm.descricao" name="descricao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Estado</ion-label>
+      <ion-input type="text" [(ngModel)]="residuoForm.estado" name="estado"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Observação</ion-label>
+      <ion-input type="text" [(ngModel)]="residuoForm.observacao" name="observacao"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="residuoForm.fotos[0]"><img alt="Erro ao carregar imagem, tente novamente" [src]="residuoForm.fotos[0].URL | safeurl"/></ion-item>
+    <button item-list float-right ion-button color="corYouSustainable" right (click)="tirarFoto()">
+      <ion-icon name="camera"></ion-icon>&nbsp;Imagem</button>
+      <ion-item>
+        <button ion-button color="light" left (click)="cancelar()">
+          <ion-icon name="close"></ion-icon>&nbsp;Cancelar</button>
+        <button float-right ion-button color="corYouSustainable" right (click)="salvarResiduo(residuoForm)">
+      <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar</button>
+      </ion-item>
+    </ion-list>
 </ion-content>
