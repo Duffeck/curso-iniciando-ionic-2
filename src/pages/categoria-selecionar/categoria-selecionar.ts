@@ -18,19 +18,20 @@ export class CategoriaSelecionarPage {
   categorias : Array<any>;
   selecao: Array<any>;
   categoriasSelecionadas: Array<any>;
+  categoria: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private categoriaService: CategoriaServiceProvider, public viewCtrl: ViewController) {
     var categoria = new Categoria();
     this.categorias = new Array();
     this.selecao = new Array();
     this.categoriasSelecionadas = new Array();
-
-    categoriaService.listarComponentesCategoria(navParams.data.categoria).subscribe(
+    this.categoria = navParams.data.categoria;
+    categoriaService.listarComponentesCategoria(this.categoria).subscribe(
       data => {
         var categoria_json = JSON.parse(data);
         if(categoria_json.length > 0){
           for(var i = 0; i < categoria_json.length; i++){
-            this.categorias.push(categoria.componenteCategoriaFromJSON(categoria_json[i], navParams.data.categoria));
+            this.categorias.push(categoria.componenteCategoriaFromJSON(categoria_json[i], this.categoria));
           }
         }
       },
@@ -45,7 +46,9 @@ export class CategoriaSelecionarPage {
   }
 
   close(){
-    this.viewCtrl.dismiss(this.categoriasSelecionadas);
+    var categoria = this.categoria;
+    var categoriasSelecionadas = this.categoriasSelecionadas;
+    this.viewCtrl.dismiss({categoria, categoriasSelecionadas});
   }
 
   selecionarCategoria(value){
@@ -55,7 +58,6 @@ export class CategoriaSelecionarPage {
         this.categoriasSelecionadas.push(categoria);
       }
     }
-    console.log(this.categoriasSelecionadas);
   }
 
 }

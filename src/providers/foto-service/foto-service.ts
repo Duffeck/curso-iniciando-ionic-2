@@ -20,6 +20,7 @@ export class FotoServiceProvider {
   salvarFoto(foto: Foto){
     let url = Config.url + this.urlPart + "/SalvarFoto/?";
     url = url+"URL="+foto.URL;
+    console.log(url);
     var response = this.http.get(url).map(res => res.json());
     console.log(response);
     return response;

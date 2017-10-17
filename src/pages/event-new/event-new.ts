@@ -31,6 +31,7 @@ export class EventNewPage {
   }
 
   salvarEvent(eventForm){
+    console.log(eventForm);
     this.eventoService.cadastrarEvento(eventForm).subscribe(
           data => {
             console.log('Resposta');

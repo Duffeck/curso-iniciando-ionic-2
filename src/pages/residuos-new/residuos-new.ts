@@ -21,6 +21,7 @@ import { FotoServiceProvider } from '../../providers/foto-service/foto-service';
   templateUrl: 'residuos-new.html',
 })
 export class ResiduosNewPage {
+  listCategorias = new Categoria().tiposCategorias;
   usuario : Usuario;
   residuoForm : Residuo;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private camera: Camera, private userService: UserProvider, private residuoService: ResiduoProvider, private fotoService: FotoServiceProvider) {
@@ -37,6 +38,11 @@ export class ResiduosNewPage {
 
   presentPopover(categoria: string) {
     let popover = this.modalCtrl.create(CategoriaSelecionarPage, {categoria});
+    popover.onDidDismiss(
+      data => {
+        console.log(data[0]);
+      }
+    );
     popover.present();
   }
 
@@ -60,7 +66,8 @@ export class ResiduosNewPage {
   }
 
   salvarResiduo(residuo: Residuo){
-    if(residuo.fotos.length > 0){
+    console.log("Qtd Fotos:"+residuo.fotos.length);
+    if(residuo.fotos.length > 10000){
       for(let i = 0; i < residuo.fotos.length; i++){
         this.fotoService.salvarFoto(residuo.fotos[i]).subscribe(
           data => {
@@ -73,20 +80,30 @@ export class ResiduosNewPage {
           err => {
             console.log(err);
           },
-          () => console.log("Completou Requisição")
+          () => {
+            this.residuoService.salvarResiduo(residuo).subscribe(
+              data => {
+                console.log(data);
+              },
+              err =>{
+                console.log(err);
+              },
+              () => console.log("Completou Requisição")
+            );
+          }
         );
       }
+    }else{
+      this.residuoService.salvarResiduo(residuo).subscribe(
+        data => {
+          console.log(data);
+        },
+        err =>{
+          console.log(err);
+        },
+        () => console.log("Completou Requisição")
+      );
     }
-
-    this.residuoService.salvarResiduo(residuo).subscribe(
-      data => {
-        console.log(data);
-      },
-      err =>{
-        console.log(err);
-      },
-      () => console.log("Completou Requisição")
-    );
   }
   cancelar(){
     this.navCtrl.pop();
