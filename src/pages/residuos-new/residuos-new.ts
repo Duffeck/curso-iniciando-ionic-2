@@ -21,15 +21,19 @@ import { FotoServiceProvider } from '../../providers/foto-service/foto-service';
   templateUrl: 'residuos-new.html',
 })
 export class ResiduosNewPage {
-  listCategorias = new Categoria().tiposCategorias;
+  listCategorias : Array<any>;
+  listTiposCategorias: any;
   usuario : Usuario;
   residuoForm : Residuo;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private camera: Camera, private userService: UserProvider, private residuoService: ResiduoProvider, private fotoService: FotoServiceProvider) {
     this.residuoForm = new Residuo();
     this.usuario = this.userService.retornarUsuario();
+    this.listCategorias = new Categoria().tiposCategorias;
+    this.listTiposCategorias = {origem: [], periculosidade: [], composicao: [], tipo: []};
     if(this.usuario != undefined){
       this.residuoForm.usuario = this.usuario;
     }
+    console.log(this.listCategorias);
   }
 
   ionViewDidLoad() {
@@ -40,7 +44,21 @@ export class ResiduosNewPage {
     let popover = this.modalCtrl.create(CategoriaSelecionarPage, {categoria});
     popover.onDidDismiss(
       data => {
-        console.log(data[0]);
+        console.log(data);
+        console.log(data.categoria);
+        if(data.categoria == 'origem'){
+          this.listTiposCategorias.origem = data.categoriasSelecionadas;
+        }
+        if(data.categoria == 'periculosidade'){
+          this.listTiposCategorias.periculosidade = data.categoriasSelecionadas;
+        }
+        if(data.categoria == 'composicao'){
+          this.listTiposCategorias.composicao = data.categoriasSelecionadas;
+        }
+        if(data.listTiposCategorias == 'tipo'){
+          this.listTiposCategorias.tipo = data.categoriasSelecionadas;
+        }
+        console.log(this.listTiposCategorias);
       }
     );
     popover.present();

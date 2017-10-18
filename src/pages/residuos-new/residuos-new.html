@@ -15,25 +15,60 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item-group *ngFor="let cateogira of listCategorias;let i=index" text-wrap>
+    <ion-item-group text-wrap>
       <ion-list-header color="light">
-          <ion-row><ion-col class="primeiraMaiuscula">{{cateogira.categoria}}</ion-col><ion-col style="text-align:right"><ion-icon right name="add-circle" (click)="presentPopover(cateogira.categoria)"></ion-icon></ion-col></ion-row>
+          <ion-row>
+            <ion-col class="primeiraMaiuscula">Origem</ion-col>
+            <ion-col style="text-align:right"><ion-icon right name="add-circle" (click)="presentPopover('origem')"></ion-icon></ion-col>
+          </ion-row>
       </ion-list-header>
+      <ion-item *ngFor="let tipoCategoria of listTiposCategorias.origem">
+        {{tipoCategoria.descricao}}
+      </ion-item>
+    </ion-item-group>
+    <ion-item-group text-wrap>
+      <ion-list-header color="light">
+          <ion-row>
+            <ion-col class="primeiraMaiuscula">Periculosidade</ion-col>
+            <ion-col style="text-align:right"><ion-icon right name="add-circle" (click)="presentPopover('periculosidade')"></ion-icon></ion-col>
+          </ion-row>
+      </ion-list-header>
+      <div id="{{'periculosidade'}}"></div>
+    </ion-item-group>
+    <ion-item-group text-wrap>
+      <ion-list-header color="light">
+          <ion-row>
+            <ion-col class="primeiraMaiuscula">Tipo</ion-col>
+            <ion-col style="text-align:right"><ion-icon right name="add-circle" (click)="presentPopover('tipo')"></ion-icon></ion-col>
+          </ion-row>
+      </ion-list-header>
+      <div id="{{'tipo'}}"></div>
+    </ion-item-group>
+    <ion-item-group text-wrap>
+      <ion-list-header color="light">
+          <ion-row>
+            <ion-col class="primeiraMaiuscula">Composição Química</ion-col>
+            <ion-col style="text-align:right"><ion-icon right name="add-circle" (click)="presentPopover('composicao')"></ion-icon></ion-col>
+          </ion-row>
+      </ion-list-header>
+      <div id="{{'composicao'}}"></div>
     </ion-item-group>
     <ion-item>
-      <ion-label>Nome</ion-label>
+      <ion-label stacked>Nome</ion-label>
       <ion-input type="text" [(ngModel)]="residuoForm.nome" name="nome"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Descricao</ion-label>
+      <ion-label stacked>Descricao</ion-label>
       <ion-input type="text" [(ngModel)]="residuoForm.descricao" name="descricao"></ion-input>
     </ion-item>
+    <!--
     <ion-item>
-      <ion-label>Estado</ion-label>
+      <ion-label stacked>Estado</ion-label>
       <ion-input type="text" [(ngModel)]="residuoForm.estado" name="estado"></ion-input>
     </ion-item>
+  -->
     <ion-item>
-      <ion-label>Observação</ion-label>
+      <ion-label stacked>Observação</ion-label>
       <ion-input type="text" [(ngModel)]="residuoForm.observacao" name="observacao"></ion-input>
     </ion-item>
     <!--

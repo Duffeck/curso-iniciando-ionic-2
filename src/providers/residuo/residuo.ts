@@ -32,11 +32,15 @@ export class ResiduoProvider {
     if(residuo.observacao != undefined){
       url = url + "&Observacao="+residuo.observacao;
     }
+    /*
     if(residuo.fotos.length>0){
       for(var i = 0; i < residuo.fotos.length; i++){
         url = url + "&id_fotos=" + residuo.fotos[i].id;
       }
-    }
+    }*/
+
+    
+
     //url = url +residuo.usuario;
     console.log(url);
     var response = this.http.get(url).map(res => res.json());

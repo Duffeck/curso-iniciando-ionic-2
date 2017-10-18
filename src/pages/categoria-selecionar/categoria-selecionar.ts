@@ -38,7 +38,6 @@ export class CategoriaSelecionarPage {
       err => {},
       () => console.log('Completou Requisição')
     );
-    console.log(this.categorias);
   }
 
   ionViewDidLoad() {

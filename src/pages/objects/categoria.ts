@@ -8,19 +8,19 @@ export class Categoria{
   descricao: string;
   codGrafico: string;
   cor: string;
-  tiposCategorias: [{categoria: string}];
+  tiposCategorias: any;
   origens: Array<any>;
   periculosidades: Array<any>;
   composicoesQuimicas: Array<any>;
   tipos: Array<any>;
 
   constructor(){
-    this.tiposCategorias = [
-      {categoria: 'origem'},
-      {categoria: 'tipo'},
-      {categoria: 'composicao'},
-      {categoria: 'periculosidade'}
-    ]
+    this.tiposCategorias = {
+      'origem': {},
+      'tipo': {},
+      'composicao': {},
+      'periculosidade': {}
+    }
 
     this.origens = new Array();
     this.periculosidades = new Array();
