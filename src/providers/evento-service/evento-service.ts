@@ -30,7 +30,6 @@ export class EventoServiceProvider {
       url = url + '&urlFoto=' + evento.urlFoto;
       console.log(url);
       var response = this.http.get(url).map(res => res.json());
-      console.log(JSON.stringify(response));
       return response;
   }
 

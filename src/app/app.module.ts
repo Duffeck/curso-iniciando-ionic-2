@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
+import { Firebase } from '@ionic-native/firebase';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -29,6 +30,7 @@ import { InformativoListPage } from '../pages/informativo-list/informativo-list'
 import { ZonaverdeProvider } from '../providers/zonaverde/zonaverde';
 import { ZonaVerdeListPage } from '../pages/zonaverde-list/zonaverde-list';
 import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
+
 import { PontosDescarteProvider } from '../providers/pontosdescarte/pontosdescarte';
 import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdescarte-list';
 import { PontosDescartePage} from '../pages/pontosdescarte-new/pontosdescarte-new';
@@ -37,6 +39,11 @@ import { AlertaListPage} from '../pages/alerta-list/alerta-list';
 import { AlertaNewPage } from '../pages/alerta-new/alerta-new';
 import { AlertaDetailPage } from '../pages/alerta-detail/alerta-detail';
 import { AlertaProvider } from '../providers/alerta/alerta';
+import { ResiduosNewPage } from '../pages/residuos-new/residuos-new';
+import { Camera } from '@ionic-native/camera';
+import { ResiduoProvider } from '../providers/residuo/residuo';
+import { FotoServiceProvider } from '../providers/foto-service/foto-service';
+import { KeyPipe } from '../pipes/key/key';
 
 @NgModule({
   declarations: [
@@ -61,6 +68,8 @@ import { AlertaProvider } from '../providers/alerta/alerta';
     AlertaListPage,
     AlertaNewPage,
     AlertaDetailPage
+    ResiduosNewPage,
+    KeyPipe    
   ],
   imports: [
     BrowserModule,
@@ -96,6 +105,7 @@ import { AlertaProvider } from '../providers/alerta/alerta';
     AlertaListPage,
     AlertaNewPage,
     AlertaDetailPage
+    ResiduosNewPage
   ],
   providers: [
     StatusBar,
@@ -112,6 +122,10 @@ import { AlertaProvider } from '../providers/alerta/alerta';
     ZonaverdeProvider,
     PontosDescarteProvider,
     AlertaProvider
+    Camera,
+    ResiduoProvider,
+    FotoServiceProvider,
+    Firebase
   ]
 })
 export class AppModule {}

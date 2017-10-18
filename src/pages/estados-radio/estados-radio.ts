@@ -52,4 +52,8 @@ export class EstadosRadioPage {
   selecionarEstado(uf: string){
     this.viewCtrl.dismiss(uf);
   }
+
+  close(){
+    this.viewCtrl.dismiss();
+  }
 }

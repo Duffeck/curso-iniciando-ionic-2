@@ -18,12 +18,8 @@
 
 <ion-content padding>
   <ion-list>
-      <button ion-item small *ngFor="let cateogira of listCategorias;let i=index" text-wrap (click)="presentPopover(cateogira.categoria)" [ngClass]="{active: isGroupShown(i)}">
-        <button ion-item>
-        <p class="primeiraMaiuscula">{{cateogira.categoria}}</p>
-        <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
-      </button>
-        <ion-item *ngIf="isGroupShown(i)">Conteúdo</ion-item>
-      </button>
-    </ion-list>
+  </ion-list>
+    <ion-fab *ngIf="usuario" bottom right>
+      <button ion-fab color="corYouSustainable" (click)="novoResiduo()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
 </ion-content>
