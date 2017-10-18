@@ -1,5 +1,8 @@
 {
   "name": "curso-iniciando-ionic-2",
   "app_id": "b3eb7be9",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }

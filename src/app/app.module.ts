@@ -27,7 +27,16 @@ import { InformativoProvider } from '../providers/informativo/informativo';
 import { InformativoNewPage } from '../pages/informativo-new/informativo-new';
 import { InformativoListPage } from '../pages/informativo-list/informativo-list';
 import { ZonaverdeProvider } from '../providers/zonaverde/zonaverde';
+import { ZonaVerdeListPage } from '../pages/zonaverde-list/zonaverde-list';
 import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
+import { PontosDescarteProvider } from '../providers/pontosdescarte/pontosdescarte';
+import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdescarte-list';
+import { PontosDescartePage} from '../pages/pontosdescarte-new/pontosdescarte-new';
+import { PontosDescarteDetailPage } from '../pages/pontosdescarte-detail/pontosdescarte-detail';
+import { AlertaListPage} from '../pages/alerta-list/alerta-list';
+import { AlertaNewPage } from '../pages/alerta-new/alerta-new';
+import { AlertaDetailPage } from '../pages/alerta-detail/alerta-detail';
+import { AlertaProvider } from '../providers/alerta/alerta';
 
 @NgModule({
   declarations: [
@@ -44,7 +53,14 @@ import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
     SafeUrlPipe,
     InformativoNewPage,
     InformativoListPage,
-    ZonaVerdePage
+    ZonaVerdePage,
+    ZonaVerdeListPage,
+    PontosDescarteListPage,
+    PontosDescartePage,
+    PontosDescarteDetailPage,
+    AlertaListPage,
+    AlertaNewPage,
+    AlertaDetailPage
   ],
   imports: [
     BrowserModule,
@@ -72,7 +88,14 @@ import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
     CategoriaSelecionarPage,
     InformativoNewPage,
     InformativoListPage,
-    ZonaVerdePage
+    ZonaVerdePage,
+    ZonaVerdeListPage,
+    PontosDescarteListPage,
+    PontosDescartePage,
+    PontosDescarteDetailPage,
+    AlertaListPage,
+    AlertaNewPage,
+    AlertaDetailPage
   ],
   providers: [
     StatusBar,
@@ -86,7 +109,9 @@ import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
     Base64,
     DatePicker,
     InformativoProvider,
-    ZonaverdeProvider
+    ZonaverdeProvider,
+    PontosDescarteProvider,
+    AlertaProvider
   ]
 })
 export class AppModule {}

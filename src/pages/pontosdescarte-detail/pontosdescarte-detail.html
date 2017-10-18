@@ -1,0 +1,35 @@
+<!--
+  Generated template for the ZonaverdeListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="corYouSustainable">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pontos de Descarte</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <h4>Ponto de Descarte</h4>
+  <h5>
+  <!--Localização: <br />
+  {{ponto.localizacao.latitude}} <br />
+  {{ponto.localizacao.longitude}} <br />
+  Categoria: {{ponto.categoria.nome}}<br />-->
+  É particular? {{ponto.ehParticular}}<br />
+  Estado: {{ponto.estado}}
+  </h5>
+
+  <ion-fab bottom left>
+  <!--<ion-fab *ngIf="usuario" bottom right>-->
+    <button ion-fab style="background-color: red" (click)="newAlerta()"><ion-icon name="alert"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>
