@@ -11,7 +11,9 @@ import { ResiduosPage } from '../pages/residuos/residuos';
 import { InformativoListPage } from '../pages/informativo-list/informativo-list'
 import { Usuario } from '../pages/objects/usuario';
 import { UserProvider } from '../providers/user/user';
-import { ZonaVerdePage } from '../pages/zonaverde/zonaverde';
+import { ZonaVerdeListPage } from '../pages/zonaverde-list/zonaverde-list';
+import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdescarte-list';
+import { AlertaListPage } from '../pages/alerta-list/alerta-list';
 
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +32,9 @@ export class MyApp {
       {component: EventListPage, title: 'Eventos', icon: 'calendar'},
       {component: ResiduosPage, title: 'Resíduos', icon: 'trash'},
       {component: InformativoListPage, title: 'Informativos', icon: 'alert'},
-      {component: ZonaVerdePage, title: 'Zona Verde', icon: 'leaf'}
+      {component: ZonaVerdeListPage, title: 'Zona Verde', icon: 'leaf'},
+      {component: PontosDescarteListPage, title: 'Pontos de Descarte', icon: 'trash'},
+      {component: AlertaListPage, title: 'Alertas', icon: 'flag'}
     ];
 
     platform.ready().then(() => {
@@ -47,6 +51,5 @@ export class MyApp {
     this.rootPage = page.component;
     this.menuCtrl.close();
   }
-
 
 }

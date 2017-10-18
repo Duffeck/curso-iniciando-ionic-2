@@ -27,6 +27,17 @@
       <ion-label stacked>Descrição</ion-label>
       <ion-textarea type="text" [(ngModel)]="zonaForm.descricao" name="descricao"></ion-textarea>
     </ion-item>
+    <ion-item>
+      <ion-label stacked>Localização da Zona Verde</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Latitude</ion-label>
+      <ion-textarea type="text" [(ngModel)]="zonaForm.localizacao.latitude" name="latitude"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Longitude</ion-label>
+      <ion-textarea type="text" [(ngModel)]="zonaForm.localizacao.longitude" name="longitude"></ion-textarea>
+    </ion-item>
   </ion-list>
   <button ion-button color="light" left (click)="cancelarZonaVerde()">
     <ion-icon name="close"></ion-icon>&nbsp;Cancelar</button>

@@ -28,7 +28,17 @@ import { InformativoProvider } from '../providers/informativo/informativo';
 import { InformativoNewPage } from '../pages/informativo-new/informativo-new';
 import { InformativoListPage } from '../pages/informativo-list/informativo-list';
 import { ZonaverdeProvider } from '../providers/zonaverde/zonaverde';
+import { ZonaVerdeListPage } from '../pages/zonaverde-list/zonaverde-list';
 import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
+
+import { PontosDescarteProvider } from '../providers/pontosdescarte/pontosdescarte';
+import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdescarte-list';
+import { PontosDescartePage} from '../pages/pontosdescarte-new/pontosdescarte-new';
+import { PontosDescarteDetailPage } from '../pages/pontosdescarte-detail/pontosdescarte-detail';
+import { AlertaListPage} from '../pages/alerta-list/alerta-list';
+import { AlertaNewPage } from '../pages/alerta-new/alerta-new';
+import { AlertaDetailPage } from '../pages/alerta-detail/alerta-detail';
+import { AlertaProvider } from '../providers/alerta/alerta';
 import { ResiduosNewPage } from '../pages/residuos-new/residuos-new';
 import { Camera } from '@ionic-native/camera';
 import { ResiduoProvider } from '../providers/residuo/residuo';
@@ -51,8 +61,15 @@ import { KeyPipe } from '../pipes/key/key';
     InformativoNewPage,
     InformativoListPage,
     ZonaVerdePage,
+    ZonaVerdeListPage,
+    PontosDescarteListPage,
+    PontosDescartePage,
+    PontosDescarteDetailPage,
+    AlertaListPage,
+    AlertaNewPage,
+    AlertaDetailPage
     ResiduosNewPage,
-    KeyPipe
+    KeyPipe    
   ],
   imports: [
     BrowserModule,
@@ -81,6 +98,13 @@ import { KeyPipe } from '../pipes/key/key';
     InformativoNewPage,
     InformativoListPage,
     ZonaVerdePage,
+    ZonaVerdeListPage,
+    PontosDescarteListPage,
+    PontosDescartePage,
+    PontosDescarteDetailPage,
+    AlertaListPage,
+    AlertaNewPage,
+    AlertaDetailPage
     ResiduosNewPage
   ],
   providers: [
@@ -96,6 +120,8 @@ import { KeyPipe } from '../pipes/key/key';
     DatePicker,
     InformativoProvider,
     ZonaverdeProvider,
+    PontosDescarteProvider,
+    AlertaProvider
     Camera,
     ResiduoProvider,
     FotoServiceProvider,

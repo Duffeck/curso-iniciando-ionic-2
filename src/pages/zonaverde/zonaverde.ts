@@ -7,6 +7,8 @@ import { ZonaverdeProvider } from '../../providers/zonaverde/zonaverde';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 
+import {Localizacao } from '../objects/localizacao';
+
 /**
  * Generated class for the ZonaverdePage page.
  *
@@ -20,16 +22,28 @@ import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 })
 export class ZonaVerdePage {
   zonaForm : ZonaVerde;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private ZonaverdeService : ZonaverdeProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private zonaVerdeService : ZonaverdeProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer) {
     this.zonaForm = new ZonaVerde();
+    this.zonaForm.localizacao = new Localizacao();
   }
 
   cancelarZonaVerde(){
     this.navCtrl.pop();
   }
 
-  salvarZonaVerde(){
-
+  salvarZonaVerde(zonaForm){
+    this.zonaVerdeService.cadastrarZonaVerde(zonaForm).subscribe(
+          data => {
+            console.log('Resposta');
+            console.log(data);
+          },
+          err => {
+            console.log('Erro');
+            console.log(err);
+          },
+          () => console.log('Completou Requisição')
+      );
+    this.navCtrl.pop();
   }
 
 
