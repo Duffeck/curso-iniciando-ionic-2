@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { CategoriaSelecionarPage } from '../categoria-selecionar/categoria-selecionar';
 import { Categoria } from '../objects/categoria';
+import { ResiduosNewPage } from '../residuos-new/residuos-new';
+import { UserProvider } from '../../providers/user/user';
+import { Usuario } from '../objects/usuario';
+import { Residuo } from '../objects/residuo';
 /**
  * Generated class for the ResiduosPage page.
  *
@@ -17,26 +20,21 @@ import { Categoria } from '../objects/categoria';
 export class ResiduosPage {
   listCategorias = new Categoria().tiposCategorias;
   shownGroup = null;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController) {
+  usuario : Usuario;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private userService: UserProvider) {
   }
 
   ionViewDidLoad() {
+    this.usuario = this.userService.retornarUsuario();
     console.log('ionViewDidLoad ResiduosPage');
   }
 
   presentPopover(categoria: string) {
-     let popover = this.popoverCtrl.create(CategoriaSelecionarPage, {categoria});
+     let popover = this.modalCtrl.create(CategoriaSelecionarPage, {categoria});
      popover.present();
    }
 
-  toggleGroup(group) {
-    if (this.isGroupShown(group)) {
-      this.shownGroup = null;
-    } else {
-      this.shownGroup = group;
-    }
-  };
-  isGroupShown(group) {
-    return this.shownGroup === group;
-  };
+  novoResiduo(){
+    this.navCtrl.push(ResiduosNewPage);
+  }
 }

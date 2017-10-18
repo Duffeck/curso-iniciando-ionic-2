@@ -41,6 +41,7 @@ export class UserProvider {
       url = url + '&email=' + user.email;
       console.log(url);
       var response = this.http.get(url).map(res => res.json());
+      console.log(response);
       return response;
   }
 

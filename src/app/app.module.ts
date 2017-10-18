@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
+import { Firebase } from '@ionic-native/firebase';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -28,6 +29,11 @@ import { InformativoNewPage } from '../pages/informativo-new/informativo-new';
 import { InformativoListPage } from '../pages/informativo-list/informativo-list';
 import { ZonaverdeProvider } from '../providers/zonaverde/zonaverde';
 import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
+import { ResiduosNewPage } from '../pages/residuos-new/residuos-new';
+import { Camera } from '@ionic-native/camera';
+import { ResiduoProvider } from '../providers/residuo/residuo';
+import { FotoServiceProvider } from '../providers/foto-service/foto-service';
+import { KeyPipe } from '../pipes/key/key';
 
 @NgModule({
   declarations: [
@@ -44,7 +50,9 @@ import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
     SafeUrlPipe,
     InformativoNewPage,
     InformativoListPage,
-    ZonaVerdePage
+    ZonaVerdePage,
+    ResiduosNewPage,
+    KeyPipe
   ],
   imports: [
     BrowserModule,
@@ -72,7 +80,8 @@ import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
     CategoriaSelecionarPage,
     InformativoNewPage,
     InformativoListPage,
-    ZonaVerdePage
+    ZonaVerdePage,
+    ResiduosNewPage
   ],
   providers: [
     StatusBar,
@@ -86,7 +95,11 @@ import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
     Base64,
     DatePicker,
     InformativoProvider,
-    ZonaverdeProvider
+    ZonaverdeProvider,
+    Camera,
+    ResiduoProvider,
+    FotoServiceProvider,
+    Firebase
   ]
 })
 export class AppModule {}
