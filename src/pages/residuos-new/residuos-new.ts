@@ -25,8 +25,10 @@ export class ResiduosNewPage {
   listTiposCategorias: any;
   usuario : Usuario;
   residuoForm : Residuo;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private camera: Camera, private userService: UserProvider, private residuoService: ResiduoProvider, private fotoService: FotoServiceProvider) {
     this.residuoForm = new Residuo();
+    this.residuoForm.categoria = new Categoria();
     this.usuario = this.userService.retornarUsuario();
     this.listCategorias = new Categoria().tiposCategorias;
     this.listTiposCategorias = {origem: [], periculosidade: [], composicao: [], tipo: []};
@@ -48,15 +50,20 @@ export class ResiduosNewPage {
         console.log(data.categoria);
         if(data.categoria == 'origem'){
           this.listTiposCategorias.origem = data.categoriasSelecionadas;
+
+          this.residuoForm.categoria.origens = data.categoriasSelecionadas;
         }
         if(data.categoria == 'periculosidade'){
           this.listTiposCategorias.periculosidade = data.categoriasSelecionadas;
+          this.residuoForm.categoria.periculosidades = data.categoriasSelecionadas;
         }
         if(data.categoria == 'composicao'){
           this.listTiposCategorias.composicao = data.categoriasSelecionadas;
+          this.residuoForm.categoria.composicoesQuimicas = data.categoriasSelecionadas;
         }
         if(data.listTiposCategorias == 'tipo'){
           this.listTiposCategorias.tipo = data.categoriasSelecionadas;
+          this.residuoForm.categoria.tipos = data.categoriasSelecionadas;
         }
         console.log(this.listTiposCategorias);
       }
@@ -66,18 +73,20 @@ export class ResiduosNewPage {
 
   tirarFoto(){
     const options: CameraOptions = {
-      quality: 50,
-      destinationType: this.camera.DestinationType.DATA_URL,
+      quality: 100,
+      destinationType: this.camera.DestinationType.NATIVE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       allowEdit: true,
-      correctOrientation: true
+      correctOrientation: true,
+      saveToPhotoAlbum: true,
+      sourceType: this.camera.PictureSourceType.CAMERA
     }
     this.camera.getPicture(options).then((imageData) => {
-      let base64Image = 'data:image/jpeg;base64,' + imageData;
       var foto = new Foto();
-      foto.URL = base64Image;
+      foto.URL = imageData;
       this.residuoForm.fotos.push(foto);
+      console.log(this.residuoForm);
     }, (err) => {
       console.log(err);
     });
@@ -85,7 +94,7 @@ export class ResiduosNewPage {
 
   salvarResiduo(residuo: Residuo){
     console.log("Qtd Fotos:"+residuo.fotos.length);
-    if(residuo.fotos.length > 10000){
+    if(residuo.fotos.length > 0){
       for(let i = 0; i < residuo.fotos.length; i++){
         this.fotoService.salvarFoto(residuo.fotos[i]).subscribe(
           data => {
@@ -93,6 +102,8 @@ export class ResiduosNewPage {
             console.log(data);
             if(data > 0){
               residuo.fotos[i].id = data;
+              console.log(residuo.fotos[i]);
+              this.fotoService.transferirArquivo(residuo.fotos[i]);
             }
           },
           err => {

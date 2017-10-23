@@ -3,7 +3,7 @@
     <name>MyApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.137.1:8100" />
+    <content original-src="index.html" src="http://192.168.42.113:8100" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
     <allow-navigation href="http://192.168.0.19:8100" />
@@ -15,6 +15,8 @@
     <allow-navigation href="http://10.96.25.174:8100" />
     <allow-navigation href="http://undefined:8100" />
     <allow-navigation href="http://192.168.137.1:8100" />
+    <allow-navigation href="http://192.168.0.19:8101" />
+    <allow-navigation href="http://192.168.42.113:8100" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -88,13 +90,14 @@
     </platform>
     <engine name="android" spec="^6.2.3" />
     <plugin name="com-badrit-base64" spec="^0.2.0" />
-    <plugin name="com.synconset.imagepicker" spec="~2.1.8">
+    <plugin name="com.synconset.imagepicker" spec="^2.1.10">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="Selecionar imagem" />
     </plugin>
     <plugin name="cordova-plugin-camera" spec="^2.4.1" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
+    <plugin name="cordova-plugin-file" spec="^4.0.0" />
     <plugin name="cordova-plugin-file-transfer" spec="^1.6.3" />
     <plugin name="cordova-plugin-filechooser" spec="^1.0.1" />
     <plugin name="cordova-plugin-firebase" spec="^0.1.24" />

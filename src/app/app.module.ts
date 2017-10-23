@@ -44,6 +44,9 @@ import { Camera } from '@ionic-native/camera';
 import { ResiduoProvider } from '../providers/residuo/residuo';
 import { FotoServiceProvider } from '../providers/foto-service/foto-service';
 import { KeyPipe } from '../pipes/key/key';
+import { FileTransferTestePage } from '../pages/file-transfer-teste/file-transfer-teste';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 @NgModule({
   declarations: [
@@ -67,9 +70,10 @@ import { KeyPipe } from '../pipes/key/key';
     PontosDescarteDetailPage,
     AlertaListPage,
     AlertaNewPage,
-    AlertaDetailPage
+    AlertaDetailPage,
     ResiduosNewPage,
-    KeyPipe    
+    KeyPipe,
+    FileTransferTestePage
   ],
   imports: [
     BrowserModule,
@@ -104,8 +108,9 @@ import { KeyPipe } from '../pipes/key/key';
     PontosDescarteDetailPage,
     AlertaListPage,
     AlertaNewPage,
-    AlertaDetailPage
-    ResiduosNewPage
+    AlertaDetailPage,
+    ResiduosNewPage,
+    FileTransferTestePage
   ],
   providers: [
     StatusBar,
@@ -121,11 +126,14 @@ import { KeyPipe } from '../pipes/key/key';
     InformativoProvider,
     ZonaverdeProvider,
     PontosDescarteProvider,
-    AlertaProvider
+    AlertaProvider,
     Camera,
     ResiduoProvider,
     FotoServiceProvider,
-    Firebase
+    Firebase,
+    FileTransfer,
+    FileTransferObject,
+    File
   ]
 })
 export class AppModule {}

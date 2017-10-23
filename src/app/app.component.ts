@@ -14,6 +14,7 @@ import { UserProvider } from '../providers/user/user';
 import { ZonaVerdeListPage } from '../pages/zonaverde-list/zonaverde-list';
 import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdescarte-list';
 import { AlertaListPage } from '../pages/alerta-list/alerta-list';
+import { FileTransferTestePage } from '../pages/file-transfer-teste/file-transfer-teste';
 
 @Component({
   templateUrl: 'app.html'
@@ -34,7 +35,8 @@ export class MyApp {
       {component: InformativoListPage, title: 'Informativos', icon: 'alert'},
       {component: ZonaVerdeListPage, title: 'Zona Verde', icon: 'leaf'},
       {component: PontosDescarteListPage, title: 'Pontos de Descarte', icon: 'trash'},
-      {component: AlertaListPage, title: 'Alertas', icon: 'flag'}
+      {component: AlertaListPage, title: 'Alertas', icon: 'flag'},
+      {component: FileTransferTestePage, title: 'Teste', icon: 'find'}
     ];
 
     platform.ready().then(() => {
