@@ -2,6 +2,7 @@ import { Periodo } from './periodo.ts';
 import { DatePipe } from '@angular/common';
 
 export class Event {
+  public id: number;
   public nome : string;
   public descricao : string;
   public cidade  : string;
@@ -12,12 +13,14 @@ export class Event {
   public numero : number;
   public data : string;
   public periodos : Array<any>;
+  public uriFoto: string;
 
   constructor() {
     this.periodos = new Array(0);
   }
 
   eventoFromJSON(ev: any){
+    this.id = ev.Id;
     this.nome = ev.Nome;
     this.descricao = ev.Descricao;
     this.cidade = ev.Cidade;

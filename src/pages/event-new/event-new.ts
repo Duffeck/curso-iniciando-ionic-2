@@ -36,6 +36,10 @@ export class EventNewPage {
           data => {
             console.log('Resposta');
             console.log(data);
+            if(data > 0){
+              eventForm.id = data;
+              this.eventoService.transferirArquivo(eventForm);
+            }
           },
           err => {
             console.log('Erro');
@@ -68,8 +72,9 @@ export class EventNewPage {
     }
     this.imagePicker.getPictures({maximumImagesCount: 1}).then((results) => {
       if(results.length > 0){
+        this.eventForm.uriFoto = results[0];
         this.base64.encodeFile(results[0]).then((base64File: string) => {
-          this.inserirURIImagem(base64File);
+          this.eventForm.urlFoto = (base64File);
         }, (err) => {
           console.log(err);
         });
@@ -80,10 +85,6 @@ export class EventNewPage {
     (err) => {
       console.log(err);
     });
-  }
-
-  inserirURIImagem(uri: string){
-    this.eventForm.urlFoto =uri;
   }
 
   selecionarData(){

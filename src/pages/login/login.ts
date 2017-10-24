@@ -68,7 +68,7 @@ export class LoginPage {
     this.toastCtrl.create({
       message: mensagem,
       duration: 3000,
-      position: 'top'
+      position: 'bottom'
     }).present();
   }
 }

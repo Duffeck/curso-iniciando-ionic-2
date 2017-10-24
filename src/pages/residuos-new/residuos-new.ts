@@ -9,6 +9,7 @@ import { Residuo } from '../objects/residuo';
 import { Foto } from '../objects/foto';
 import { ResiduoProvider } from '../../providers/residuo/residuo';
 import { FotoServiceProvider } from '../../providers/foto-service/foto-service';
+import { Base64 } from '@ionic-native/base64';
 /**
 * Generated class for the ResiduosNewPage page.
 *
@@ -26,7 +27,7 @@ export class ResiduosNewPage {
   usuario : Usuario;
   residuoForm : Residuo;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private camera: Camera, private userService: UserProvider, private residuoService: ResiduoProvider, private fotoService: FotoServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private camera: Camera, private userService: UserProvider, private residuoService: ResiduoProvider, private fotoService: FotoServiceProvider, private base64: Base64) {
     this.residuoForm = new Residuo();
     this.residuoForm.categoria = new Categoria();
     this.usuario = this.userService.retornarUsuario();
@@ -74,7 +75,7 @@ export class ResiduosNewPage {
   tirarFoto(){
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.NATIVE_URI,
+      destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       allowEdit: true,
@@ -85,6 +86,11 @@ export class ResiduosNewPage {
     this.camera.getPicture(options).then((imageData) => {
       var foto = new Foto();
       foto.URL = imageData;
+      this.base64.encodeFile(imageData).then((base64File: string) => {
+        foto.base64 = base64File;
+      }, (err) => {
+        console.log(err);
+      });
       this.residuoForm.fotos.push(foto);
       console.log(this.residuoForm);
     }, (err) => {

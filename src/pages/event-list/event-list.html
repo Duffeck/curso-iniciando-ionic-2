@@ -15,7 +15,7 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-card *ngFor="let evento of eventos" (click)="eventDetail(evento)">
     <img *ngIf="evento.urlFoto" [src]="evento.urlFoto | safeurl"/>
     <ion-card-header>

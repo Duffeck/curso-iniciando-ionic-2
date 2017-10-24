@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-<img src="{{evento.urlFoto}}"/>
+<img [src]="evento.urlFoto | safeurl"/>
   <h4>Data: {{evento.data}}</h4>
   <h5>
   Local:{{evento.rua}}, {{evento.numero}}<br />

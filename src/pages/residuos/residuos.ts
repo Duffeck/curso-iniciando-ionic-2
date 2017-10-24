@@ -4,6 +4,7 @@ import { CategoriaSelecionarPage } from '../categoria-selecionar/categoria-selec
 import { Categoria } from '../objects/categoria';
 import { ResiduosNewPage } from '../residuos-new/residuos-new';
 import { UserProvider } from '../../providers/user/user';
+import { ResiduoProvider } from '../../providers/residuo/residuo';
 import { Usuario } from '../objects/usuario';
 import { Residuo } from '../objects/residuo';
 /**
@@ -21,11 +22,14 @@ export class ResiduosPage {
   listCategorias = new Categoria().tiposCategorias;
   shownGroup = null;
   usuario : Usuario;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private userService: UserProvider) {
+  residuos: Array<Residuo>;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private userService: UserProvider, private residuoService: ResiduoProvider) {
+    this.usuario = this.userService.retornarUsuario();
+    this.listarResiduos();
   }
 
   ionViewDidLoad() {
-    this.usuario = this.userService.retornarUsuario();
     console.log('ionViewDidLoad ResiduosPage');
   }
 
@@ -36,5 +40,28 @@ export class ResiduosPage {
 
   novoResiduo(){
     this.navCtrl.push(ResiduosNewPage);
+  }
+
+  listarResiduos(id_residuo: number = 0){
+    this.residuoService.listarResiduos(id_residuo).subscribe(
+      data => {
+        let residuosResponse = JSON.parse(data);
+        if(residuosResponse.length > 0){
+          for(let i; i < residuosResponse.length; i++){
+            var resid = new Residuo();
+            resid.residuoFromJSON(resid);
+            this.adicionarResiduoLista(resid);
+          }
+        }
+      },
+      err => {
+
+      },
+      () => console.log('resíduos')
+    );
+  }
+
+  adicionarResiduoLista(residuo: Residuo){
+    this.residuos.push(residuo);
   }
 }

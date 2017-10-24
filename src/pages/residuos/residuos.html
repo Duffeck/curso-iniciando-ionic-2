@@ -16,7 +16,17 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-card *ngFor="let residuo of residuos">
+    <!--<img *ngIf="evento.urlFoto" [src]="evento.urlFoto | safeurl"/>-->
+    <ion-card-header>
+      {{residuo.nome}}
+    </ion-card-header>
+    <ion-card-content>
+      {{residuo.descricao}}<br />
+      {{residuo.observacao}}
+    </ion-card-content>
+  </ion-card>
   <ion-list>
   </ion-list>
     <ion-fab *ngIf="usuario" bottom right>

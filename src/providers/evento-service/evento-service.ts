@@ -3,34 +3,37 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Event } from '../../pages/objects/event';
 import { Config } from '../config';
-
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { Base64 } from '@ionic-native/base64';
 /*
-  Generated class for the EventoServiceProvider provider.
+Generated class for the EventoServiceProvider provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
+See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+for more info on providers and Angular 2 DI.
 */
 @Injectable()
 export class EventoServiceProvider {
   urlPart = "Evento/";
-  constructor(public http: Http) {
+  fileTransfer: FileTransferObject = this.transfer.create();
+  constructor(public http: Http, private transfer: FileTransfer, private file: File, private base64: Base64) {
     console.log('Hello EventoServiceProvider Provider');
   }
 
   cadastrarEvento(evento: Event){
-      var url = Config.url+this.urlPart+'CadastrarEvento?';
-      url = url + 'bairro=' + evento.bairro;
-      url = url + '&cidade=' + evento.cidade;
-      url = url + '&data=' + evento.data;
-      url = url + '&descricao=' + evento.descricao;
-      url = url + '&estado=' + evento.estado;
-      url = url + '&nome=' + evento.nome;
-      url = url + '&numero=' + evento.numero;
-      url = url + '&rua=' + evento.rua;
-      url = url + '&urlFoto=' + evento.urlFoto;
-      console.log(url);
-      var response = this.http.get(url).map(res => res.json());
-      return response;
+    var url = Config.url+this.urlPart+'CadastrarEvento?';
+    url = url + 'bairro=' + evento.bairro;
+    url = url + '&cidade=' + evento.cidade;
+    url = url + '&data=' + evento.data;
+    url = url + '&descricao=' + evento.descricao;
+    url = url + '&estado=' + evento.estado;
+    url = url + '&nome=' + evento.nome;
+    url = url + '&numero=' + evento.numero;
+    url = url + '&rua=' + evento.rua;
+    //url = url + '&urlFoto=' + evento.uriFoto;
+    console.log(url);
+    var response = this.http.get(url).map(res => res.json());
+    return response;
   }
 
   listarEventos(id_evento: number){
@@ -40,5 +43,38 @@ export class EventoServiceProvider {
     var response = this.http.get(url).map(res => res.json());
     console.log(JSON.stringify(response));
     return response;
+  }
+
+  transferirArquivo(evento: Event){
+    console.log('tentando transferir');
+    let options: FileUploadOptions = {
+      fileKey: "file",
+      fileName: evento.id+".jpg",
+      chunkedMode: false,
+      mimeType: "image/jpg"
+    }
+
+    this.fileTransfer.upload(evento.uriFoto, Config.fileServer+'/eventos/', options)
+    .then((data) => {
+      // success
+      console.log('sucesso');
+      console.log(data);
+    }, (err) => {
+      // error
+      console.log('erro');
+      console.log(err);
+    });
+  }
+
+  baixarImagem(evento: Event){
+    this.fileTransfer.download(Config.fileServer+'eventos/'+ evento.id + '.jpg', this.file.cacheDirectory +'/'+ evento.id + '.jpg').then((entry) => {
+      this.base64.encodeFile(entry.toURL()).then((base64File: string) => {
+        evento.urlFoto = (base64File);
+      }, (err) => {
+        console.log(err);
+      });
+    }, (error) => {
+      console.log(error);
+    });
   }
 }
