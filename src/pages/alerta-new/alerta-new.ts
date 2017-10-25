@@ -4,6 +4,8 @@ import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-an
 import { Alerta } from '../objects/alerta';
 import { AlertaProvider } from '../../providers/alerta/alerta';
 
+import { PontoDescarte } from '../objects/pontodescarte';
+
 import { DomSanitizer } from '@angular/platform-browser';
 import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 /**
@@ -21,6 +23,7 @@ export class AlertaNewPage {
   alertaForm: Alerta
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertaService: AlertaProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer) {
     this.alertaForm = new Alerta();
+    this.alertaForm.ponto = new PontoDescarte();
   }
 
   ionViewDidLoad() {
@@ -31,9 +34,9 @@ export class AlertaNewPage {
     this.navCtrl.pop();
   }
 
-  salvarAlerta(){
-    console.log("IHUU");
-    /*this.alertaService.cadastrarPontoDescarte(pontoForm).subscribe(
+  salvarAlerta(alertaForm){
+    console.log("salvando");
+    this.alertaService.cadastrarAlerta(alertaForm).subscribe(
           data => {
             console.log('Resposta');
             console.log(data);
@@ -43,7 +46,8 @@ export class AlertaNewPage {
             console.log(err);
           },
           () => console.log('Completou Requisição')
-      );*/
+      );
+      console.log(alertaForm.Descricao);
     this.navCtrl.pop();
   }
 

@@ -1,4 +1,4 @@
-<!--
+4 <!--
   Generated template for the AlertaNewPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
@@ -16,10 +16,10 @@
 
 <ion-content padding>
 
-  <ion-list radio-group name="estado">
+  <ion-list radio-group [(ngModel)]="alertaForm.estado" name="estado">
     <ion-list-header> A lixeira está? </ion-list-header>
     <ion-item>
-      <ion-label>Disponível</ion-label>
+      <ion-label>Disponível {{ponto.estado}}</ion-label>
       <ion-radio value="disponivel" checked></ion-radio>
     </ion-item>
     <ion-item>
@@ -33,11 +33,11 @@
   </ion-list>
   <ion-item>
     <ion-label stacked>Descrição</ion-label>
-    <ion-textarea type="text" name="descricao"></ion-textarea>
+    <ion-textarea type="text" [(ngModel)]="alertaForm.descricao" name="descricao"></ion-textarea>
   </ion-item>
   <button ion-button color="light" left (click)="cancelarAlerta()">
     <ion-icon name="close"></ion-icon>&nbsp;Cancelar</button>
-  <button float-right ion-button color="corYouSustainable" right (click)="salvarAlerta(pontoForm)">
+  <button float-right ion-button color="corYouSustainable" right (click)="salvarAlerta(alertaForm)">
     <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar</button>
 
 

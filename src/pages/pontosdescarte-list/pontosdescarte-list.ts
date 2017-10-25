@@ -29,6 +29,35 @@ export class PontosDescarteListPage {
   }
 
   ionViewDidLoad() {
+
+  }
+
+  ionViewWillEnter(){
+    console.log("will enter")
+    this.listarPontos();
+  }
+
+  ionViewWillLeave(){
+    console.log("will leave");
+    this.pontos = new Array(0);
+  }
+
+  adicionarPontoDescarte(ponto : PontoDescarte){
+    if(this.pontos == null){
+      this.pontos = new Array(0);
+    }
+    this.pontos.push(ponto);
+    console.log(this.pontos);
+  }
+  newPonto(){
+    this.navCtrl.push(PontosDescartePage);
+  }
+
+  pontosDescarteDetail(ponto : PontoDescarte){
+    this.navCtrl.push(PontosDescarteDetailPage, {ponto: ponto});
+  }
+
+  listarPontos(){
     this.pontosDescarteService.listarPontosDescarte().subscribe(
       data =>{
         console.log('Data:'+ data.length);
@@ -51,21 +80,6 @@ export class PontosDescarteListPage {
       },
       () => console.log('Completou Requisição'));
     console.log('ionViewDidLoad PontosdescarteListPage');
-  }
-
-  adicionarPontoDescarte(ponto : PontoDescarte){
-    if(this.pontos == null){
-      this.pontos = new Array(0);
-    }
-    this.pontos.push(ponto);
-    console.log(this.pontos);
-  }
-  newPonto(){
-    this.navCtrl.push(PontosDescartePage);
-  }
-
-  pontosDescarteDetail(ponto : PontoDescarte){
-    this.navCtrl.push(PontosDescarteDetailPage, {ponto: ponto});
   }
 
 }

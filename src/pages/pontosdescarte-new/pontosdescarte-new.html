@@ -34,6 +34,14 @@
         <ion-radio value="false" checked></ion-radio>
       </ion-item>
     </ion-list>
+    <ion-item>
+      <ion-label stacked>Latitude</ion-label>
+      <ion-textarea type="text" [(ngModel)]="pontoForm.localizacao.latitude" name="latitude"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Longitude</ion-label>
+      <ion-textarea type="text" [(ngModel)]="pontoForm.localizacao.longitude" name="longitude"></ion-textarea>
+    </ion-item>
     <button ion-button color="light" left (click)="cancelarPonto()">
       <ion-icon name="close"></ion-icon>&nbsp;Cancelar</button>
     <button float-right ion-button color="corYouSustainable" right (click)="salvarPonto(pontoForm)">

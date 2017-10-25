@@ -4,6 +4,8 @@ import 'rxjs/add/operator/map';
 import { PontoDescarte } from '../../pages/objects/pontodescarte';
 import { Config } from '../config';
 
+import { Localizacao } from '../objects/localizacao';
+
 /*sss
   Generated class for the ZonaverdeProvider provider.
 
@@ -18,7 +20,11 @@ export class PontosDescarteProvider {
   }
 
   cadastrarPontoDescarte(pontoDescarte: PontoDescarte){
-      var url = Config.url+this.urlPart+'cadastrarPontosDescarte?';
+      var url = Config.url+this.urlPart+'CadastrarPontoDescarte?';
+      url = url + 'estado=' + pontoDescarte.estado;
+      url = url + '&ehParticular=' + pontoDescarte.ehParticular;
+      url = url + '&latitude=' + pontoDescarte.localizacao.latitude;
+      url = url + '&longitude=' + pontoDescarte.localizacao.longitude;
       console.log(url);
       var response = this.http.get(url).map(res => res.json());
       console.log(JSON.stringify(response));

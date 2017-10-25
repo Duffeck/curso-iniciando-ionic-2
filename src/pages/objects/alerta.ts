@@ -11,5 +11,6 @@ export class Alerta {
     this.descricao = al.Descricao;
     this.horario = new Date(al.DataCriacao);
     this.ponto = al.PontoDescarte;
+    console.log(this);
   }
 }

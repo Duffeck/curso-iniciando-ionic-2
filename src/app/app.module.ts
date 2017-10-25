@@ -44,6 +44,10 @@ import { Camera } from '@ionic-native/camera';
 import { ResiduoProvider } from '../providers/residuo/residuo';
 import { FotoServiceProvider } from '../providers/foto-service/foto-service';
 import { KeyPipe } from '../pipes/key/key';
+import { AreaAdministrativaProvider } from '../providers/areaadministrativa-service/areaadministrativa-service';
+import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
+import { AreaAdministrativaNewPage} from '../pages/areaadministrativa-new/areaadministrativa-new';
+import { AreaAdministrativaDetailPage } from '../pages/areaadministrativa-detail/areaadministrativa-detail';
 
 @NgModule({
   declarations: [
@@ -67,9 +71,12 @@ import { KeyPipe } from '../pipes/key/key';
     PontosDescarteDetailPage,
     AlertaListPage,
     AlertaNewPage,
-    AlertaDetailPage
+    AlertaDetailPage,
     ResiduosNewPage,
-    KeyPipe    
+    KeyPipe,
+    AreaAdministrativaListPage,
+    AreaAdministrativaNewPage,
+    AreaAdministrativaDetailPage
   ],
   imports: [
     BrowserModule,
@@ -104,8 +111,11 @@ import { KeyPipe } from '../pipes/key/key';
     PontosDescarteDetailPage,
     AlertaListPage,
     AlertaNewPage,
-    AlertaDetailPage
-    ResiduosNewPage
+    AlertaDetailPage,
+    ResiduosNewPage,
+    AreaAdministrativaListPage,
+    AreaAdministrativaNewPage,
+    AreaAdministrativaDetailPage
   ],
   providers: [
     StatusBar,
@@ -121,11 +131,12 @@ import { KeyPipe } from '../pipes/key/key';
     InformativoProvider,
     ZonaverdeProvider,
     PontosDescarteProvider,
-    AlertaProvider
+    AlertaProvider,
     Camera,
     ResiduoProvider,
     FotoServiceProvider,
-    Firebase
+    Firebase,
+    AreaAdministrativaProvider
   ]
 })
 export class AppModule {}
