@@ -15,6 +15,8 @@ import { ZonaVerdeListPage } from '../pages/zonaverde-list/zonaverde-list';
 import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdescarte-list';
 import { AlertaListPage } from '../pages/alerta-list/alerta-list';
 import { FileTransferTestePage } from '../pages/file-transfer-teste/file-transfer-teste';
+import { MapaTestePage } from '../pages/mapa-teste/mapa-teste';
+import { MapaTesteNativoPage } from '../pages/mapa-teste-nativo/mapa-teste-nativo';
 
 @Component({
   templateUrl: 'app.html'
@@ -36,7 +38,9 @@ export class MyApp {
       {component: ZonaVerdeListPage, title: 'Zona Verde', icon: 'leaf'},
       {component: PontosDescarteListPage, title: 'Pontos de Descarte', icon: 'trash'},
       {component: AlertaListPage, title: 'Alertas', icon: 'flag'},
-      {component: FileTransferTestePage, title: 'Teste', icon: 'find'}
+      {component: FileTransferTestePage, title: 'Teste', icon: 'find'},
+      {component: MapaTestePage, title: 'Mapa', icon: 'map'},
+      {component: MapaTesteNativoPage, title: 'Mapa Nativo', icon: 'map'}
     ];
 
     platform.ready().then(() => {

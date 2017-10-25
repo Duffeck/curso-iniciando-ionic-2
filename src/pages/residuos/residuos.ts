@@ -25,12 +25,20 @@ export class ResiduosPage {
   residuos: Array<Residuo>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private userService: UserProvider, private residuoService: ResiduoProvider) {
-    this.usuario = this.userService.retornarUsuario();
-    this.listarResiduos();
+    this.residuos = new Array(0);
   }
 
   ionViewDidLoad() {
+    this.usuario = this.userService.retornarUsuario();
     console.log('ionViewDidLoad ResiduosPage');
+  }
+
+  ionViewWillEnter() {
+    this.listarResiduos();
+  }
+
+  ionViewWillLeave() {
+    this.residuos = new Array(0);
   }
 
   presentPopover(categoria: string) {
@@ -47,9 +55,9 @@ export class ResiduosPage {
       data => {
         let residuosResponse = JSON.parse(data);
         if(residuosResponse.length > 0){
-          for(let i; i < residuosResponse.length; i++){
+          for(let i = 0; i < residuosResponse.length; i++){
             var resid = new Residuo();
-            resid.residuoFromJSON(resid);
+            resid.residuoFromJSON(residuosResponse[i]);
             this.adicionarResiduoLista(resid);
           }
         }
@@ -57,7 +65,7 @@ export class ResiduosPage {
       err => {
 
       },
-      () => console.log('resíduos')
+      () => console.log(this.residuos)
     );
   }
 

@@ -24,12 +24,18 @@ export class EventListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private userService: UserProvider, private eventoService: EventoServiceProvider) {
     this.eventos = new Array(0);
-    this.usuario = this.userService.retornarUsuario();
-    this.listarEventos();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EventListPage');
+    this.usuario = this.userService.retornarUsuario();
+  }
+
+  ionViewWillEnter() {
+    this.listarEventos();
+  }
+
+  ionViewWillLeave() {
+    this.eventos = new Array(0);
   }
 
   listarEventos(id_evento: number = 0){

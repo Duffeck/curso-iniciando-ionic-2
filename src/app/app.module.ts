@@ -47,6 +47,12 @@ import { KeyPipe } from '../pipes/key/key';
 import { FileTransferTestePage } from '../pages/file-transfer-teste/file-transfer-teste';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { MapaTestePage } from '../pages/mapa-teste/mapa-teste';
+import { ConectivityServiceProvider } from '../providers/conectivity-service/conectivity-service';
+import { Network } from '@ionic-native/network';
+import { Geolocation } from '@ionic-native/geolocation';
+import { MapaTesteNativoPage } from '../pages/mapa-teste-nativo/mapa-teste-nativo';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 @NgModule({
   declarations: [
@@ -73,7 +79,9 @@ import { File } from '@ionic-native/file';
     AlertaDetailPage,
     ResiduosNewPage,
     KeyPipe,
-    FileTransferTestePage
+    FileTransferTestePage,
+    MapaTestePage,
+    MapaTesteNativoPage
   ],
   imports: [
     BrowserModule,
@@ -110,7 +118,9 @@ import { File } from '@ionic-native/file';
     AlertaNewPage,
     AlertaDetailPage,
     ResiduosNewPage,
-    FileTransferTestePage
+    FileTransferTestePage,
+    MapaTestePage,
+    MapaTesteNativoPage
   ],
   providers: [
     StatusBar,
@@ -133,7 +143,11 @@ import { File } from '@ionic-native/file';
     Firebase,
     FileTransfer,
     FileTransferObject,
-    File
+    File,
+    ConectivityServiceProvider,
+    Network,
+    Geolocation,
+    GoogleMaps
   ]
 })
 export class AppModule {}

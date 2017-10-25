@@ -67,6 +67,7 @@ export class EventoServiceProvider {
   }
 
   baixarImagem(evento: Event){
+    /*
     this.fileTransfer.download(Config.fileServer+'eventos/'+ evento.id + '.jpg', this.file.cacheDirectory +'/'+ evento.id + '.jpg').then((entry) => {
       this.base64.encodeFile(entry.toURL()).then((base64File: string) => {
         evento.urlFoto = (base64File);
@@ -76,5 +77,7 @@ export class EventoServiceProvider {
     }, (error) => {
       console.log(error);
     });
+    */
+    evento.urlFoto = Config.fileServer+'eventos/'+ evento.id + '.jpg';
   }
 }
