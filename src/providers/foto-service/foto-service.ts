@@ -11,6 +11,8 @@ import { Base64 } from '@ionic-native/base64';
 export class FotoServiceProvider {
   urlPart : string = "Foto";
   fileTransfer: FileTransferObject = this.transfer.create();
+  fotoTransmitida: Foto;
+
   constructor(public http: Http, private transfer: FileTransfer, private file: File, private base64: Base64) {
     console.log('Hello FotoServiceProvider Provider');
   }
@@ -25,36 +27,42 @@ export class FotoServiceProvider {
   }
 
   transferirArquivo(foto: Foto){
-      console.log('tentando transferir');
-      let options: FileUploadOptions = {
-        fileKey: "file",
-        fileName: foto.id+".jpg",
-        chunkedMode: false,
-        mimeType: "image/jpg"
+    return new Promise(
+      (resolve, reject)=>{
+        console.log('tentando transferir');
+        let options: FileUploadOptions = {
+          fileKey: "file",
+          fileName: foto.id+".jpg",
+          chunkedMode: false,
+          mimeType: "image/jpg"
+        }
+
+        this.fileTransfer.upload(foto.URL, Config.fileServer+'/residuos/', options).then(
+          (data) => {
+            foto.URL = Config.fileServer+'residuos/'+ foto.id + '.jpg';
+            console.log('upou');
+            console.log(foto);
+            resolve(foto);
+          }).catch(
+            (err) => {
+              console.log('errou');
+              console.log(err);
+              reject(err);
+            });
+          }
+        );
       }
 
-      this.fileTransfer.upload(foto.URL, Config.fileServer+'/residuos/', options)
-      .then((data) => {
-        // success
-        console.log('sucesso');
-        console.log(data);
-      }, (err) => {
-        // error
-        console.log('erro');
-        console.log(err);
-      });
-  }
-
-  baixarImagem(foto: Foto){
-    this.fileTransfer.download(Config.fileServer+'residuos/'+ foto.id + '.jpg', this.file.cacheDirectory +'/'+ foto.id + '.jpg').then((entry) => {
-      foto.URL = entry.toURL();
-      this.base64.encodeFile(entry.toURL()).then((base64File: string) => {
-        foto.base64 = base64File;
-      }, (err) => {
-        console.log(err);
-      });
-    }, (error) => {
-      console.log(error);
-    });
-  }
-}
+      baixarImagem(foto: Foto){
+        this.fileTransfer.download(Config.fileServer+'residuos/'+ foto.id + '.jpg', this.file.cacheDirectory +'/'+ foto.id + '.jpg').then((entry) => {
+          foto.URL = entry.toURL();
+          this.base64.encodeFile(entry.toURL()).then((base64File: string) => {
+            foto.base64 = base64File;
+          }, (err) => {
+            console.log(err);
+          });
+        }, (error) => {
+          console.log(error);
+        });
+      }
+    }

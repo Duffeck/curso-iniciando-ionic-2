@@ -9,7 +9,6 @@ import { Residuo } from '../objects/residuo';
 import { Foto } from '../objects/foto';
 import { ResiduoProvider } from '../../providers/residuo/residuo';
 import { FotoServiceProvider } from '../../providers/foto-service/foto-service';
-import { Base64 } from '@ionic-native/base64';
 /**
 * Generated class for the ResiduosNewPage page.
 *
@@ -27,7 +26,7 @@ export class ResiduosNewPage {
   usuario : Usuario;
   residuoForm : Residuo;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private camera: Camera, private userService: UserProvider, private residuoService: ResiduoProvider, private fotoService: FotoServiceProvider, private base64: Base64) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private camera: Camera, private userService: UserProvider, private residuoService: ResiduoProvider, private fotoService: FotoServiceProvider) {
     this.residuoForm = new Residuo();
     this.residuoForm.categoria = new Categoria();
     this.usuario = this.userService.retornarUsuario();
@@ -36,7 +35,6 @@ export class ResiduosNewPage {
     if(this.usuario != undefined){
       this.residuoForm.usuario = this.usuario;
     }
-    console.log(this.listCategorias);
   }
 
   ionViewDidLoad() {
@@ -62,7 +60,7 @@ export class ResiduosNewPage {
           this.listTiposCategorias.composicao = data.categoriasSelecionadas;
           this.residuoForm.categoria.composicoesQuimicas = data.categoriasSelecionadas;
         }
-        if(data.listTiposCategorias == 'tipo'){
+        if(data.categoria == 'tipo'){
           this.listTiposCategorias.tipo = data.categoriasSelecionadas;
           this.residuoForm.categoria.tipos = data.categoriasSelecionadas;
         }
@@ -86,61 +84,105 @@ export class ResiduosNewPage {
     this.camera.getPicture(options).then((imageData) => {
       var foto = new Foto();
       foto.URL = imageData;
-      this.base64.encodeFile(imageData).then((base64File: string) => {
-        foto.base64 = base64File;
-      }, (err) => {
+      try{
+        this.salvarFoto(foto).then(
+          (data: Foto)=>{
+            this.residuoForm.fotos.push(data);
+          }
+        ).catch(err =>{
+          err=>{
+            console.log(err);
+          }
+        });
+        if( foto.id > 0 && foto.URL != ""){
+          this.residuoForm.fotos.push(foto);
+        }
+      }catch(err){
         console.log(err);
-      });
-      this.residuoForm.fotos.push(foto);
-      console.log(this.residuoForm);
+      }
+      /*
+      this.base64.encodeFile(imageData).then((base64File: string) => {
+      foto.base64 = base64File;
     }, (err) => {
-      console.log(err);
+    console.log(err);
+  });
+  */
+  console.log(this.residuoForm);
+}, (err) => {
+  console.log(err);
+});
+}
+
+salvarFoto(foto: Foto){
+  return new Promise((resolve, reject) => {
+    this.fotoService.salvarFoto(foto).subscribe(
+      data => {
+        if(data > 0){
+          foto.id = data;
+          this.fotoService.transferirArquivo(foto).then(
+            data=>{
+              console.log('dataaqui');
+              console.log(data);
+              resolve(data);
+            }).catch(err=>{
+              console.log('erroaqui');
+              console.log(err);
+              reject(err);
+            });
+          }
+        },
+        err => {
+          console.log(err);
+        },
+        () => console.log('Foto Salva')
+      );
     });
   }
 
   salvarResiduo(residuo: Residuo){
     console.log("Qtd Fotos:"+residuo.fotos.length);
-    if(residuo.fotos.length > 0){
-      for(let i = 0; i < residuo.fotos.length; i++){
-        this.fotoService.salvarFoto(residuo.fotos[i]).subscribe(
-          data => {
-            console.log("salvar foto:");
-            console.log(data);
-            if(data > 0){
-              residuo.fotos[i].id = data;
-              console.log(residuo.fotos[i]);
-              this.fotoService.transferirArquivo(residuo.fotos[i]);
-            }
-          },
-          err => {
-            console.log(err);
-          },
-          () => {
-            this.residuoService.salvarResiduo(residuo).subscribe(
-              data => {
-                console.log(data);
-              },
-              err =>{
-                console.log(err);
-              },
-              () => console.log("Completou Requisição")
-            );
-          }
-        );
-      }
-    }else{
-      this.residuoService.salvarResiduo(residuo).subscribe(
-        data => {
-          console.log(data);
-        },
-        err =>{
-          console.log(err);
-        },
-        () => console.log("Completou Requisição")
-      );
-    }
+    /*if(residuo.fotos.length > 0){
+    for(let i = 0; i < residuo.fotos.length; i++){
+    this.fotoService.salvarFoto(residuo.fotos[i]).subscribe(
+    data => {
+    console.log("salvar foto:");
+    console.log(data);
+    if(data > 0){
+    residuo.fotos[i].id = data;
+    console.log(residuo.fotos[i]);
+    this.fotoService.transferirArquivo(residuo.fotos[i]);
   }
-  cancelar(){
-    this.navCtrl.pop();
-  }
+},
+err => {
+console.log(err);
+},
+() => {
+this.residuoService.salvarResiduo(residuo).subscribe(
+data => {
+console.log(data);
+},
+err =>{
+console.log(err);
+},
+() => console.log("Completou Requisição")
+);
+}
+);
+}
+}else{
+*/
+this.residuoService.salvarResiduo(residuo).subscribe(
+  data => {
+    console.log(data);
+  },
+  err =>{
+    console.log(err);
+  },
+  () => console.log("Completou Requisição")
+);
+//}
+}
+cancelar(){
+  this.navCtrl.pop();
+}
 }

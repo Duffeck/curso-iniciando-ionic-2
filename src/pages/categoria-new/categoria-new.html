@@ -1,0 +1,58 @@
+<!--
+Generated template for the CategoriaNewPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="corYouSustainable">
+    <ion-title>Nova Categoria</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item-group text-wrap>
+      <ion-item-divider color="light" class="primeiraMaiuscula">Origem<ion-icon item-end name="add-circle" (click)="presentModal('origem')"></ion-icon></ion-item-divider>
+      <ion-item *ngFor="let tipoCategoria of listTiposCategorias.origem">
+        {{tipoCategoria.descricao}}
+      </ion-item>
+    </ion-item-group>
+    <ion-item-group text-wrap>
+      <ion-item-divider color="light" class="primeiraMaiuscula">Periculosidade<ion-icon item-end name="add-circle" (click)="presentModal('periculosidade')"></ion-icon></ion-item-divider>
+      <ion-item *ngFor="let tipoCategoria of listTiposCategorias.periculosidade">
+        {{tipoCategoria.descricao}}
+      </ion-item>
+    </ion-item-group>
+    <ion-item-group text-wrap>
+      <ion-item-divider color="light" class="primeiraMaiuscula">Tipo<ion-icon item-end name="add-circle" (click)="presentModal('tipo')"></ion-icon></ion-item-divider>
+      <ion-item *ngFor="let tipoCategoria of listTiposCategorias.tipo">
+        {{tipoCategoria.descricao}}
+      </ion-item>
+    </ion-item-group>
+    <ion-item-group text-wrap>
+      <ion-item-divider color="light" class="primeiraMaiuscula">Composição Química<ion-icon item-end name="add-circle" (click)="presentModal('composicao')"></ion-icon></ion-item-divider>
+      <ion-item *ngFor="let tipoCategoria of listTiposCategorias.composicao">
+        {{tipoCategoria.descricao}}
+      </ion-item>
+    </ion-item-group>
+    <ion-item>
+      <ion-label>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="categoriaForm.nome" name="nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descricao</ion-label>
+      <ion-input type="text" [(ngModel)]="categoriaForm.descricao" name="descricao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="categoriaForm.cor">Cor</ion-label>
+      <ion-input type="text" [(ngModel)]="categoriaForm.cor" name="cor"></ion-input>
+      <ion-select [(ngModel)]="categoriaForm.cor">
+        <ion-option *ngFor="let cor of categoriaForm.cores" value="{{cor}}"><ion-label color="{{cor}}">{{cor}}</ion-label></ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>

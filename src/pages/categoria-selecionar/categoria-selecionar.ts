@@ -45,6 +45,7 @@ export class CategoriaSelecionarPage {
   }
 
   close(){
+    console.log('close');
     var categoria = this.categoria;
     var categoriasSelecionadas = this.categoriasSelecionadas;
     this.viewCtrl.dismiss({categoria, categoriasSelecionadas});

@@ -31,6 +31,8 @@ import { ZonaverdeProvider } from '../providers/zonaverde/zonaverde';
 import { ZonaVerdeListPage } from '../pages/zonaverde-list/zonaverde-list';
 import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
 
+import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
+import { CategoriaNewPage } from '../pages/categoria-new/categoria-new';
 import { PontosDescarteProvider } from '../providers/pontosdescarte/pontosdescarte';
 import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdescarte-list';
 import { PontosDescartePage} from '../pages/pontosdescarte-new/pontosdescarte-new';
@@ -44,7 +46,6 @@ import { Camera } from '@ionic-native/camera';
 import { ResiduoProvider } from '../providers/residuo/residuo';
 import { FotoServiceProvider } from '../providers/foto-service/foto-service';
 import { KeyPipe } from '../pipes/key/key';
-import { FileTransferTestePage } from '../pages/file-transfer-teste/file-transfer-teste';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { MapaTestePage } from '../pages/mapa-teste/mapa-teste';
@@ -79,9 +80,10 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     AlertaDetailPage,
     ResiduosNewPage,
     KeyPipe,
-    FileTransferTestePage,
     MapaTestePage,
-    MapaTesteNativoPage
+    MapaTesteNativoPage,
+    CategoriaListPage,
+    CategoriaNewPage
   ],
   imports: [
     BrowserModule,
@@ -118,9 +120,10 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     AlertaNewPage,
     AlertaDetailPage,
     ResiduosNewPage,
-    FileTransferTestePage,
     MapaTestePage,
-    MapaTesteNativoPage
+    MapaTesteNativoPage,
+    CategoriaListPage,
+    CategoriaNewPage
   ],
   providers: [
     StatusBar,

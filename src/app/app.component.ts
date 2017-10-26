@@ -14,9 +14,9 @@ import { UserProvider } from '../providers/user/user';
 import { ZonaVerdeListPage } from '../pages/zonaverde-list/zonaverde-list';
 import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdescarte-list';
 import { AlertaListPage } from '../pages/alerta-list/alerta-list';
-import { FileTransferTestePage } from '../pages/file-transfer-teste/file-transfer-teste';
 import { MapaTestePage } from '../pages/mapa-teste/mapa-teste';
 import { MapaTesteNativoPage } from '../pages/mapa-teste-nativo/mapa-teste-nativo';
+import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
 
 @Component({
   templateUrl: 'app.html'
@@ -33,12 +33,12 @@ export class MyApp {
     this.pages = [
       {component: HomePage, title: 'Home', icon: 'home'},
       {component: EventListPage, title: 'Eventos', icon: 'calendar'},
+      {component: CategoriaListPage, title: 'Categorias', icon: 'bookmark'},
       {component: ResiduosPage, title: 'Resíduos', icon: 'trash'},
       {component: InformativoListPage, title: 'Informativos', icon: 'alert'},
       {component: ZonaVerdeListPage, title: 'Zona Verde', icon: 'leaf'},
       {component: PontosDescarteListPage, title: 'Pontos de Descarte', icon: 'trash'},
       {component: AlertaListPage, title: 'Alertas', icon: 'flag'},
-      {component: FileTransferTestePage, title: 'Teste', icon: 'find'},
       {component: MapaTestePage, title: 'Mapa', icon: 'map'},
       {component: MapaTesteNativoPage, title: 'Mapa Nativo', icon: 'map'}
     ];

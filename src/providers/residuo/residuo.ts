@@ -37,41 +37,42 @@ export class ResiduoProvider {
         url = url + "&id_fotos=" + residuo.fotos[i].id;
       }
     }
+    /*
     if(residuo.categoria.origens.length > 0){
-      for(var i = 0; i < residuo.categoria.origens.length; i++){
-        url = url + "&id_origens=" + residuo.categoria.origens[i].id;
-      }
-    }
-    if(residuo.categoria.periculosidades.length > 0){
-      for(var i = 0; i < residuo.categoria.periculosidades.length; i++){
-        url = url + "&id_periculosidades=" + residuo.categoria.periculosidades[i].id;
-      }
-    }
-    if(residuo.categoria.composicoesQuimicas.length > 0){
-      for(var i = 0; i < residuo.categoria.composicoesQuimicas.length; i++){
-        url = url + "&id_composicoes=" + residuo.categoria.composicoesQuimicas[i].id;
-      }
-    }
-    if(residuo.categoria.tipos.length > 0){
-      for(var i = 0; i < residuo.categoria.tipos.length; i++){
-        url = url + "&id_tipos=" + residuo.categoria.tipos[i].id;
-      }
-    }
-
-    //url = url +residuo.usuario;
-    console.log(url);
-    var response = this.http.get(url).map(res => res.json());
-    console.log(response);
-    return response;
+    for(var i = 0; i < residuo.categoria.origens.length; i++){
+    url = url + "&id_origens=" + residuo.categoria.origens[i].id;
   }
+}
+if(residuo.categoria.periculosidades.length > 0){
+for(var i = 0; i < residuo.categoria.periculosidades.length; i++){
+url = url + "&id_periculosidades=" + residuo.categoria.periculosidades[i].id;
+}
+}
+if(residuo.categoria.composicoesQuimicas.length > 0){
+for(var i = 0; i < residuo.categoria.composicoesQuimicas.length; i++){
+url = url + "&id_composicoes=" + residuo.categoria.composicoesQuimicas[i].id;
+}
+}
+if(residuo.categoria.tipos.length > 0){
+for(var i = 0; i < residuo.categoria.tipos.length; i++){
+url = url + "&id_tipos=" + residuo.categoria.tipos[i].id;
+}
+}
+*/
+//url = url +residuo.usuario;
+console.log(url);
+var response = this.http.get(url).map(res => res.json());
+console.log(response);
+return response;
+}
 
-  listarResiduos(ultimoId: number){
-    let url = Config.url + this.urlPart + "/ListarResiduos/?";
-    url = url + "ultimoId=" + ultimoId;
+listarResiduos(ultimoId: number){
+  let url = Config.url + this.urlPart + "/ListarResiduos/?";
+  url = url + "ultimoId=" + ultimoId;
 
-    console.log(url);
-    var response = this.http.get(url).map(res => res.json());
-    console.log(response);
-    return response;
-  }
+  console.log(url);
+  var response = this.http.get(url).map(res => res.json());
+  console.log(response);
+  return response;
+}
 }
