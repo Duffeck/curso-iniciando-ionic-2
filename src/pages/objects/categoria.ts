@@ -24,7 +24,8 @@ export class Categoria{
     }
 
     //this.cores = ['#FFFF00','#FF0000','#008000','#000000','#FFA500','#FFFFFF','#A0522D','#800080','#0000FF']
-    this.cores = ['amarelo','vermelho','verde','preto','laranjado','branco','marrom','roxo','azul'];
+    //this.cores = ['amarelo','vermelho','verde','preto','laranjado','branco','marrom','roxo','azul'];
+    this.cores = ['Amarelo','Vermelho','Verde','Preto','Laranjado','Branco','Marrom','Roxo','Azul'];
     /*
     this.cores = [
       'Amarelo': '#FFFF00',
@@ -68,5 +69,17 @@ export class Categoria{
       comp.peso = componente.Peso;
     }
     return comp;
+  }
+
+  categoriaFromJSON(categoria: any){
+    this.codGrafico = categoria.CodGrafico;
+    //this.composicoesQuimicas
+    this.cor = categoria.Cor;
+    this.descricao = categoria.Descricao;
+    this.nome = categoria.Nome;
+    //this.origens
+    //this.periculosidades
+    //this.tipos
+    return this;
   }
 }

@@ -49,10 +49,16 @@ Ionic pages and navigation.
     </ion-item>
     <ion-item>
       <ion-label color="categoriaForm.cor">Cor</ion-label>
-      <ion-input type="text" [(ngModel)]="categoriaForm.cor" name="cor"></ion-input>
+      <!--<ion-input type="text" [(ngModel)]="categoriaForm.cor" name="cor"></ion-input>-->
       <ion-select [(ngModel)]="categoriaForm.cor">
-        <ion-option *ngFor="let cor of categoriaForm.cores" value="{{cor}}"><ion-label color="{{cor}}">{{cor}}</ion-label></ion-option>
+        <ion-option *ngFor="let cor of categoriaForm.cores" value="{{cor}}" class="{{cor}}">{{cor}}</ion-option>
       </ion-select>
+    </ion-item>
+    <ion-item >
+    <button item-start ion-button color="light" (click)="close()">
+      <ion-icon name="close"></ion-icon>&nbsp;Cancelar</button>
+    <button item-end float-right ion-button color="corYouSustainable" right (click)="salvarCategoria(categoriaForm)">
+      <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar</button>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -54,6 +54,10 @@ import { Network } from '@ionic-native/network';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MapaTesteNativoPage } from '../pages/mapa-teste-nativo/mapa-teste-nativo';
 import { GoogleMaps } from '@ionic-native/google-maps';
+import { AreaAdministrativaServiceProvider } from '../providers/areaadministrativa-service/areaadministrativa-service';
+import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
+import { AreaAdministrativaNewPage} from '../pages/areaadministrativa-new/areaadministrativa-new';
+import { AreaAdministrativaDetailPage } from '../pages/areaadministrativa-detail/areaadministrativa-detail';
 
 @NgModule({
   declarations: [
@@ -83,7 +87,10 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     MapaTestePage,
     MapaTesteNativoPage,
     CategoriaListPage,
-    CategoriaNewPage
+    CategoriaNewPage,
+    AreaAdministrativaListPage,
+    AreaAdministrativaNewPage,
+    AreaAdministrativaDetailPage
   ],
   imports: [
     BrowserModule,
@@ -123,7 +130,10 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     MapaTestePage,
     MapaTesteNativoPage,
     CategoriaListPage,
-    CategoriaNewPage
+    CategoriaNewPage,
+    AreaAdministrativaListPage,
+    AreaAdministrativaNewPage,
+    AreaAdministrativaDetailPage
   ],
   providers: [
     StatusBar,
@@ -150,7 +160,8 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     ConectivityServiceProvider,
     Network,
     Geolocation,
-    GoogleMaps
+    GoogleMaps,
+    AreaAdministrativaServiceProvider
   ]
 })
 export class AppModule {}

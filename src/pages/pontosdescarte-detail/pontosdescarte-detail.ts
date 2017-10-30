@@ -27,7 +27,7 @@ export class PontosDescarteDetailPage {
     console.log('ionViewDidLoad PontosdescarteDetailPage');
   }
 
-  newAlerta(){
-    this.navCtrl.push(AlertaNewPage);
+  newAlerta(ponto : PontoDescarte){
+    this.navCtrl.push(AlertaNewPage, {ponto: ponto});
   }
 }

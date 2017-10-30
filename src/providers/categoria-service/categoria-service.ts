@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Config } from '../config';
+import { Categoria } from '../../pages/objects/categoria';
 /*
   Generated class for the CategoriaServiceProvider provider.
 
@@ -41,5 +42,26 @@ export class CategoriaServiceProvider {
     }else{
       return null;
     }
+  }
+
+  cadastrarCategoria(categoria: Categoria){
+    var url = Config.url+this.urlPart + "/SalvarCategoria/";
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
+    let options = new RequestOptions({method: 'post', headers: headers});
+
+    console.log(url);
+    var response = this.http.put(url, categoria, options).map(res => res.json());
+    console.log(response);
+    return response;
+  }
+
+  listarCategorias(){
+    var url = Config.url+this.urlPart+"/ListarCategorias/";
+    console.log(url);
+    var response = this.http.get(url).map(res => res.json());
+    console.log(response);
+    return response;
   }
 }

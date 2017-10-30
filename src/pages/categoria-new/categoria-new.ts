@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { CategoriaSelecionarPage } from '../categoria-selecionar/categoria-selecionar';
 import { Categoria } from '../objects/categoria';
+import { CategoriaServiceProvider } from '../../providers/categoria-service/categoria-service';
 
 /**
  * Generated class for the CategoriaNewPage page.
@@ -18,7 +19,7 @@ export class CategoriaNewPage {
   listCategorias : Array<any>;
   listTiposCategorias: any;
   categoriaForm: Categoria;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private categoriaService: CategoriaServiceProvider) {
     this.categoriaForm = new Categoria();
     this.listCategorias = this.categoriaForm.tiposCategorias;
     this.listTiposCategorias = {origem: [], periculosidade: [], composicao: [], tipo: []};
@@ -56,4 +57,20 @@ export class CategoriaNewPage {
     );
     modal.present();
   }
-}
+
+  salvarCategoria(categoria: Categoria){
+      console.log(categoria);
+      this.categoriaService.cadastrarCategoria(categoria).subscribe(
+            data => {
+              console.log('Resposta');
+              console.log(data);
+            },
+            err => {
+              console.log('Erro');
+              console.log(err);
+            },
+            () => console.log('Completou Requisição')
+        );
+      this.navCtrl.pop();
+    }
+  }

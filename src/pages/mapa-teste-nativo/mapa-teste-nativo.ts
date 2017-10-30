@@ -25,7 +25,6 @@ import { Geolocation } from '@ionic-native/geolocation';
 export class MapaTesteNativoPage {
   map: GoogleMap;
   mapElement: HTMLElement;
-  erro: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private geolocation: Geolocation) {
     //this.loadMap();
   }
@@ -42,7 +41,6 @@ export class MapaTesteNativoPage {
       var lon = position.coords.longitude;
       this.criarMapa(lat, lon)
     },err=>{
-      this.erro = err.message;
       this.criarMapa(-25.451394, -49.251168);
     });
   }

@@ -17,6 +17,7 @@ import { AlertaListPage } from '../pages/alerta-list/alerta-list';
 import { MapaTestePage } from '../pages/mapa-teste/mapa-teste';
 import { MapaTesteNativoPage } from '../pages/mapa-teste-nativo/mapa-teste-nativo';
 import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
+import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
 
 @Component({
   templateUrl: 'app.html'
@@ -34,14 +35,16 @@ export class MyApp {
       {component: HomePage, title: 'Home', icon: 'home'},
       {component: EventListPage, title: 'Eventos', icon: 'calendar'},
       {component: CategoriaListPage, title: 'Categorias', icon: 'bookmark'},
-      {component: ResiduosPage, title: 'Resíduos', icon: 'trash'},
       {component: InformativoListPage, title: 'Informativos', icon: 'alert'},
+      {component: ResiduosPage, title: 'Resíduos', icon: 'trash'},
       {component: ZonaVerdeListPage, title: 'Zona Verde', icon: 'leaf'},
       {component: PontosDescarteListPage, title: 'Pontos de Descarte', icon: 'trash'},
       {component: AlertaListPage, title: 'Alertas', icon: 'flag'},
       {component: MapaTestePage, title: 'Mapa', icon: 'map'},
-      {component: MapaTesteNativoPage, title: 'Mapa Nativo', icon: 'map'}
+      {component: MapaTesteNativoPage, title: 'Mapa Nativo', icon: 'map'},
+      {component: AreaAdministrativaListPage, title: 'Área Administrativa', icon:'clipboard'}
     ];
+    console.log(this.pages);
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
