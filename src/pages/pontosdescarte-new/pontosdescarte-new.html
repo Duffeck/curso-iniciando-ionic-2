@@ -17,13 +17,13 @@ Ionic pages and navigation.
 
 
 <ion-content>
-  <div #map id="map"></div>
+  <div #mapponto id="mapponto"></div>
   <ion-list>
     <ion-item>
       <ion-label stacked>Descrição</ion-label>
       <ion-textarea type="text" [(ngModel)]="pontoForm.estado" name="estado"></ion-textarea>
     </ion-item>
-    <ion-list radio-group [(ngModel)]="pontoForm.ehParticular" name="ehParticular">
+    <!--<ion-list radio-group [(ngModel)]="pontoForm.ehParticular" name="ehParticular">
       <ion-list-header> É particular? </ion-list-header>
       <ion-item>
         <ion-label>Sim</ion-label>
@@ -33,7 +33,7 @@ Ionic pages and navigation.
         <ion-label>Não</ion-label>
         <ion-radio value="false" checked></ion-radio>
       </ion-item>
-    </ion-list>
+    </ion-list>-->
     <ion-item>
       <ion-label stacked>Latitude</ion-label>
       <ion-textarea type="text" [(ngModel)]="pontoForm.localizacao.latitude" name="latitude"></ion-textarea>

@@ -25,11 +25,17 @@ export class PontosDescartePage {
   mapElement: HTMLElement;
   constructor(public navCtrl: NavController, public navParams: NavParams, private pontoDescarteService : PontosDescarteProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer, private googleMaps: GoogleMaps, private geolocation: Geolocation) {
     this.pontoForm = new PontoDescarte();
+    this.loadMap();
   }
 
   ionViewDidLoad() {
-    this.loadMap();
     console.log('ionViewDidLoad PontosdescarteNewPage');
+  }
+
+  ionViewWillLeave(){
+    this.destroyMap();
+    console.log('will leave');
+
   }
 
   cancelarPonto(){
@@ -52,11 +58,30 @@ export class PontosDescartePage {
     this.navCtrl.pop();
   }
 
+  destroyMap(){
+    if(this.map != null){
+      this.map.clear();
+      this.map.remove().then(
+          (data) => {
+            console.log('mapa destruído');
+            console.log(data);
+          }
+      ).catch(
+        (err) => {
+          console.log('erro destruir');
+          console.log(err);
+        }
+      );
+    }
+  }
+
   loadMap() {
     this.geolocation.getCurrentPosition().then((position) => {
       console.log(position);
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
+      this.pontoForm.localizacao.latitude = lat;
+      this.pontoForm.localizacao.longitude = lon;
       this.criarMapa(lat, lon)
     },err=>{
       this.criarMapa(-25.451394, -49.251168);
@@ -64,7 +89,7 @@ export class PontosDescartePage {
   }
 
   criarMapa(lat, lon){
-    this.mapElement = document.getElementById('map');
+    this.mapElement = document.getElementById('mapponto');
     console.log(this.mapElement);
     let mapOptions: GoogleMapOptions = {
       camera: {
@@ -78,7 +103,7 @@ export class PontosDescartePage {
     };
 
     this.map = this.googleMaps.create(this.mapElement, mapOptions);
-
+    this.map.setDiv(this.mapElement);
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {

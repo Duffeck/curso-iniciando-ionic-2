@@ -33,6 +33,13 @@
       <ion-label stacked>Observação</ion-label>
       <ion-input type="text" [(ngModel)]="residuoForm.observacao" name="observacao"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label>Categoria</ion-label>
+      <!--<ion-input type="text" [(ngModel)]="categoriaForm.cor" name="cor"></ion-input>-->
+      <ion-select [(ngModel)]="residuoForm.categoria">
+        <ion-option *ngFor="let categoria of listaCategorias" value="{{categoria}}">{{categoria.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
     <ion-item *ngIf="residuoForm.fotos[0]"><img alt="Erro ao carregar imagem, tente novamente" [src]="residuoForm.fotos[0].URL"/></ion-item>
     <!--<ion-item *ngIf="residuoForm.fotos[0]"><img alt="Erro ao carregar imagem, tente novamente" [src]="residuoForm.fotos[0].URL"/></ion-item>-->
     <button item-list float-right ion-button color="corYouSustainable" right (click)="tirarFoto()">

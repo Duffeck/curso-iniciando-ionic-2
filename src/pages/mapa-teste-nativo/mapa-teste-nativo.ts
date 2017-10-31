@@ -34,6 +34,29 @@ export class MapaTesteNativoPage {
     console.log('ionViewDidLoad MapaTesteNativoPage');
   }
 
+  ionViewWillLeave(){
+    this.destroyMap();
+    console.log('will leave');
+
+  }
+
+  destroyMap(){
+    if(this.map != null){
+      this.map.clear();
+      this.map.remove().then(
+          (data) => {
+            console.log('mapa destruído');
+            console.log(data);
+          }
+      ).catch(
+        (err) => {
+          console.log('erro destruir');
+          console.log(err);
+        }
+      );
+    }
+  }
+
   loadMap() {
     this.geolocation.getCurrentPosition().then((position) => {
       console.log(position);
@@ -46,7 +69,7 @@ export class MapaTesteNativoPage {
   }
 
   criarMapa(lat, lon){
-    this.mapElement = document.getElementById('map');
+    this.mapElement = document.getElementById('maptestenativo');
     console.log(this.mapElement);
     let mapOptions: GoogleMapOptions = {
       camera: {
@@ -58,9 +81,10 @@ export class MapaTesteNativoPage {
         tilt: 15
       }
     };
-
+    console.log('mapaaaaaaaaaaaaaaa');
+    console.log(this.map);
     this.map = this.googleMaps.create(this.mapElement, mapOptions);
-
+    this.map.setDiv(this.mapElement);
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {

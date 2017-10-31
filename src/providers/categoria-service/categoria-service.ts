@@ -58,7 +58,7 @@ export class CategoriaServiceProvider {
   }
 
   listarCategorias(){
-    var url = Config.url+this.urlPart+"/ListarCategorias/";
+    var url = Config.url+this.urlPart+"/ListarTodasCategorias/";
     console.log(url);
     var response = this.http.get(url).map(res => res.json());
     console.log(response);

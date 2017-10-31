@@ -9,6 +9,7 @@ import { Residuo } from '../objects/residuo';
 import { Foto } from '../objects/foto';
 import { ResiduoProvider } from '../../providers/residuo/residuo';
 import { FotoServiceProvider } from '../../providers/foto-service/foto-service';
+import { CategoriaServiceProvider } from '../../providers/categoria-service/categoria-service';
 /**
 * Generated class for the ResiduosNewPage page.
 *
@@ -21,16 +22,16 @@ import { FotoServiceProvider } from '../../providers/foto-service/foto-service';
   templateUrl: 'residuos-new.html',
 })
 export class ResiduosNewPage {
-  listCategorias : Array<any>;
+  listaCategorias : Array<any>;
   listTiposCategorias: any;
   usuario : Usuario;
   residuoForm : Residuo;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private camera: Camera, private userService: UserProvider, private residuoService: ResiduoProvider, private fotoService: FotoServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private camera: Camera, private userService: UserProvider, private residuoService: ResiduoProvider, private fotoService: FotoServiceProvider, private categoriaService: CategoriaServiceProvider) {
     this.residuoForm = new Residuo();
     this.residuoForm.categoria = new Categoria();
     this.usuario = this.userService.retornarUsuario();
-    this.listCategorias = new Categoria().tiposCategorias;
+    this.listaCategorias = new Categoria().tiposCategorias;
     this.listTiposCategorias = {origem: [], periculosidade: [], composicao: [], tipo: []};
     if(this.usuario != undefined){
       this.residuoForm.usuario = this.usuario;
@@ -141,48 +142,37 @@ salvarFoto(foto: Foto){
 
   salvarResiduo(residuo: Residuo){
     console.log("Qtd Fotos:"+residuo.fotos.length);
-    /*if(residuo.fotos.length > 0){
-    for(let i = 0; i < residuo.fotos.length; i++){
-    this.fotoService.salvarFoto(residuo.fotos[i]).subscribe(
-    data => {
-    console.log("salvar foto:");
-    console.log(data);
-    if(data > 0){
-    residuo.fotos[i].id = data;
-    console.log(residuo.fotos[i]);
-    this.fotoService.transferirArquivo(residuo.fotos[i]);
+    this.residuoService.salvarResiduo(residuo).subscribe(
+      data => {
+        console.log(data);
+      },
+      err =>{
+        console.log(err);
+      },
+      () => console.log("Completou Requisição")
+    );
+    //}
   }
-},
-err => {
-console.log(err);
-},
-() => {
-this.residuoService.salvarResiduo(residuo).subscribe(
-data => {
-console.log(data);
-},
-err =>{
-console.log(err);
-},
-() => console.log("Completou Requisição")
-);
-}
-);
-}
-}else{
-*/
-this.residuoService.salvarResiduo(residuo).subscribe(
-  data => {
-    console.log(data);
-  },
-  err =>{
-    console.log(err);
-  },
-  () => console.log("Completou Requisição")
-);
-//}
-}
-cancelar(){
-  this.navCtrl.pop();
-}
+
+  cancelar(){
+    this.navCtrl.pop();
+  }
+
+  listarCategorias(){
+    this.categoriaService.listarCategorias().subscribe(
+      data=>{
+        var resposta = JSON.parse(data);
+        if(resposta.length > 0){
+          for(var i = 0; i < resposta.length; i ++){
+            var categoria = new Categoria();
+            this.listaCategorias.push(categoria.categoriaFromJSON(resposta[i]));
+          }
+        }
+      },
+      err=>{
+        console.log('Erro listar');
+        console.log(err)
+      },
+      () => console.log("Completou Requisição"));
+    }
 }
