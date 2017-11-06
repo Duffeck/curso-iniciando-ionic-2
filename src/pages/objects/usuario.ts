@@ -11,6 +11,7 @@ export class Usuario {
   }
 
   usuarioFromJSON(user: any){
+    this.id = user.Id;
     this.nome = user.Nome;
     this.email = user.Email;
     this.senha = user.Senha;

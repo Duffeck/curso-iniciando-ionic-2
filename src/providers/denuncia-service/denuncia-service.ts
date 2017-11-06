@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { Usuario } from '../../pages/objects/usuario';
 import { Denuncia } from '../../pages/objects/denuncia';
 import { Config } from '../config';
+import { Observable } from "rxjs/Observable";
 
 /*
 Generated class for the DenunciaServiceProvider provider.
@@ -17,7 +18,7 @@ export class DenunciaServiceProvider {
   constructor(public http: Http) {
   }
 
-  denunciarEvento(denuncia: Denuncia){
+  denunciar(denuncia: Denuncia){
     if(denuncia.usuario.id != undefined){
       var url = Config.url+this.urlPart+'Denunciar?';
       console.log(url);
@@ -25,10 +26,16 @@ export class DenunciaServiceProvider {
       headers.append("Accept", 'application/json');
       headers.append('Content-Type', 'application/json' );
       let options = new RequestOptions({method: 'post', headers: headers});
-
+      console.log(denuncia);
       var response = this.http.post(url, denuncia, options).map(res => res.json());
       console.log(JSON.stringify(response));
       return response;
     }
+    return Observable.create(
+      observer => {
+        observer.next(1);
+        observer.complete(2);
+      }
+    );
   }
 }
