@@ -52,7 +52,7 @@ export class CategoriaServiceProvider {
     let options = new RequestOptions({method: 'post', headers: headers});
 
     console.log(url);
-    var response = this.http.put(url, categoria, options).map(res => res.json());
+    var response = this.http.post(url, categoria, options).map(res => res.json());
     console.log(response);
     return response;
   }

@@ -14,6 +14,9 @@
 
 
 <ion-content padding>
+  <ion-fab *ngIf="usuario" top right>
+    <button ion-fab style="background-color: red" (click)="denunciar(evento)"><ion-icon name="alert"></ion-icon></button>
+  </ion-fab>
 <img [src]="evento.urlFoto | safeurl"/>
   <h4>Data: {{evento.data}}</h4>
   <h5>

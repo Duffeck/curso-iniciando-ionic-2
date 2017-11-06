@@ -58,6 +58,8 @@ import { AreaAdministrativaServiceProvider } from '../providers/areaadministrati
 import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
 import { AreaAdministrativaNewPage} from '../pages/areaadministrativa-new/areaadministrativa-new';
 import { AreaAdministrativaDetailPage } from '../pages/areaadministrativa-detail/areaadministrativa-detail';
+import { DenunciaNewPage } from '../pages/denuncia-new/denuncia-new';
+import { DenunciaServiceProvider } from '../providers/denuncia-service/denuncia-service';
 
 @NgModule({
   declarations: [
@@ -90,7 +92,8 @@ import { AreaAdministrativaDetailPage } from '../pages/areaadministrativa-detail
     CategoriaNewPage,
     AreaAdministrativaListPage,
     AreaAdministrativaNewPage,
-    AreaAdministrativaDetailPage
+    AreaAdministrativaDetailPage,
+    DenunciaNewPage
   ],
   imports: [
     BrowserModule,
@@ -133,7 +136,8 @@ import { AreaAdministrativaDetailPage } from '../pages/areaadministrativa-detail
     CategoriaNewPage,
     AreaAdministrativaListPage,
     AreaAdministrativaNewPage,
-    AreaAdministrativaDetailPage
+    AreaAdministrativaDetailPage,
+    DenunciaNewPage
   ],
   providers: [
     StatusBar,
@@ -161,7 +165,8 @@ import { AreaAdministrativaDetailPage } from '../pages/areaadministrativa-detail
     Network,
     Geolocation,
     GoogleMaps,
-    AreaAdministrativaServiceProvider
+    AreaAdministrativaServiceProvider,
+    DenunciaServiceProvider
   ]
 })
 export class AppModule {}

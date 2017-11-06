@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { CategoriaSelecionarPage } from '../categoria-selecionar/categoria-selecionar';
+//import { CategoriaSelecionarPage } from '../categoria-selecionar/categoria-selecionar';
 import { Categoria } from '../objects/categoria';
 import { UserProvider } from '../../providers/user/user';
 import { Usuario } from '../objects/usuario';
@@ -23,7 +23,6 @@ import { CategoriaServiceProvider } from '../../providers/categoria-service/cate
 })
 export class ResiduosNewPage {
   listaCategorias : Array<any>;
-  listTiposCategorias: any;
   usuario : Usuario;
   residuoForm : Residuo;
 
@@ -31,8 +30,8 @@ export class ResiduosNewPage {
     this.residuoForm = new Residuo();
     this.residuoForm.categoria = new Categoria();
     this.usuario = this.userService.retornarUsuario();
-    this.listaCategorias = new Categoria().tiposCategorias;
-    this.listTiposCategorias = {origem: [], periculosidade: [], composicao: [], tipo: []};
+    this.listaCategorias = new Array<Categoria>();
+    //this.listTiposCategorias = {origem: [], periculosidade: [], composicao: [], tipo: []};
     if(this.usuario != undefined){
       this.residuoForm.usuario = this.usuario;
     }
@@ -42,6 +41,10 @@ export class ResiduosNewPage {
     console.log('ionViewDidLoad ResiduosNewPage');
   }
 
+  ionViewWillEnter(){
+    this.listarCategorias();
+  }
+/*
   presentPopover(categoria: string) {
     let popover = this.modalCtrl.create(CategoriaSelecionarPage, {categoria});
     popover.onDidDismiss(
@@ -70,7 +73,7 @@ export class ResiduosNewPage {
     );
     popover.present();
   }
-
+*/
   tirarFoto(){
     const options: CameraOptions = {
       quality: 100,

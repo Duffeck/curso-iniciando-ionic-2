@@ -6,6 +6,7 @@ import { Config } from '../config';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Base64 } from '@ionic-native/base64';
+import { Usuario } from '../../pages/objects/usuario';
 /*
 Generated class for the EventoServiceProvider provider.
 
@@ -67,17 +68,6 @@ export class EventoServiceProvider {
   }
 
   baixarImagem(evento: Event){
-    /*
-    this.fileTransfer.download(Config.fileServer+'eventos/'+ evento.id + '.jpg', this.file.cacheDirectory +'/'+ evento.id + '.jpg').then((entry) => {
-      this.base64.encodeFile(entry.toURL()).then((base64File: string) => {
-        evento.urlFoto = (base64File);
-      }, (err) => {
-        console.log(err);
-      });
-    }, (error) => {
-      console.log(error);
-    });
-    */
     evento.urlFoto = Config.fileServer+'eventos/'+ evento.id + '.jpg';
   }
 }
