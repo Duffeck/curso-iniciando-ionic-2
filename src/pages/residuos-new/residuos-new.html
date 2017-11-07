@@ -23,19 +23,12 @@
       <ion-label stacked>Descricao</ion-label>
       <ion-input type="text" [(ngModel)]="residuoForm.descricao" name="descricao"></ion-input>
     </ion-item>
-    <!--
-    <ion-item>
-      <ion-label stacked>Estado</ion-label>
-      <ion-input type="text" [(ngModel)]="residuoForm.estado" name="estado"></ion-input>
-    </ion-item>
-  -->
     <ion-item>
       <ion-label stacked>Observação</ion-label>
       <ion-input type="text" [(ngModel)]="residuoForm.observacao" name="observacao"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Categoria</ion-label>
-      <!--<ion-input type="text" [(ngModel)]="categoriaForm.cor" name="cor"></ion-input>-->
       <ion-select [(ngModel)]="residuoForm.categoria">
         <ion-option *ngFor="let categoria of listaCategorias" value="{{categoria}}">{{categoria.nome}}</ion-option>
       </ion-select>

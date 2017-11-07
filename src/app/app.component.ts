@@ -18,6 +18,7 @@ import { MapaTestePage } from '../pages/mapa-teste/mapa-teste';
 import { MapaTesteNativoPage } from '../pages/mapa-teste-nativo/mapa-teste-nativo';
 import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
 import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
+import { DenunciaListPage } from '../pages/denuncia-list/denuncia-list';
 
 @Component({
   templateUrl: 'app.html'
@@ -42,7 +43,8 @@ export class MyApp {
       {component: AlertaListPage, title: 'Alertas', icon: 'flag'},
       {component: MapaTestePage, title: 'Mapa', icon: 'map'},
       {component: MapaTesteNativoPage, title: 'Mapa Nativo', icon: 'map'},
-      {component: AreaAdministrativaListPage, title: 'Área Administrativa', icon:'clipboard'}
+      {component: AreaAdministrativaListPage, title: 'Área Administrativa', icon:'clipboard'},
+      {component: DenunciaListPage, title: 'Denúncias', icon:'alert'}
     ];
     console.log(this.pages);
 

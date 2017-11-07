@@ -38,4 +38,10 @@ export class DenunciaServiceProvider {
       }
     );
   }
+
+  listarDenuncias(){
+    var url = Config.url + this.urlPart+'ListarDenuncias/'
+    var response = this.http.get(url).map(res => res.json());
+    return response;
+  }
 }

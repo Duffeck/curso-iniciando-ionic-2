@@ -22,7 +22,7 @@ import { CategoriaServiceProvider } from '../../providers/categoria-service/cate
   templateUrl: 'residuos-new.html',
 })
 export class ResiduosNewPage {
-  listaCategorias : Array<any>;
+  listaCategorias : Array<Categoria>;
   usuario : Usuario;
   residuoForm : Residuo;
 

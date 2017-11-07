@@ -37,6 +37,7 @@ export class CategoriaListPage {
   }
 
   listarCategorias(){
+    this.listaCategorias = new Array<Categoria>();
     this.categoriaService.listarCategorias().subscribe(
       data=>{
         var resposta = JSON.parse(data);
