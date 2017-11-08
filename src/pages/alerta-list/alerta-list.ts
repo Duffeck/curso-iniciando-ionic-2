@@ -56,8 +56,8 @@ export class AlertaListPage {
     console.log(this.alertas);
   }
 
-  alertasDescarteDetail(alerta : Alerta){
-      this.navCtrl.push(AlertaDetailPage);
+  alertasDescarteDetail(alerta){
+      this.navCtrl.push(AlertaDetailPage, {alerta : alerta});
   }
 
 }

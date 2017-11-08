@@ -29,7 +29,7 @@ export class PontosDescarteListPage {
   }
 
   ionViewDidLoad() {
-
+    console.log('ionViewDidLoad PontosDescarteListPageo');
   }
 
   ionViewWillEnter(){

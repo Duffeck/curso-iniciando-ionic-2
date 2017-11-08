@@ -17,7 +17,7 @@
 
 <ion-content padding>
 
-    <ion-card *ngFor="let area of areas" (click)="areaDetail(Area)">
+    <ion-card *ngFor="let area of areas" (click)="areaDetail(area)">
       <ion-card-header>
         {{area.nome}}
       </ion-card-header>

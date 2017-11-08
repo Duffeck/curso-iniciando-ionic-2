@@ -13,4 +13,4 @@ import { AreaAdministrativaDetailPage } from './areaadministrativa-detail';
     AreaAdministrativaDetailPage
   ]
 })
-export class AreaadministrativaDetailPageModule {}
+export class AreaAdministrativaDetailPageModule {}

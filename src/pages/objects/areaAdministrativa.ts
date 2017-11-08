@@ -3,9 +3,14 @@ export class AreaAdministrativa {
   public descricao: String;
   public nome: String;
 
+  constructor(){
+
+  }
+
   areaFromJSON(ar : any){
-    this.descricao = ar.descricao;
-    this.nome = ar.nome;
+    this.id = ar.Id;
+    this.descricao = ar.Descricao;
+    this.nome = ar.Nome;
     console.log(this);
   }
 }

@@ -27,14 +27,22 @@ export class AlertaProvider {
 
   cadastrarAlerta(alerta: Alerta){
       var url = Config.url+this.urlPart+'cadastrarAlerta?';
-      /*url = url + 'estado=' + alerta.estado;
+      url = url + 'horario=' + alerta.horario;
       url = url + '&descricao=' + alerta.descricao;
-      url = url + '&latitude=' + zonaverde.localizacao.latitude;
-      url = url + '&longitude=' + zonaverde.localizacao.longitude;*/
+      url = url + '&pontoDescarteId=' + alerta.ponto.id;
       console.log(url);
       var response = this.http.get(url).map(res => res.json());
       console.log(JSON.stringify(response));
       return response;
+  }
+
+  buscarPontoDescarte(id : number){
+    var url = Config.url+this.urlPart+'BuscarPontoDescarte?';
+    url = url + 'id=' + id;
+    console.log(url);
+    var response = this.http.get(url).map(res => res.json());
+    console.log(JSON.stringify(response));
+    return response;
   }
 
 }

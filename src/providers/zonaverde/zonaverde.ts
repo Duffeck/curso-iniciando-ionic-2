@@ -19,7 +19,7 @@ export class ZonaverdeProvider {
   }
 
   cadastrarZonaVerde(zonaverde: ZonaVerde){
-      var url = Config.url+this.urlPart+'cadastrarZonaVerde?';
+      var url = Config.url+this.urlPart+'CadastrarZonaVerde?';
       url = url + 'nome=' + zonaverde.nome;
       url = url + '&descricao=' + zonaverde.descricao;
       url = url + '&latitude=' + zonaverde.localizacao.latitude;
@@ -36,7 +36,15 @@ export class ZonaverdeProvider {
     var response = this.http.get(url).map(res => res.json());
     console.log(JSON.stringify(response));
     return response;
-    
+  }
+
+  buscarLocalizacao(id : number){
+    var url = Config.url+this.urlPart+'BuscarLocalizacao?';
+    url = url + 'id=' + id;
+    console.log(url);
+    var response = this.http.get(url).map(res => res.json());
+    console.log(JSON.stringify(response));
+    return response;
   }
 
 }

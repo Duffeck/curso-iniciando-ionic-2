@@ -30,7 +30,7 @@ import { InformativoListPage } from '../pages/informativo-list/informativo-list'
 import { ZonaverdeProvider } from '../providers/zonaverde/zonaverde';
 import { ZonaVerdeListPage } from '../pages/zonaverde-list/zonaverde-list';
 import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
-
+import { ZonaVerdeDetailPage} from '../pages/zonaverde-detail/zonaverde-detail';
 import { PontosDescarteProvider } from '../providers/pontosdescarte/pontosdescarte';
 import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdescarte-list';
 import { PontosDescartePage} from '../pages/pontosdescarte-new/pontosdescarte-new';
@@ -48,6 +48,10 @@ import { AreaAdministrativaProvider } from '../providers/areaadministrativa-serv
 import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
 import { AreaAdministrativaNewPage} from '../pages/areaadministrativa-new/areaadministrativa-new';
 import { AreaAdministrativaDetailPage } from '../pages/areaadministrativa-detail/areaadministrativa-detail';
+import { RotaColetaListPage } from '../pages/rotacoleta-list/rotacoleta-list';
+import { RotaColetaNewPage } from '../pages/rotacoleta-new/rotacoleta-new';
+import { RotaColetaDetailPage } from '../pages/rotacoleta-detail/rotacoleta-detail';
+import { RotaColetaProvider } from '../providers/rotacoleta-service/rotacoleta-service';
 
 @NgModule({
   declarations: [
@@ -66,6 +70,7 @@ import { AreaAdministrativaDetailPage } from '../pages/areaadministrativa-detail
     InformativoListPage,
     ZonaVerdePage,
     ZonaVerdeListPage,
+    ZonaVerdeDetailPage,
     PontosDescarteListPage,
     PontosDescartePage,
     PontosDescarteDetailPage,
@@ -76,7 +81,10 @@ import { AreaAdministrativaDetailPage } from '../pages/areaadministrativa-detail
     KeyPipe,
     AreaAdministrativaListPage,
     AreaAdministrativaNewPage,
-    AreaAdministrativaDetailPage
+    AreaAdministrativaDetailPage,
+    RotaColetaListPage,
+    RotaColetaNewPage,
+    RotaColetaDetailPage
   ],
   imports: [
     BrowserModule,
@@ -106,6 +114,7 @@ import { AreaAdministrativaDetailPage } from '../pages/areaadministrativa-detail
     InformativoListPage,
     ZonaVerdePage,
     ZonaVerdeListPage,
+    ZonaVerdeDetailPage,
     PontosDescarteListPage,
     PontosDescartePage,
     PontosDescarteDetailPage,
@@ -115,7 +124,10 @@ import { AreaAdministrativaDetailPage } from '../pages/areaadministrativa-detail
     ResiduosNewPage,
     AreaAdministrativaListPage,
     AreaAdministrativaNewPage,
-    AreaAdministrativaDetailPage
+    AreaAdministrativaDetailPage,
+    RotaColetaListPage,
+    RotaColetaNewPage,
+    RotaColetaDetailPage
   ],
   providers: [
     StatusBar,
@@ -136,7 +148,8 @@ import { AreaAdministrativaDetailPage } from '../pages/areaadministrativa-detail
     ResiduoProvider,
     FotoServiceProvider,
     Firebase,
-    AreaAdministrativaProvider
+    AreaAdministrativaProvider,
+    RotaColetaProvider
   ]
 })
 export class AppModule {}

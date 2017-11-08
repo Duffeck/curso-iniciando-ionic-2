@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 
 import { AreaAdministrativaNewPage} from '../areaadministrativa-new/areaadministrativa-new';
+import { AreaAdministrativaDetailPage } from '../areaadministrativa-detail/areaadministrativa-detail';
 import { AreaAdministrativa } from '../objects/areaAdministrativa';
 import { AreaAdministrativaProvider } from '../../providers/areaadministrativa-service/areaadministrativa-service';
 
@@ -54,11 +55,11 @@ export class AreaAdministrativaListPage {
       data =>{
         console.log('Data:'+ data.length);
         console.log(JSON.parse(data));
-        let pontosResponse = JSON.parse(data);
-        if(pontosResponse.length>0){
-          for(var i=0; i < pontosResponse.length; i++){
+        let areasResponse = JSON.parse(data);
+        if(areasResponse.length>0){
+          for(var i=0; i < areasResponse.length; i++){
             var ar = new AreaAdministrativa();
-            ar.areaFromJSON(pontosResponse[i]);
+            ar.areaFromJSON(areasResponse[i]);
             this.adicionarArea(ar);
           }
           console.log('lengthok');
@@ -71,6 +72,10 @@ export class AreaAdministrativaListPage {
         console.log(err);
       },
       () => console.log('Completou Requisição'));
-    console.log('ionViewDidLoad PontosdescarteListPage');
+    console.log('ionViewDidLoad AreaAdministrativaListPage');
+  }
+
+  areaDetail(area : AreaAdministrativa){
+    this.navCtrl.push(AreaAdministrativaDetailPage, {area : area})
   }
 }
