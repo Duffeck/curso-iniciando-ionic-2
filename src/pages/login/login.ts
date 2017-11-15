@@ -7,11 +7,11 @@ import { Usuario } from '../objects/usuario';
 import { ToastController } from 'ionic-angular';
 
 /**
- * Generated class for the LoginPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+* Generated class for the LoginPage page.
+*
+* See http://ionicframework.com/docs/components/#navigation for more info
+* on Ionic pages and navigation.
+*/
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -20,7 +20,7 @@ import { ToastController } from 'ionic-angular';
 export class LoginPage {
   userForm: Usuario;
   constructor(public navCtrl: NavController, public navParams: NavParams, private userProvider : UserProvider, public toastCtrl: ToastController) {
-      this.userForm = new Usuario();
+    this.userForm = new Usuario();
   }
 
   ionViewDidLoad() {
@@ -28,28 +28,34 @@ export class LoginPage {
   }
 
   loginUsuario(user: Usuario){
-      this.userProvider.loginUsuario(user).subscribe(
-          data => {
-            console.log('a');
-            if(data){
-              console.log('b');
-              var usuario = new Usuario();
-              usuario.usuarioFromJSON(JSON.parse(data));
-              localStorage.setItem('user', JSON.stringify(usuario));
-              this.apresentarToast('Login efetuado com sucesso');
-              this.navCtrl.setRoot(HomePage);
-            }else{
-              console.log('c');
-              localStorage.setItem('user', JSON.stringify(null));
-              this.apresentarToast('Erro ao fazer login');
-            }
-          },
-          err => {
-            console.log('d');
-              console.log(err);
-          },
-          () => console.log('Completou Requisição')
-      );
+    this.userProvider.loginUsuario(user).subscribe(
+      data => {
+        console.log('a');
+        if(data){
+          var resultado = JSON.parse(data);
+          if(resultado != '' ){
+            var usuario = new Usuario();
+            console.log(JSON.parse(data));
+            usuario.usuarioFromJSON(JSON.parse(data));
+            localStorage.setItem('user', JSON.stringify(usuario));
+            this.apresentarToast('Login efetuado com sucesso');
+            this.navCtrl.setRoot(HomePage);
+          }else{
+            localStorage.setItem('user', JSON.stringify(null));
+            this.apresentarToast('Email e Senha não correspondem. Tente novamente');
+          }
+        }else{
+          console.log('c');
+          localStorage.setItem('user', JSON.stringify(null));
+          this.apresentarToast('Erro ao fazer login');
+        }
+      },
+      err => {
+        console.log('d');
+        console.log(err);
+      },
+      () => console.log('Completou Requisição')
+    );
   }
 
   registrarUsuario(user:Usuario, sucesso: boolean){

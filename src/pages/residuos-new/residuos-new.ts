@@ -28,7 +28,7 @@ export class ResiduosNewPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private camera: Camera, private userService: UserProvider, private residuoService: ResiduoProvider, private fotoService: FotoServiceProvider, private categoriaService: CategoriaServiceProvider) {
     this.residuoForm = new Residuo();
-    this.residuoForm.categoria = new Categoria();
+    this.residuoForm.categoria = undefined;//new Categoria();
     this.usuario = this.userService.retornarUsuario();
     this.listaCategorias = new Array<Categoria>();
     //this.listTiposCategorias = {origem: [], periculosidade: [], composicao: [], tipo: []};
@@ -38,11 +38,16 @@ export class ResiduosNewPage {
   }
 
   ionViewDidLoad() {
+    console.log(this.residuoForm);
     console.log('ionViewDidLoad ResiduosNewPage');
   }
 
   ionViewWillEnter(){
     this.listarCategorias();
+  }
+
+  unitSelectionChangeModal(catego: Categoria){
+    this.residuoForm.categoria = catego;
   }
 /*
   presentPopover(categoria: string) {
@@ -162,6 +167,8 @@ salvarFoto(foto: Foto){
   }
 
   listarCategorias(){
+    this.listaCategorias = Categoria.listarCategorias();
+    /*
     this.categoriaService.listarCategorias().subscribe(
       data=>{
         var resposta = JSON.parse(data);
@@ -178,4 +185,6 @@ salvarFoto(foto: Foto){
       },
       () => console.log("Completou Requisição"));
     }
+    */
+  }
 }

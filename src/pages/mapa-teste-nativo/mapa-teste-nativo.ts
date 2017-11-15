@@ -93,7 +93,7 @@ export class MapaTesteNativoPage {
         // Now you can use all methods safely.
         this.map.addMarker({
             title: 'Ionic',
-            icon: 'blue',
+            icon: 'green',
             animation: 'DROP',
             position: {
               lat: lat,
@@ -106,7 +106,34 @@ export class MapaTesteNativoPage {
                 alert('clicked');
               });
           });
-
+          this.map.addMarker({
+              title: 'Ionic',
+              icon: 'red',
+              animation: 'DROP',
+              position: {
+                lat: -25.449456,
+                lng: -49.252133
+              }
+            }).then(marker => {
+              marker.on(GoogleMapsEvent.MARKER_CLICK)
+                .subscribe(() => {
+                  alert('clicked');
+                });
+            });
+            this.map.addMarker({
+                title: 'Ionic',
+                icon: 'red',
+                animation: 'DROP',
+                position: {
+                  lat: -25.451150,
+                  lng: -49.251999
+                }
+              }).then(marker => {
+                marker.on(GoogleMapsEvent.MARKER_CLICK)
+                  .subscribe(() => {
+                    alert('clicked');
+                  });
+              });
       });
   }
 }

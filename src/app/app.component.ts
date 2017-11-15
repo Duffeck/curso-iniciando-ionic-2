@@ -42,7 +42,7 @@ export class MyApp {
       {component: PontosDescarteListPage, title: 'Pontos de Descarte', icon: 'trash'},
       ///{component: AlertaListPage, title: 'Alertas', icon: 'flag'},
       //{component: MapaTestePage, title: 'Mapa', icon: 'map'},
-      //{component: MapaTesteNativoPage, title: 'Mapa Nativo', icon: 'map'},
+      {component: MapaTesteNativoPage, title: 'Garrafa Pástica', icon: 'map'},
       {component: AreaAdministrativaListPage, title: 'Área Administrativa', icon:'clipboard'},
       {component: DenunciaListPage, title: 'Denúncias', icon:'alert'}
     ];

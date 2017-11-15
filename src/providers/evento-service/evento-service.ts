@@ -22,7 +22,7 @@ export class EventoServiceProvider {
   }
 
   cadastrarEvento(evento: Event){
-    var url = Config.url+this.urlPart+'CadastrarEvento?';
+    /*var url = Config.url+this.urlPart+'CadastrarEvento?';
     url = url + 'bairro=' + evento.bairro;
     url = url + '&cidade=' + evento.cidade;
     url = url + '&data=' + evento.data;
@@ -34,6 +34,13 @@ export class EventoServiceProvider {
     //url = url + '&urlFoto=' + evento.uriFoto;
     console.log(url);
     var response = this.http.get(url).map(res => res.json());
+    return response;*/
+    var url = Config.url+this.urlPart+'CadastrarEvento?';
+    var options = Config.postOptionsHeader();
+    console.log(url);
+    console.log(evento);
+    var response = this.http.post(url, evento, options).map(res => res.json());
+    console.log(response);
     return response;
   }
 

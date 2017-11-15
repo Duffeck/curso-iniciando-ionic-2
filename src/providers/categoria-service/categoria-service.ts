@@ -46,11 +46,7 @@ export class CategoriaServiceProvider {
 
   cadastrarCategoria(categoria: Categoria){
     var url = Config.url+this.urlPart + "/SalvarCategoria/";
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
-    let options = new RequestOptions({method: 'post', headers: headers});
-
+    var options = Config.postOptionsHeader();
     console.log(url);
     console.log(categoria);
     var response = this.http.post(url, categoria, options).map(res => res.json());

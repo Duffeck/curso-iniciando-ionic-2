@@ -12,7 +12,7 @@ import { Config } from '../config';
 */
 @Injectable()
 export class UserProvider {
-  urlPart = "User/";
+  urlPart = "Usuarios/";
   constructor(public http: Http) {
     //console.log('Hello UserProvider Provider');
   }
@@ -26,16 +26,23 @@ export class UserProvider {
 */
   cadastrarUsuario(user: Usuario){
       var url = Config.url+this.urlPart+'CadastrarUsuario?';
-      url = url + 'nome=' + user.nome;
-      url = url + '&senha=' + user.senha;
-      url = url + '&email=' + user.email;
+      var options = Config.postOptionsHeader();
       console.log(url);
-      var response = this.http.get(url).map(res => res.json());
+      console.log(user);
+      var response = this.http.post(url, user, options).map(res => res.json());
       console.log(response);
       return response;
   }
 
   loginUsuario(user: Usuario){
+    var url = Config.url+this.urlPart+'EfetuarLogin?';
+    var options = Config.postOptionsHeader();
+    console.log(url);
+    console.log(user);
+    var response = this.http.post(url, user, options).map(res => res.json());
+    console.log(response);
+    return response;
+    /*
       var url = Config.url+this.urlPart+'EfetuarLogin?';
       url = url + '&senha=' + user.senha;
       url = url + '&email=' + user.email;
@@ -43,10 +50,19 @@ export class UserProvider {
       var response = this.http.get(url).map(res => res.json());
       console.log(response);
       return response;
+      */
   }
 
   retornarUsuario() {
     var stringUser = localStorage.getItem('user');
+    /*
+    //remover essa parte
+    var user = new Usuario();
+    user.id = 1;
+    return user;
+    //
+    */
+
     if(stringUser!="{}"){
       return JSON.parse(stringUser);
     }else{
