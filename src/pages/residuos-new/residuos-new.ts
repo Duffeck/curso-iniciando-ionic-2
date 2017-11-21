@@ -28,7 +28,7 @@ export class ResiduosNewPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private camera: Camera, private userService: UserProvider, private residuoService: ResiduoProvider, private fotoService: FotoServiceProvider, private categoriaService: CategoriaServiceProvider) {
     this.residuoForm = new Residuo();
-    this.residuoForm.categoria = undefined;//new Categoria();
+    this.residuoForm.categoria = new Categoria();
     this.usuario = this.userService.retornarUsuario();
     this.listaCategorias = new Array<Categoria>();
     //this.listTiposCategorias = {origem: [], periculosidade: [], composicao: [], tipo: []};
@@ -49,74 +49,74 @@ export class ResiduosNewPage {
   unitSelectionChangeModal(catego: Categoria){
     this.residuoForm.categoria = catego;
   }
-/*
+  /*
   presentPopover(categoria: string) {
-    let popover = this.modalCtrl.create(CategoriaSelecionarPage, {categoria});
-    popover.onDidDismiss(
-      data => {
-        console.log(data);
-        console.log(data.categoria);
-        if(data.categoria == 'origem'){
-          this.listTiposCategorias.origem = data.categoriasSelecionadas;
+  let popover = this.modalCtrl.create(CategoriaSelecionarPage, {categoria});
+  popover.onDidDismiss(
+  data => {
+  console.log(data);
+  console.log(data.categoria);
+  if(data.categoria == 'origem'){
+  this.listTiposCategorias.origem = data.categoriasSelecionadas;
 
-          this.residuoForm.categoria.origens = data.categoriasSelecionadas;
-        }
-        if(data.categoria == 'periculosidade'){
-          this.listTiposCategorias.periculosidade = data.categoriasSelecionadas;
-          this.residuoForm.categoria.periculosidades = data.categoriasSelecionadas;
-        }
-        if(data.categoria == 'composicao'){
-          this.listTiposCategorias.composicao = data.categoriasSelecionadas;
-          this.residuoForm.categoria.composicoesQuimicas = data.categoriasSelecionadas;
-        }
-        if(data.categoria == 'tipo'){
-          this.listTiposCategorias.tipo = data.categoriasSelecionadas;
-          this.residuoForm.categoria.tipos = data.categoriasSelecionadas;
-        }
-        console.log(this.listTiposCategorias);
-      }
-    );
-    popover.present();
-  }
+  this.residuoForm.categoria.origens = data.categoriasSelecionadas;
+}
+if(data.categoria == 'periculosidade'){
+this.listTiposCategorias.periculosidade = data.categoriasSelecionadas;
+this.residuoForm.categoria.periculosidades = data.categoriasSelecionadas;
+}
+if(data.categoria == 'composicao'){
+this.listTiposCategorias.composicao = data.categoriasSelecionadas;
+this.residuoForm.categoria.composicoesQuimicas = data.categoriasSelecionadas;
+}
+if(data.categoria == 'tipo'){
+this.listTiposCategorias.tipo = data.categoriasSelecionadas;
+this.residuoForm.categoria.tipos = data.categoriasSelecionadas;
+}
+console.log(this.listTiposCategorias);
+}
+);
+popover.present();
+}
 */
-  tirarFoto(){
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      allowEdit: true,
-      correctOrientation: true,
-      saveToPhotoAlbum: true,
-      sourceType: this.camera.PictureSourceType.CAMERA
-    }
-    this.camera.getPicture(options).then((imageData) => {
-      var foto = new Foto();
-      foto.URL = imageData;
-      try{
-        this.salvarFoto(foto).then(
-          (data: Foto)=>{
-            this.residuoForm.fotos.push(data);
-          }
-        ).catch(err =>{
-          err=>{
-            console.log(err);
-          }
-        });
-        if( foto.id > 0 && foto.URL != ""){
-          this.residuoForm.fotos.push(foto);
+tirarFoto(){
+  const options: CameraOptions = {
+    quality: 100,
+    destinationType: this.camera.DestinationType.FILE_URI,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE,
+    allowEdit: true,
+    correctOrientation: true,
+    saveToPhotoAlbum: true,
+    sourceType: this.camera.PictureSourceType.CAMERA
+  }
+  this.camera.getPicture(options).then((imageData) => {
+    var foto = new Foto();
+    foto.URL = imageData;
+    try{
+      this.salvarFoto(foto).then(
+        (data: Foto)=>{
+          this.residuoForm.fotos.push(data);
         }
-      }catch(err){
-        console.log(err);
+      ).catch(err =>{
+        err=>{
+          console.log(err);
+        }
+      });
+      if( foto.id > 0 && foto.URL != ""){
+        this.residuoForm.fotos.push(foto);
       }
-      /*
-      this.base64.encodeFile(imageData).then((base64File: string) => {
-      foto.base64 = base64File;
-    }, (err) => {
-    console.log(err);
-  });
-  */
-  console.log(this.residuoForm);
+    }catch(err){
+      console.log(err);
+    }
+    /*
+    this.base64.encodeFile(imageData).then((base64File: string) => {
+    foto.base64 = base64File;
+  }, (err) => {
+  console.log(err);
+});
+*/
+console.log(this.residuoForm);
 }, (err) => {
   console.log(err);
 });
@@ -149,6 +149,7 @@ salvarFoto(foto: Foto){
   }
 
   salvarResiduo(residuo: Residuo){
+    console.log(residuo);
     console.log("Qtd Fotos:"+residuo.fotos.length);
     this.residuoService.salvarResiduo(residuo).subscribe(
       data => {
@@ -159,7 +160,6 @@ salvarFoto(foto: Foto){
       },
       () => console.log("Completou Requisição")
     );
-    //}
   }
 
   cancelar(){
@@ -168,23 +168,5 @@ salvarFoto(foto: Foto){
 
   listarCategorias(){
     this.listaCategorias = Categoria.listarCategorias();
-    /*
-    this.categoriaService.listarCategorias().subscribe(
-      data=>{
-        var resposta = JSON.parse(data);
-        if(resposta.length > 0){
-          for(var i = 0; i < resposta.length; i ++){
-            var categoria = new Categoria();
-            this.listaCategorias.push(categoria.categoriaFromJSON(resposta[i]));
-          }
-        }
-      },
-      err=>{
-        console.log('Erro listar');
-        console.log(err)
-      },
-      () => console.log("Completou Requisição"));
-    }
-    */
   }
 }

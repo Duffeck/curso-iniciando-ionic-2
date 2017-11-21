@@ -17,6 +17,38 @@
 
 
 <ion-content>
+  <ion-list>
+  <ion-item-sliding>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="https://res-3.cloudinary.com/gaveteiro/image/upload/c_pad,h_283,w_283/n57flsdhlm6m1l5cvas9.jpg">
+      </ion-avatar>
+      <h2>Lata de Refrigerante</h2>
+    </ion-item>
+    <!--
+    <ion-item-options side="left">
+      <button ion-button color="primary">
+        <ion-icon name="text"></ion-icon>
+        Text
+      </button>
+      <button ion-button color="secondary">
+        <ion-icon name="call"></ion-icon>
+        Call
+      </button>
+    </ion-item-options>
+  -->
+    <ion-item-options side="right">
+      <button ion-button color="verde">
+        <ion-icon name="create"></ion-icon>
+        Editar
+      </button>
+      <button ion-button color="secondary">
+        <ion-icon name="map"></ion-icon>
+        Mapa
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+  </ion-list>
   <ion-card *ngFor="let residuo of residuos">
     <!--<img *ngIf="evento.urlFoto" [src]="evento.urlFoto | safeurl"/>-->
     <ion-card-header>

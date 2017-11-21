@@ -27,15 +27,13 @@ Ionic pages and navigation.
       <ion-label stacked>Observação</ion-label>
       <ion-textarea type="text" [(ngModel)]="residuoForm.observacao" name="observacao"></ion-textarea>
     </ion-item>
-    <!--
     <ion-item>
 
       <ion-label>Categoria</ion-label>
       <ion-select [(ngModel)]="residuoForm.categoria">
-        <ion-option *ngFor="let categoriaz of listaCategorias" value="aaa">{{categoriaz.nome}}</ion-option>
+        <ion-option *ngFor="let categoria of listaCategorias" [value]="categoria">{{categoria.nome}}</ion-option>
       </ion-select>
     </ion-item>
-  -->
     <!--
     <ion-item>
     <ion-label>*Select Units :&nbsp;</ion-label>
