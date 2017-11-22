@@ -61,6 +61,7 @@ import { AreaAdministrativaDetailPage } from '../pages/areaadministrativa-detail
 import { DenunciaNewPage } from '../pages/denuncia-new/denuncia-new';
 import { DenunciaServiceProvider } from '../providers/denuncia-service/denuncia-service';
 import { DenunciaListPage } from '../pages/denuncia-list/denuncia-list';
+import { MapaPontosPage } from '../pages/mapa-pontos/mapa-pontos';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { DenunciaListPage } from '../pages/denuncia-list/denuncia-list';
     AreaAdministrativaNewPage,
     AreaAdministrativaDetailPage,
     DenunciaNewPage,
-    DenunciaListPage
+    DenunciaListPage,
+    MapaPontosPage
   ],
   imports: [
     BrowserModule,
@@ -140,7 +142,8 @@ import { DenunciaListPage } from '../pages/denuncia-list/denuncia-list';
     AreaAdministrativaNewPage,
     AreaAdministrativaDetailPage,
     DenunciaNewPage,
-    DenunciaListPage
+    DenunciaListPage,
+    MapaPontosPage
   ],
   providers: [
     StatusBar,

@@ -19,7 +19,7 @@ export class Residuo{
   residuoFromJSON(resid: any){
     this.id = resid.Id;
     this.nome = resid.Nome;
-    //this.categoria = resid.Categoria;
+    this.categoria = resid.Categoria;
     //this.fotos;
     this.descricao = resid.Descricao;
     this.estado = resid.Estado;

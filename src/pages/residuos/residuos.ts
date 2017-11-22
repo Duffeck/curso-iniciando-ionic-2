@@ -7,6 +7,7 @@ import { UserProvider } from '../../providers/user/user';
 import { ResiduoProvider } from '../../providers/residuo/residuo';
 import { Usuario } from '../objects/usuario';
 import { Residuo } from '../objects/residuo';
+import { MapaPontosPage } from '../mapa-pontos/mapa-pontos';
 /**
  * Generated class for the ResiduosPage page.
  *
@@ -34,6 +35,7 @@ export class ResiduosPage {
   }
 
   ionViewWillEnter() {
+    this.residuos = new Array();
     this.listarResiduos();
   }
 
@@ -57,6 +59,7 @@ export class ResiduosPage {
         if(residuosResponse.length > 0){
           for(let i = 0; i < residuosResponse.length; i++){
             var resid = new Residuo();
+            console.log(residuosResponse[i]);
             resid.residuoFromJSON(residuosResponse[i]);
             this.adicionarResiduoLista(resid);
           }
@@ -70,6 +73,12 @@ export class ResiduosPage {
   }
 
   adicionarResiduoLista(residuo: Residuo){
+    this.residuoService.baixarImagem(residuo);
+    //console.log(residuo);
     this.residuos.push(residuo);
+  }
+
+  mostrarMapa(categoria: Categoria){
+    this.navCtrl.push(MapaPontosPage, {'categoria' : categoria});
   }
 }
