@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Categoria } from '../objects/categoria';
+import { PontosDescarteProvider } from '../../providers/pontosdescarte/pontosdescarte';
 
 /**
 * Generated class for the MapaPontosPage page.
@@ -28,13 +29,18 @@ export class MapaPontosPage {
   mapElement: HTMLElement;
   categoria: Categoria;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private geolocation: Geolocation) {
-    this.categoria = navParams.data.get('categoria');
-    console.log(this.categoria );
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private geolocation: Geolocation, private pontoDescarteService : PontosDescarteProvider) {
+    this.categoria = this.navParams.get('categoria');
+    console.log(this.categoria);
+    this.listarPontos(this.categoria);
   }
 
+  ionViewWillEnter(){
+    //this.categoria = this.navParams.get('categoria');
+    //console.log(this.categoria );
+  }
   ionViewDidLoad() {
-    this.loadMap();
+    //this.loadMap();
     console.log('ionViewDidLoad MapaPontosPage');
   }
 
@@ -42,6 +48,24 @@ export class MapaPontosPage {
     this.destroyMap();
     console.log('will leave');
 
+  }
+
+  listarPontos(categoriaa: Categoria){
+    console.log(this.categoria);
+    console.log(categoriaa.id);
+    if(categoriaa.id){
+      this.pontoDescarteService.listarPontosPorCategoria(categoriaa).subscribe(
+        data => {
+          console.log(data);
+        },
+        err => {
+          console.log(err);
+        },
+        () => console.log("Listou (ou não) os pontos")
+      );
+    }else{
+      console.log('erro ao identificar categoria');
+    }
   }
 
   destroyMap(){

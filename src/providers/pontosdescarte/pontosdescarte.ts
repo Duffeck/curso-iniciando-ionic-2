@@ -3,7 +3,8 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { PontoDescarte } from '../../pages/objects/pontodescarte';
 import { Config } from '../config';
-import { Localizacao } from '../objects/localizacao';
+import { Localizacao } from '../../pages/objects/localizacao';
+import { Categoria } from '../../pages/objects/categoria';
 
 /*sss
 Generated class for the ZonaverdeProvider provider.
@@ -19,14 +20,12 @@ export class PontosDescarteProvider {
   }
 
   cadastrarPontoDescarte(pontoDescarte: PontoDescarte){
-    var url = Config.url+this.urlPart+'CadastrarPontoDescarte?';
-    url = url + 'estado=' + pontoDescarte.estado;
-    url = url + '&ehParticular=' + pontoDescarte.ehParticular;
-    url = url + '&latitude=' + pontoDescarte.localizacao.latitude;
-    url = url + '&longitude=' + pontoDescarte.localizacao.longitude;
+    let url = Config.url+this.urlPart+'CadastrarPontoDescarte?';
+    var options = Config.postOptionsHeader();
     console.log(url);
-    var response = this.http.get(url).map(res => res.json());
-    console.log(JSON.stringify(response));
+    console.log(pontoDescarte);
+    var response = this.http.post(url, pontoDescarte, options).map(res => res.json());
+    console.log(response);
     return response;
   }
 
@@ -41,6 +40,14 @@ export class PontosDescarteProvider {
 
   detalharPontoDescarte(){
     var url = Config.url+this.urlPart+'PontoDescarteDetail';
+    console.log(url);
+    var response = this.http.get(url).map(res => res.json());
+    console.log(JSON.stringify(response));
+    return response;
+  }
+
+  listarPontosPorCategoria(categoria: Categoria){
+    var url = Config.url+this.urlPart+'listarPontosPorCategoria?id_categoria='+categoria.id;
     console.log(url);
     var response = this.http.get(url).map(res => res.json());
     console.log(JSON.stringify(response));

@@ -19,7 +19,8 @@ export class Residuo{
   residuoFromJSON(resid: any){
     this.id = resid.Id;
     this.nome = resid.Nome;
-    this.categoria = resid.Categoria;
+    var cat = new Categoria();
+    this.categoria = cat.categoriaFromJSON(resid.Categoria);
     //this.fotos;
     this.descricao = resid.Descricao;
     this.estado = resid.Estado;

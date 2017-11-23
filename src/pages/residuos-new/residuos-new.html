@@ -28,37 +28,21 @@ Ionic pages and navigation.
       <ion-textarea type="text" [(ngModel)]="residuoForm.observacao" name="observacao"></ion-textarea>
     </ion-item>
     <ion-item>
-
       <ion-label>Categoria</ion-label>
       <ion-select [(ngModel)]="residuoForm.categoria">
         <ion-option *ngFor="let categoria of listaCategorias" [value]="categoria">{{categoria.nome}}</ion-option>
       </ion-select>
     </ion-item>
-    <!--
+    <ion-item *ngIf="residuoForm.fotos[0]"><img alt="Erro ao carregar imagem, tente novamente" [src]="residuoForm.fotos[0].URL"/></ion-item>
     <ion-item>
-    <ion-label>*Select Units :&nbsp;</ion-label>
-    <ion-select (ionChange)="unitSelectionChangeModal(residuoForm.categoria)" name="residuoForm.categoria" [(ngModel)]="residuoForm.categoria" required>
-    <ion-option value=""></ion-option>
-    <ion-option *ngFor="let categoriadd of listaCategorias" [value]="categoriadd">{{categoriadd.name}}</ion-option>
-  </ion-select>
-</ion-item>
-
-<ion-item>
-<ion-select [(ngModel)]="residuoForm.categoria" >
-<ion-option *ngFor="let country of countries" value="{{stringify(country)}}" {{country.name}}></ion-option>
-</ion-select></ion-item>
--->
-<ion-item *ngIf="residuoForm.fotos[0]"><img alt="Erro ao carregar imagem, tente novamente" [src]="residuoForm.fotos[0].URL"/></ion-item>
-<!--<ion-item *ngIf="residuoForm.fotos[0]"><img alt="Erro ao carregar imagem, tente novamente" [src]="residuoForm.fotos[0].URL"/></ion-item>-->
-<button item-list float-right ion-button color="corYouSustainable" right (click)="tirarFoto()">
-  <ion-icon name="camera" block></ion-icon>&nbsp;Imagem</button>
-  <ion-item>
-    <ion-buttons>
-      <button ion-button color="light" left (click)="cancelar()">
-        <ion-icon name="close"></ion-icon>&nbsp;Cancelar</button>
-        <button float-right ion-button color="corYouSustainable" right (click)="salvarResiduo(residuoForm)">
-          <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar</button>
-        </ion-buttons>
+      <button item-list float-right ion-button color="corYouSustainable" right (click)="tirarFoto()">
+        <ion-icon name="camera" block></ion-icon>&nbsp;Imagem</button>
       </ion-item>
     </ion-list>
+    <button ion-button color="light" left (click)="cancelar()">
+      <ion-icon name="close"></ion-icon>&nbsp;Cancelar
+    </button>
+    <button float-right ion-button color="corYouSustainable" right (click)="salvarResiduo(residuoForm)">
+      <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar
+    </button>
   </ion-content>

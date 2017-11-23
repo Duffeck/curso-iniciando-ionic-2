@@ -28,8 +28,9 @@ export class PontosDescartePage {
   listaCategorias : Array<any>;
   constructor(public navCtrl: NavController, public navParams: NavParams, private pontoDescarteService : PontosDescarteProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer, private googleMaps: GoogleMaps, private geolocation: Geolocation, private categoriaService: CategoriaServiceProvider) {
     this.pontoForm = new PontoDescarte();
+    this.pontoForm.categoria = new Categoria();
     this.listaCategorias = new Array<Categoria>();
-    this.loadMap();
+    //this.loadMap();
   }
 
   ionViewDidLoad() {
