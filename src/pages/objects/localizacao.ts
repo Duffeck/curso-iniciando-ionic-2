@@ -5,4 +5,9 @@ export class Localizacao {
   constructor(){
 
   }
+
+  localizacaoFromJSON(loc: any){
+    this.latitude = loc.Latitude;
+    this.longitude = loc.Longitude;
+  }
 }

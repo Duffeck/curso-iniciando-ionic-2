@@ -14,14 +14,19 @@ export class PontoDescarte {
   constructor(){
     this.localizacao = new Localizacao();
   }
-  
+
   pontoFromJSON(pd: any){
     this.id = pd.Id;
     this.estado = pd.Estado;
     this.ehParticular = pd.EhPArticular;
     this.alerta = pd.Alerta;
-    this.localizacao = pd.Localizacao;
-    this.categoria = pd.Categoria;
+    var loc = new Localizacao();
+    loc.localizacaoFromJSON(pd.Localizacao);
+    this.localizacao = loc;
+    if(pd.Categoria != undefined){
+      var cat = new Categoria();
+      this.categoria = cat.categoriaFromJSON(pd.Categoria);
+    }
     console.log(this);
   }
 }

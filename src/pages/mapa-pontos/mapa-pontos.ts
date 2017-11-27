@@ -12,6 +12,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Categoria } from '../objects/categoria';
 import { PontosDescarteProvider } from '../../providers/pontosdescarte/pontosdescarte';
+import { PontoDescarte } from '../objects/pontodescarte';
 
 /**
 * Generated class for the MapaPontosPage page.
@@ -28,35 +29,63 @@ export class MapaPontosPage {
   map: GoogleMap;
   mapElement: HTMLElement;
   categoria: Categoria;
+  pontosDescarte: Array<PontoDescarte>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private geolocation: Geolocation, private pontoDescarteService : PontosDescarteProvider) {
     this.categoria = this.navParams.get('categoria');
-    console.log(this.categoria);
-    this.listarPontos(this.categoria);
+    this.pontosDescarte = new Array<PontoDescarte>();
   }
 
   ionViewWillEnter(){
-    //this.categoria = this.navParams.get('categoria');
-    //console.log(this.categoria );
   }
   ionViewDidLoad() {
-    //this.loadMap();
-    console.log('ionViewDidLoad MapaPontosPage');
+    this.loadMap();
   }
 
   ionViewWillLeave(){
     this.destroyMap();
-    console.log('will leave');
 
   }
 
   listarPontos(categoriaa: Categoria){
-    console.log(this.categoria);
-    console.log(categoriaa.id);
     if(categoriaa.id){
       this.pontoDescarteService.listarPontosPorCategoria(categoriaa).subscribe(
         data => {
-          console.log(data);
+          var resultado = JSON.parse(data);
+          if(resultado.length > 0){
+            for(var cont = 0; cont < resultado.length; cont ++){
+              var ponto = new PontoDescarte();
+              ponto.pontoFromJSON(resultado[cont]);
+              this.pontosDescarte.push(ponto);
+            }
+            if(this.map != null){
+              for(var i=0; i < this.pontosDescarte.length; i++){
+                this.map.addMarker({
+                  title: this.pontosDescarte[i].estado,
+                  //icon: this.pontosDescarte[i].categoria.coresIngles[this.pontosDescarte[i].categoria.cor],
+                  icon: 'blue',
+                  animation: 'DROP',
+                  position: {
+                    lat: this.pontosDescarte[i].localizacao.latitude,
+                    lng: this.pontosDescarte[i].localizacao.longitude
+                  }
+                })
+                .then(marker => {
+                  console.log('ponto adicionado');
+                  /*
+                  marker.on(GoogleMapsEvent.MARKER_CLICK)
+                  .subscribe(() => {
+                    alert('clicked');
+                  });
+                  */
+                }).catch(err => {
+                  console.log(err);
+                });
+              }
+            }else{
+              console.log('mapa = null');
+            }
+          }
         },
         err => {
           console.log(err);
@@ -68,17 +97,19 @@ export class MapaPontosPage {
     }
   }
 
+  adicionarPontoMapa(ponto: PontoDescarte){
+
+  }
+
   destroyMap(){
     if(this.map != null){
       this.map.clear();
       this.map.remove().then(
         (data) => {
-          console.log('mapa destruído');
           console.log(data);
         }
       ).catch(
         (err) => {
-          console.log('erro destruir');
           console.log(err);
         }
       );
@@ -87,7 +118,6 @@ export class MapaPontosPage {
 
   loadMap() {
     this.geolocation.getCurrentPosition().then((position) => {
-      console.log(position);
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
       this.criarMapa(lat, lon)
@@ -114,7 +144,6 @@ export class MapaPontosPage {
     this.map.one(GoogleMapsEvent.MAP_READY)
     .then(() => {
       console.log('Map is ready!');
-      console.log(this.map);
       // Now you can use all methods safely.
       this.map.addMarker({
         title: 'Ionic',
@@ -131,6 +160,8 @@ export class MapaPontosPage {
           alert('clicked');
         });
       });
+      this.listarPontos(this.categoria);
+      /*
       this.map.addMarker({
         title: 'Ionic',
         icon: 'red',
@@ -158,7 +189,7 @@ export class MapaPontosPage {
         .subscribe(() => {
           alert('clicked');
         });
-      });
+      });*/
     });
   }
 
