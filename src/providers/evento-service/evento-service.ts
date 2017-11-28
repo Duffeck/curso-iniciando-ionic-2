@@ -6,7 +6,7 @@ import { Config } from '../config';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Base64 } from '@ionic-native/base64';
-import { Usuario } from '../../pages/objects/usuario';
+//import { Usuario } from '../../pages/objects/usuario';
 /*
 Generated class for the EventoServiceProvider provider.
 
@@ -22,19 +22,6 @@ export class EventoServiceProvider {
   }
 
   cadastrarEvento(evento: Event){
-    /*var url = Config.url+this.urlPart+'CadastrarEvento?';
-    url = url + 'bairro=' + evento.bairro;
-    url = url + '&cidade=' + evento.cidade;
-    url = url + '&data=' + evento.data;
-    url = url + '&descricao=' + evento.descricao;
-    url = url + '&estado=' + evento.estado;
-    url = url + '&nome=' + evento.nome;
-    url = url + '&numero=' + evento.numero;
-    url = url + '&rua=' + evento.rua;
-    //url = url + '&urlFoto=' + evento.uriFoto;
-    console.log(url);
-    var response = this.http.get(url).map(res => res.json());
-    return response;*/
     var url = Config.url+this.urlPart+'CadastrarEvento?';
     var options = Config.postOptionsHeader();
     console.log(url);

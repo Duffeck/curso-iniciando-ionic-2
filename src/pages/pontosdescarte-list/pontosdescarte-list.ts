@@ -6,11 +6,7 @@ import { PontosDescarteDetailPage } from '../pontosdescarte-detail/pontosdescart
 import { PontoDescarte } from '../objects/pontodescarte';
 import { PontosDescarteProvider } from '../../providers/pontosdescarte/pontosdescarte';
 
-import { Usuario } from '../objects/usuario';
-import { UserProvider } from '../../providers/user/user';
-
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 /**
 * Generated class for the PontosdescarteListPage page.
 *

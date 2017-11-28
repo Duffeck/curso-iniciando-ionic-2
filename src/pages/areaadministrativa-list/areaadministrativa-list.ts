@@ -6,7 +6,6 @@ import { AreaAdministrativa } from '../objects/areaAdministrativa';
 import { AreaAdministrativaServiceProvider } from '../../providers/areaadministrativa-service/areaadministrativa-service';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 /**
  * Generated class for the AreaadministrativaListPage page.
  *

@@ -5,8 +5,7 @@ import { PontoDescarte } from '../objects/pontodescarte';
 import { PontosDescarteProvider } from '../../providers/pontosdescarte/pontosdescarte';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
-import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, CameraPosition, MarkerOptions, Marker } from '@ionic-native/google-maps';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Categoria } from '../objects/categoria';
 import { CategoriaServiceProvider } from '../../providers/categoria-service/categoria-service';

@@ -86,7 +86,7 @@ export class Categoria{
     //this.tipos
     return this;
   }
-
+/*
   static listarCategorias(){
     var lista = new Array<Categoria>();
     var categoria = new Categoria();
@@ -109,4 +109,5 @@ export class Categoria{
     lista.push(categoria);
     return lista;
   }
+  */
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { ZonaVerde } from '../../pages/objects/zonaverde';
-import { Localizacao } from '../../pages/objects/localizacao';
+//import { Localizacao } from '../../pages/objects/localizacao';
 import { Config } from '../config';
 
 /*sss
@@ -36,7 +36,7 @@ export class ZonaverdeProvider {
     var response = this.http.get(url).map(res => res.json());
     console.log(JSON.stringify(response));
     return response;
-    
+
   }
 
 }

@@ -5,7 +5,6 @@ import { Alerta } from '../objects/alerta';
 import { AlertaProvider } from '../../providers/alerta/alerta';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 import { PontoDescarte } from '../objects/pontodescarte';
 /**
  * Generated class for the AlertaNewPage page.

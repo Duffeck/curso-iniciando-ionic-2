@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController} from 'ionic-angular';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 
 import { AlertaProvider } from '../../providers/alerta/alerta';
 import { Alerta } from '../objects/alerta';

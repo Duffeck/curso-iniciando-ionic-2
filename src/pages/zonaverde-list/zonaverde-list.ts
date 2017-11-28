@@ -6,7 +6,6 @@ import { ZonaverdeProvider } from '../../providers/zonaverde/zonaverde';
 import { ZonaVerdePage } from '../zonaverde/zonaverde';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 
 /**
  * Generated class for the ZonaverdePage page.

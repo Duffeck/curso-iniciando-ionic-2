@@ -3,7 +3,6 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { PontoDescarte } from '../../pages/objects/pontodescarte';
 import { Config } from '../config';
-import { Localizacao } from '../../pages/objects/localizacao';
 import { Categoria } from '../../pages/objects/categoria';
 
 /*sss

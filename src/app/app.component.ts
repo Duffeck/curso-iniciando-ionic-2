@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Events } from 'ionic-angular';
 
 import { HomePage } from '../pages/home/home';
-import { MenuTestPage } from '../pages/menu-test/menu-test';
 import { EventListPage } from '../pages/event-list/event-list';
 import { LoginPage } from '../pages/login/login';
 import { ResiduosPage } from '../pages/residuos/residuos';
@@ -13,8 +13,7 @@ import { Usuario } from '../pages/objects/usuario';
 import { UserProvider } from '../providers/user/user';
 import { ZonaVerdeListPage } from '../pages/zonaverde-list/zonaverde-list';
 import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdescarte-list';
-import { AlertaListPage } from '../pages/alerta-list/alerta-list';
-import { MapaTestePage } from '../pages/mapa-teste/mapa-teste';
+//import { AlertaListPage } from '../pages/alerta-list/alerta-list';
 import { MapaTesteNativoPage } from '../pages/mapa-teste-nativo/mapa-teste-nativo';
 import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
 import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
@@ -29,9 +28,12 @@ export class MyApp {
   loginPage: {component: any, title: string, icon: string};
   user : Usuario;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController, private userService: UserProvider) {
-    this.user = this.userService.retornarUsuario();
-    this.loginPage = {component: LoginPage, title: 'Login', icon: 'log-in'};
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController, private userService: UserProvider, public events: Events) {
+    this.gerarBotaoLogin();
+    events.subscribe('checaUsuario', () => {
+      console.log('aquiiiiiii');
+      this.gerarBotaoLogin();
+    });
     this.pages = [
       {component: HomePage, title: 'Home', icon: 'home'},
       {component: EventListPage, title: 'Eventos', icon: 'calendar'},
@@ -56,9 +58,20 @@ export class MyApp {
     });
   }
 
+  gerarBotaoLogin(){
+    this.user = this.userService.retornarUsuario();
+    if(this.user){
+      this.loginPage = {component: LoginPage, title: this.user.nome, icon: 'log-in'};
+      this.rootPage = HomePage;
+    }else{
+      this.loginPage = {component: LoginPage, title: 'Login', icon: 'log-in'};
+    }
+  }
   openPage(page: any) : void{
     this.user = this.userService.retornarUsuario();
+    console.log('aqui1');
     console.log(this.user);
+    console.log('aqui2');
     this.rootPage = page.component;
     this.menuCtrl.close();
   }

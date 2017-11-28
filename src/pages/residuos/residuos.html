@@ -12,11 +12,12 @@ Ionic pages and navigation.
     </button>
     <ion-title>Resíduos</ion-title>
   </ion-navbar>
-
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 </ion-header>
 
 
 <ion-content>
+  {{filtro}}
   <!--
 <ion-list>
 <ion-item-sliding>

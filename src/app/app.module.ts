@@ -46,9 +46,9 @@ import { Camera } from '@ionic-native/camera';
 import { ResiduoProvider } from '../providers/residuo/residuo';
 import { FotoServiceProvider } from '../providers/foto-service/foto-service';
 import { KeyPipe } from '../pipes/key/key';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
-import { MapaTestePage } from '../pages/mapa-teste/mapa-teste';
+//import { MapaTestePage } from '../pages/mapa-teste/mapa-teste';
 import { ConectivityServiceProvider } from '../providers/conectivity-service/conectivity-service';
 import { Network } from '@ionic-native/network';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -88,7 +88,6 @@ import { MapaPontosPage } from '../pages/mapa-pontos/mapa-pontos';
     AlertaDetailPage,
     ResiduosNewPage,
     KeyPipe,
-    MapaTestePage,
     MapaTesteNativoPage,
     CategoriaListPage,
     CategoriaNewPage,
@@ -134,7 +133,6 @@ import { MapaPontosPage } from '../pages/mapa-pontos/mapa-pontos';
     AlertaNewPage,
     AlertaDetailPage,
     ResiduosNewPage,
-    MapaTestePage,
     MapaTesteNativoPage,
     CategoriaListPage,
     CategoriaNewPage,

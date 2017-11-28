@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UsuarioNewPage } from '../usuario-new/usuario-new';
 import { UserProvider } from '../../providers/user/user';
-import { HomePage } from '../home/home';
 import { Usuario } from '../objects/usuario';
 import { ToastController } from 'ionic-angular';
 
@@ -30,7 +29,6 @@ export class LoginPage {
   loginUsuario(user: Usuario){
     this.userProvider.loginUsuario(user).subscribe(
       data => {
-        console.log('a');
         if(data){
           var resultado = JSON.parse(data);
           if(resultado != '' ){
@@ -39,22 +37,19 @@ export class LoginPage {
             usuario.usuarioFromJSON(JSON.parse(data));
             localStorage.setItem('user', JSON.stringify(usuario));
             this.apresentarToast('Login efetuado com sucesso');
-            this.navCtrl.setRoot(HomePage);
           }else{
             localStorage.setItem('user', JSON.stringify(null));
             this.apresentarToast('Email e Senha não correspondem. Tente novamente');
           }
         }else{
-          console.log('c');
           localStorage.setItem('user', JSON.stringify(null));
           this.apresentarToast('Erro ao fazer login');
         }
       },
       err => {
-        console.log('d');
         console.log(err);
       },
-      () => console.log('Completou Requisição')
+      () => this.userProvider.alterarUsuarioSistema()
     );
   }
 

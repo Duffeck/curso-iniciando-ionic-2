@@ -167,6 +167,20 @@ salvarFoto(foto: Foto){
   }
 
   listarCategorias(){
-    this.listaCategorias = Categoria.listarCategorias();
-  }
+    this.categoriaService.listarCategorias().subscribe(
+      data=>{
+        var resposta = JSON.parse(data);
+        if(resposta.length > 0){
+          for(var i = 0; i < resposta.length; i ++){
+            var categoria = new Categoria();
+            this.listaCategorias.push(categoria.categoriaFromJSON(resposta[i]));
+          }
+        }
+      },
+      err=>{
+        console.log('Erro listar');
+        console.log(err)
+      },
+      () => console.log("Completou Requisição"));
+    }
 }

@@ -9,11 +9,11 @@ import { Usuario } from '../objects/usuario';
 import { Residuo } from '../objects/residuo';
 import { MapaPontosPage } from '../mapa-pontos/mapa-pontos';
 /**
- * Generated class for the ResiduosPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+* Generated class for the ResiduosPage page.
+*
+* See http://ionicframework.com/docs/components/#navigation for more info
+* on Ionic pages and navigation.
+*/
 @IonicPage()
 @Component({
   selector: 'page-residuos',
@@ -24,6 +24,8 @@ export class ResiduosPage {
   shownGroup = null;
   usuario : Usuario;
   residuos: Array<Residuo>;
+  residuosPrincipal: Array<Residuo>;
+  filtro: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private userService: UserProvider, private residuoService: ResiduoProvider) {
     this.residuos = new Array(0);
@@ -37,6 +39,7 @@ export class ResiduosPage {
   ionViewWillEnter() {
     this.residuos = new Array();
     this.listarResiduos();
+    this.residuos = this.residuosPrincipal;
   }
 
   ionViewWillLeave() {
@@ -44,15 +47,16 @@ export class ResiduosPage {
   }
 
   presentPopover(categoria: string) {
-     let popover = this.modalCtrl.create(CategoriaSelecionarPage, {categoria});
-     popover.present();
-   }
+    let popover = this.modalCtrl.create(CategoriaSelecionarPage, {categoria});
+    popover.present();
+  }
 
   novoResiduo(){
     this.navCtrl.push(ResiduosNewPage);
   }
 
   listarResiduos(id_residuo: number = 0){
+    this.residuosPrincipal = new Array<Residuo>();
     this.residuoService.listarResiduos(id_residuo).subscribe(
       data => {
         let residuosResponse = JSON.parse(data);
@@ -75,10 +79,28 @@ export class ResiduosPage {
   adicionarResiduoLista(residuo: Residuo){
     this.residuoService.baixarImagem(residuo);
     //console.log(residuo);
-    this.residuos.push(residuo);
+    this.residuosPrincipal.push(residuo);
   }
 
   mostrarMapa(categoria: Categoria){
     this.navCtrl.push(MapaPontosPage, {'categoria' : categoria});
+  }
+
+  getItems(ev: any) {
+    this.filtro = ev.target.value;
+    /*
+    // Reset items back to all of the items
+    this.residuos = this.residuosPrincipal;
+
+    // set val to the value of the searchbar
+    let val = ev.target.value;
+    let arr_aux = new Array<Residuo>();
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.residuos = this.residuos.filter((item) => {
+        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+    */
   }
 }
