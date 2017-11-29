@@ -1,3 +1,5 @@
+import { Config } from '../../providers/config';
+
 export class Foto{
   id: number;
   URL: string;
@@ -8,6 +10,7 @@ export class Foto{
   }
   fotoFromJSON(pic: any){
     this.id = pic.Id;
-    this.URL= pic.URL;
+    //this.URL= pic.URL;
+    this.URL = Config.fileServer+'residuos/'+ this.id + '.jpg';
   }
 }

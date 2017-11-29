@@ -60,6 +60,7 @@ export class ResiduosPage {
     this.residuoService.listarResiduos(id_residuo).subscribe(
       data => {
         let residuosResponse = JSON.parse(data);
+        console.log(residuosResponse);
         if(residuosResponse.length > 0){
           for(let i = 0; i < residuosResponse.length; i++){
             var resid = new Residuo();
@@ -77,7 +78,7 @@ export class ResiduosPage {
   }
 
   adicionarResiduoLista(residuo: Residuo){
-    this.residuoService.baixarImagem(residuo);
+    //this.residuoService.baixarImagem(residuo);
     //console.log(residuo);
     this.residuosPrincipal.push(residuo);
   }

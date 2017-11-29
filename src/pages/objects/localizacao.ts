@@ -1,9 +1,12 @@
+import { Usuario } from './usuario';
+
 export class Localizacao {
   public latitude : number;
   public longitude : number;
+  public usuario: Usuario;
 
   constructor(){
-
+    this.usuario = null;
   }
 
   localizacaoFromJSON(loc: any){

@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 import { Usuario } from '../../pages/objects/usuario';
 import { Config } from '../config';
 import { Events } from 'ionic-angular';
-
+import { Localizacao } from '../../pages/objects/localizacao'
 /*
 Generated class for the UserProvider provider.
 
@@ -48,5 +48,9 @@ export class UserProvider {
     }else{
       return false;
     }
+  }
+
+  salvarLocalizacaoUsuario(localizacoa: Localizacao){
+
   }
 }
