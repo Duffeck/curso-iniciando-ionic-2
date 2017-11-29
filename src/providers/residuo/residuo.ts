@@ -30,7 +30,7 @@ export class ResiduoProvider {
 
   listarResiduos(ultimoId: number){
     let url = Config.url + this.urlPart + "/ListarResiduos/?";
-    url = url + "ultimoId=" + ultimoId;
+    url = url + "ultimoId=" + 2;
 
     console.log(url);
     var response = this.http.get(url).map(res => res.json());

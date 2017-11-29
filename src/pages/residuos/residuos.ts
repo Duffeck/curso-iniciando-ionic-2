@@ -88,7 +88,6 @@ export class ResiduosPage {
 
   getItems(ev: any) {
     this.filtro = ev.target.value;
-    /*
     // Reset items back to all of the items
     this.residuos = this.residuosPrincipal;
 
@@ -101,6 +100,5 @@ export class ResiduosPage {
         return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
-    */
   }
 }
