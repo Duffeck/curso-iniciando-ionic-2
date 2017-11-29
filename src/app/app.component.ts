@@ -14,7 +14,7 @@ import { UserProvider } from '../providers/user/user';
 import { ZonaVerdeListPage } from '../pages/zonaverde-list/zonaverde-list';
 import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdescarte-list';
 //import { AlertaListPage } from '../pages/alerta-list/alerta-list';
-import { MapaTesteNativoPage } from '../pages/mapa-teste-nativo/mapa-teste-nativo';
+//import { MapaTesteNativoPage } from '../pages/mapa-teste-nativo/mapa-teste-nativo';
 import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
 import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
 import { DenunciaListPage } from '../pages/denuncia-list/denuncia-list';
@@ -44,7 +44,7 @@ export class MyApp {
       {component: PontosDescarteListPage, title: 'Pontos de Descarte', icon: 'trash'},
       ///{component: AlertaListPage, title: 'Alertas', icon: 'flag'},
       //{component: MapaTestePage, title: 'Mapa', icon: 'map'},
-      {component: MapaTesteNativoPage, title: 'Garrafa Pástica', icon: 'map'},
+      //{component: MapaTesteNativoPage, title: 'Garrafa Pástica', icon: 'map'},
       {component: AreaAdministrativaListPage, title: 'Área Administrativa', icon:'clipboard'},
       {component: DenunciaListPage, title: 'Denúncias', icon:'alert'}
     ];
