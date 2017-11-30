@@ -18,7 +18,6 @@ export class AlertaDetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AlertaDetailPage');
   }
 
 }

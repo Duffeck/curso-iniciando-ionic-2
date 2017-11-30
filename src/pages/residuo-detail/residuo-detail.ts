@@ -18,7 +18,6 @@ export class ResiduoDetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ResiduoDetailPage');
   }
 
 }

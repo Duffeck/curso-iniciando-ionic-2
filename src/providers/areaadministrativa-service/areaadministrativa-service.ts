@@ -15,7 +15,6 @@ import { AreaAdministrativa } from '../../pages/objects/areaAdministrativa';
 export class AreaAdministrativaServiceProvider {
   urlPart = "AreaAdministrativa/";
   constructor(public http: Http) {
-    console.log('Hello AreaadministrativaServiceProvider Provider');
   }
 
   cadastrarArea(area: AreaAdministrativa){
@@ -23,17 +22,13 @@ export class AreaAdministrativaServiceProvider {
       url = url + 'nome=' + area.nome;
       url = url + '&descricao=' + area.descricao;
 
-      console.log(url);
       var response = this.http.get(url).map(res => res.json());
-      console.log(JSON.stringify(response));
       return response;
   }
 
   listarAreas(){
     var url = Config.url+this.urlPart+'ListarAreas';
-    console.log(url);
     var response = this.http.get(url).map(res => res.json());
-    console.log(JSON.stringify(response));
     return response;
 
   }

@@ -24,7 +24,6 @@ export class AreaAdministrativaNewPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AreaadministrativaNewPage');
   }
 
   cancelarArea(){
@@ -34,14 +33,11 @@ export class AreaAdministrativaNewPage {
   salvarArea(areaForm){
     this.areaAdministrativaService.cadastrarArea(areaForm).subscribe(
           data => {
-            console.log('Resposta');
-            console.log(data);
+
           },
           err => {
-            console.log('Erro');
-            console.log(err);
-          },
-          () => console.log('Completou Requisição')
+
+          }
       );
     this.navCtrl.pop();
   }

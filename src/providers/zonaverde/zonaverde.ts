@@ -15,7 +15,6 @@ import { Config } from '../config';
 export class ZonaverdeProvider {
   urlPart = "ZonaVerde/";
   constructor(public http: Http) {
-    console.log('Hello ZonaverdeProvider Provider');
   }
 
   cadastrarZonaVerde(zonaverde: ZonaVerde){
@@ -24,17 +23,13 @@ export class ZonaverdeProvider {
       url = url + '&descricao=' + zonaverde.descricao;
       url = url + '&latitude=' + zonaverde.localizacao.latitude;
       url = url + '&longitude=' + zonaverde.localizacao.longitude;
-      console.log(url);
       var response = this.http.get(url).map(res => res.json());
-      console.log(JSON.stringify(response));
       return response;
   }
 
   listarZonasVerdes(){
     var url = Config.url+this.urlPart+'ListarZonasVerdes';
-    console.log(url);
     var response = this.http.get(url).map(res => res.json());
-    console.log(JSON.stringify(response));
     return response;
 
   }

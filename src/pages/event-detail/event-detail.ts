@@ -35,6 +35,5 @@ export class EventDetailPage {
     if(this.usuario != undefined){
       this.eventoService.denunciarEvento(evento, this.usuario);
     }*/
-    console.log(evento);
   }
 }

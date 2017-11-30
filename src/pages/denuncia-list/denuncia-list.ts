@@ -26,15 +26,11 @@ export class DenunciaListPage {
   listarDenuncias(){
     this.denunciaProvider.listarDenuncias().subscribe(
       data => {
-        console.log('lista');
-        console.log(data);
+
       },
       err => {
-        console.log('erro');
-        console.log(err);
-      },
-      () => console.log('Completou requisição')
+
+      }
     );
-    console.log('ionViewDidLoad DenunciaListPage');
   }
 }

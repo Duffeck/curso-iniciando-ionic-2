@@ -14,7 +14,6 @@ export class ConectivityServiceProvider {
 
   constructor(public http: Http, public platform: Platform, public network: Network) {
     this.onDevice = this.platform.is('cordova');
-    console.log('Hello ConectivityServiceProvider Provider');
   }
 
   isOnline(): boolean {

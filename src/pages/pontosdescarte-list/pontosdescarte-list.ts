@@ -29,12 +29,10 @@ export class PontosDescarteListPage {
   }
 
   ionViewWillEnter(){
-    console.log("will enter")
     this.listarPontos();
   }
 
   ionViewWillLeave(){
-    console.log("will leave");
     this.pontos = new Array(0);
   }
 
@@ -43,7 +41,6 @@ export class PontosDescarteListPage {
       this.pontos = new Array(0);
     }
     this.pontos.push(ponto);
-    console.log(this.pontos);
   }
   newPonto(){
     this.navCtrl.push(PontosDescartePage);
@@ -56,8 +53,6 @@ export class PontosDescarteListPage {
   listarPontos(){
     this.pontosDescarteService.listarPontosDescarte().subscribe(
       data =>{
-        console.log('Data:'+ data.length);
-        console.log(JSON.parse(data));
         let pontosResponse = JSON.parse(data);
         if(pontosResponse.length>0){
           for(var i=0; i < pontosResponse.length; i++){
@@ -65,16 +60,10 @@ export class PontosDescarteListPage {
             pd.pontoFromJSON(pontosResponse[i]);
             this.adicionarPontoDescarte(pd);
           }
-          console.log('lengthok');
         }else{
-          console.log('0');
         }
       },
       err => {
-        console.log('erroooooooooooo');
-        console.log(err);
-      },
-      () => console.log('Completou Requisição'));
-      console.log('ionViewDidLoad PontosdescarteListPage');
+      });
     }
   }

@@ -51,11 +51,8 @@ export class EventListPage {
         }
       },
       err => {
-        console.log(err);
-      },
-      () => (console.log('Completou Requisição')
-
-    ));
+      }
+    );
   }
 
   newEvent(){
@@ -68,7 +65,6 @@ export class EventListPage {
     }
     this.eventoService.baixarImagem(evento)
     this.eventos.push(evento);
-    console.log(this.eventos);
   }
   eventDetail(event: Event){
     this.navCtrl.push(EventDetailPage, {evento: event});

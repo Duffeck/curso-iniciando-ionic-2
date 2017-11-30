@@ -13,7 +13,6 @@ informativo : Informativo;
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public informativoProvider : InformativoProvider) {
         this.informativoProvider.informativoAleatorio().subscribe(
               data => {
-                console.log('encontrou');
                 if(data){
                   this.informativo = new Informativo();
                   this.informativo.informativoFromJSON(JSON.parse(data));
@@ -21,10 +20,8 @@ informativo : Informativo;
                 }
               },
               err => {
-                console.log('Erro');
-                console.log(err);
               },
-              () => console.log('Completou Requisição')
+              () => {}
           );
 
   }

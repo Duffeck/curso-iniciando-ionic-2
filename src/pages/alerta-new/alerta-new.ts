@@ -25,7 +25,6 @@ export class AlertaNewPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AlertaNewPage');
   }
 
   cancelarAlerta(){
@@ -33,19 +32,12 @@ export class AlertaNewPage {
   }
 
   salvarAlerta(alertaForm){
-     console.log("salvando");
      this.alertaService.cadastrarAlerta(alertaForm).subscribe(
           data => {
-            console.log('Resposta');
-            console.log(data);
           },
           err => {
-            console.log('Erro');
-            console.log(err);
-          },
-          () => console.log('Completou Requisição')
+          }
       );
-      console.log(alertaForm.Descricao);
     this.navCtrl.pop();
   }
 

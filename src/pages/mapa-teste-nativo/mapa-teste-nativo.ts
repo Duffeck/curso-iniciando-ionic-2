@@ -28,12 +28,10 @@ export class MapaTesteNativoPage {
 
   ionViewDidLoad() {
     this.loadMap();
-    console.log('ionViewDidLoad MapaTesteNativoPage');
   }
 
   ionViewWillLeave(){
     this.destroyMap();
-    console.log('will leave');
 
   }
 
@@ -42,13 +40,9 @@ export class MapaTesteNativoPage {
       this.map.clear();
       this.map.remove().then(
           (data) => {
-            console.log('mapa destruído');
-            console.log(data);
           }
       ).catch(
         (err) => {
-          console.log('erro destruir');
-          console.log(err);
         }
       );
     }
@@ -56,7 +50,6 @@ export class MapaTesteNativoPage {
 
   loadMap() {
     this.geolocation.getCurrentPosition().then((position) => {
-      console.log(position);
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
       this.criarMapa(lat, lon)
@@ -67,7 +60,6 @@ export class MapaTesteNativoPage {
 
   criarMapa(lat, lon){
     this.mapElement = document.getElementById('maptestenativo');
-    console.log(this.mapElement);
     let mapOptions: GoogleMapOptions = {
       camera: {
         target: {
@@ -78,15 +70,11 @@ export class MapaTesteNativoPage {
         tilt: 15
       }
     };
-    console.log('mapaaaaaaaaaaaaaaa');
-    console.log(this.map);
     this.map = this.googleMaps.create(this.mapElement, mapOptions);
     this.map.setDiv(this.mapElement);
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
-        console.log('Map is ready!');
-        console.log(this.map);
         // Now you can use all methods safely.
         this.map.addMarker({
             title: 'Ionic',

@@ -5,11 +5,11 @@ import { Categoria } from '../objects/categoria';
 import { CategoriaServiceProvider } from '../../providers/categoria-service/categoria-service';
 
 /**
- * Generated class for the CategoriaNewPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+* Generated class for the CategoriaNewPage page.
+*
+* See http://ionicframework.com/docs/components/#navigation for more info
+* on Ionic pages and navigation.
+*/
 @IonicPage()
 @Component({
   selector: 'page-categoria-new',
@@ -26,15 +26,12 @@ export class CategoriaNewPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CategoriaNewPage');
   }
 
   presentModal(categoria: string) {
     let modal = this.modalCtrl.create(CategoriaSelecionarPage, {categoria});
     modal.onDidDismiss(
       data => {
-        console.log(data);
-        console.log(data.categoria);
         if(data.categoria == 'origem'){
           this.listTiposCategorias.origem = data.categoriasSelecionadas;
 
@@ -52,25 +49,20 @@ export class CategoriaNewPage {
           this.listTiposCategorias.tipo = data.categoriasSelecionadas;
           this.categoriaForm.tipos = data.categoriasSelecionadas;
         }
-        console.log(this.listTiposCategorias);
       }
     );
     modal.present();
   }
 
   salvarCategoria(categoria: Categoria){
-      console.log(categoria);
-      this.categoriaService.cadastrarCategoria(categoria).subscribe(
-            data => {
-              console.log('Resposta');
-              console.log(data);
-            },
-            err => {
-              console.log('Erro');
-              console.log(err);
-            },
-            () => console.log('Completou Requisição')
-        );
-      this.navCtrl.pop();
-    }
+    this.categoriaService.cadastrarCategoria(categoria).subscribe(
+      data => {
+
+      },
+      err => {
+
+      }
+    );
+    this.navCtrl.pop();
   }
+}

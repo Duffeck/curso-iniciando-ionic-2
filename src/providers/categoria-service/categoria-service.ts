@@ -13,7 +13,6 @@ import { Categoria } from '../../pages/objects/categoria';
 export class CategoriaServiceProvider {
   urlPart = "Categoria/";
   constructor(public http: Http) {
-    console.log('Hello CategoriaServiceProvider Provider');
   }
 
   listarComponentesCategoria(componente: string){
@@ -35,9 +34,7 @@ export class CategoriaServiceProvider {
       break;
     }
     if(url != ""){
-      console.log(url);
       var response = this.http.get(url).map(res => res.json());
-      console.log(response);
       return response;
     }else{
       return null;
@@ -47,18 +44,13 @@ export class CategoriaServiceProvider {
   cadastrarCategoria(categoria: Categoria){
     var url = Config.url+this.urlPart + "/SalvarCategoria/";
     var options = Config.postOptionsHeader();
-    console.log(url);
-    console.log(categoria);
     var response = this.http.post(url, categoria, options).map(res => res.json());
-    console.log(response);
     return response;
   }
 
   listarCategorias(){
     var url = Config.url+this.urlPart+"/ListarTodasCategorias/";
-    console.log(url);
     var response = this.http.get(url).map(res => res.json());
-    console.log(response);
     return response;
   }
 }

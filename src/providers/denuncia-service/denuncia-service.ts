@@ -21,14 +21,11 @@ export class DenunciaServiceProvider {
   denunciar(denuncia: Denuncia){
     if(denuncia.usuario.id != undefined){
       var url = Config.url+this.urlPart+'Denunciar?';
-      console.log(url);
       var headers = new Headers();
       headers.append("Accept", 'application/json');
       headers.append('Content-Type', 'application/json' );
       let options = new RequestOptions({method: 'post', headers: headers});
-      console.log(denuncia);
       var response = this.http.post(url, denuncia, options).map(res => res.json());
-      console.log(JSON.stringify(response));
       return response;
     }
     return Observable.create(

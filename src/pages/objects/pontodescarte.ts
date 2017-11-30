@@ -27,6 +27,5 @@ export class PontoDescarte {
       var cat = new Categoria();
       this.categoria = cat.categoriaFromJSON(pd.Categoria);
     }
-    console.log(this);
   }
 }

@@ -31,7 +31,6 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController, private userService: UserProvider, public events: Events) {
     this.gerarBotaoLogin();
     events.subscribe('checaUsuario', () => {
-      console.log('aquiiiiiii');
       this.gerarBotaoLogin();
     });
     this.pages = [
@@ -48,7 +47,6 @@ export class MyApp {
       {component: AreaAdministrativaListPage, title: 'Área Administrativa', icon:'clipboard'},
       {component: DenunciaListPage, title: 'Denúncias', icon:'alert'}
     ];
-    console.log(this.pages);
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -69,9 +67,6 @@ export class MyApp {
   }
   openPage(page: any) : void{
     this.user = this.userService.retornarUsuario();
-    console.log('aqui1');
-    console.log(this.user);
-    console.log('aqui2');
     this.rootPage = page.component;
     this.menuCtrl.close();
   }

@@ -13,13 +13,10 @@ import { Informativo } from '../../pages/objects/informativo';
 export class InformativoProvider {
   urlPart = "Informativo/";
   constructor(public http: Http) {
-
-    console.log('Hello InformativoProvider Provider');
   }
 
   informativoAleatorio(){
       var url = Config.url+this.urlPart+'InformativoAleatorio/';
-      console.log(url);
       var response = this.http.get(url).map(res => res.json());
       return response;
   }
@@ -28,7 +25,6 @@ export class InformativoProvider {
       var url = Config.url+this.urlPart+'CadastrarInformativo?';
       url = url + 'titulo=' + informativo.titulo;
       url = url + '&descricao=' + informativo.descricao;
-      console.log(url);
       var response = this.http.get(url).map(res => res.json());
       return response;
   }

@@ -18,7 +18,6 @@ export class AreaAdministrativaDetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AreaadministrativaDetailPage');
   }
 
 }

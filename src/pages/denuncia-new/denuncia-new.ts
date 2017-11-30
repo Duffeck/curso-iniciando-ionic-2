@@ -24,11 +24,9 @@ export class DenunciaNewPage {
     this.usuario = this.userService.retornarUsuario();
     this.denunciaForm = new Denuncia();
     this.denunciaForm.usuario = this.usuario;
-    console.log(this.denunciaForm.usuario);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DenunciaNewPage');
   }
 
   cancelarDenuncia(){
@@ -38,16 +36,10 @@ export class DenunciaNewPage {
   salvarDenuncia(denuncia: Denuncia){
     this.denunciaService.denunciar(denuncia).subscribe(
       data=> {
-        console.log('eeeee');
-        console.log(data);
       },
       err => {
-        console.log('aaaaaaaaaaaaa');
-        console.log(err)
-      },
-      () => console.log("Completou requisição")
+      }
     )
-    console.log(denuncia);
   }
 
 }

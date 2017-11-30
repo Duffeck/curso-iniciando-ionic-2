@@ -27,13 +27,10 @@ export class InformativoPopPage {
             }
           },
           err => {
-            console.log('Erro');
-            console.log(err);
           },
-          () => console.log('Completou Requisição')
+
       );
     this.navCtrl.pop();
-    console.log('ionViewDidLoad InformativoPopPage');
   }
 
 }

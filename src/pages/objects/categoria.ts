@@ -50,7 +50,6 @@ export class Categoria{
   }
 
   componenteCategoriaFromJSON(componente: any, tipo: string){
-    //console.log(componente);
     var comp;
     switch(tipo){
       case 'origem':

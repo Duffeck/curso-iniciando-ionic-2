@@ -38,6 +38,5 @@ export class Event {
       var datePipe = new DatePipe("pt-BR");
       this.data = datePipe.transform(this.periodos[0].horarioFinal, 'dd/MM/yyyy');
     }
-    console.log(this);
   }
 }

@@ -33,7 +33,6 @@ export class ResiduosPage {
 
   ionViewDidLoad() {
     this.usuario = this.userService.retornarUsuario();
-    console.log('ionViewDidLoad ResiduosPage');
   }
 
   ionViewWillEnter() {
@@ -60,11 +59,9 @@ export class ResiduosPage {
     this.residuoService.listarResiduos(id_residuo).subscribe(
       data => {
         let residuosResponse = JSON.parse(data);
-        console.log(residuosResponse);
         if(residuosResponse.length > 0){
           for(let i = 0; i < residuosResponse.length; i++){
             var resid = new Residuo();
-            console.log(residuosResponse[i]);
             resid.residuoFromJSON(residuosResponse[i]);
             this.adicionarResiduoLista(resid);
           }
@@ -72,14 +69,12 @@ export class ResiduosPage {
       },
       err => {
 
-      },
-      () => console.log(this.residuos)
+      }
     );
   }
 
   adicionarResiduoLista(residuo: Residuo){
     //this.residuoService.baixarImagem(residuo);
-    //console.log(residuo);
     this.residuosPrincipal.push(residuo);
   }
 

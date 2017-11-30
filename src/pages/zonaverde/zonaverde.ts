@@ -35,21 +35,14 @@ export class ZonaVerdePage {
 
   ionViewWillLeave(){
     this.destroyMap();
-    console.log('will leave');
-
   }
 
   salvarZonaVerde(zonaForm){
     this.zonaVerdeService.cadastrarZonaVerde(zonaForm).subscribe(
       data => {
-        console.log('Resposta');
-        console.log(data);
       },
       err => {
-        console.log('Erro');
-        console.log(err);
-      },
-      () => console.log('Completou Requisição')
+      }
     );
     this.navCtrl.pop();
   }
@@ -59,20 +52,15 @@ export class ZonaVerdePage {
       this.map.clear();
       this.map.remove().then(
         (data) => {
-          console.log('mapa destruído');
-          console.log(data);
         }
       ).catch(
         (err) => {
-          console.log('erro destruir');
-          console.log(err);
         }
       );
     }
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ZonaVerdePage');
   }
 
 
@@ -92,7 +80,6 @@ export class ZonaVerdePage {
 
   criarMapa(lat, lon){
     this.mapElement = document.getElementById('mapzona');
-    console.log(this.mapElement);
     let mapOptions: GoogleMapOptions = {
       camera: {
         target: {
@@ -109,8 +96,6 @@ export class ZonaVerdePage {
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY)
     .then(() => {
-      console.log('Map is ready!');
-      console.log(this.map);
       // Now you can use all methods safely.
       this.map.addMarker({
         title: 'Ionic',
@@ -151,10 +136,8 @@ export class ZonaVerdePage {
           });
         },
         err => {
-          console.log(err);
         },
         () => {
-          console.log('teste');
         })
 
       });

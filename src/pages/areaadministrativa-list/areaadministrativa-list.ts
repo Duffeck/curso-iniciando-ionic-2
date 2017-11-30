@@ -23,16 +23,13 @@ export class AreaAdministrativaListPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AreaadministrativaListPage');
   }
 
   ionViewWillEnter(){
-    console.log("will enter")
     this.listarAreas();
   }
 
   ionViewWillLeave(){
-    console.log("will leave");
     this.areas = new Array(0);
   }
 
@@ -45,14 +42,11 @@ export class AreaAdministrativaListPage {
       this.areas = new Array(0);
     }
     this.areas.push(area);
-    console.log(this.areas);
   }
 
   listarAreas(){
     this.areaService.listarAreas().subscribe(
       data =>{
-        console.log('Data:'+ data.length);
-        console.log(JSON.parse(data));
         let pontosResponse = JSON.parse(data);
         if(pontosResponse.length>0){
           for(var i=0; i < pontosResponse.length; i++){
@@ -60,16 +54,11 @@ export class AreaAdministrativaListPage {
             ar.areaFromJSON(pontosResponse[i]);
             this.adicionarArea(ar);
           }
-          console.log('lengthok');
         }else{
-          console.log('0');
         }
       },
       err => {
-        console.log('erroooooooooooo');
-        console.log(err);
-      },
-      () => console.log('Completou Requisição'));
-    console.log('ionViewDidLoad PontosdescarteListPage');
+
+      });
   }
 }

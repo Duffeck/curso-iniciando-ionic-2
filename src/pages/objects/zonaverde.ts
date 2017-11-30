@@ -9,6 +9,5 @@ export class ZonaVerde {
     this.nome = zn.Nome;
     this.descricao = zn.Descricao;
     this.localizacao = zn.localizacao;
-    console.log(this);
   }
 }

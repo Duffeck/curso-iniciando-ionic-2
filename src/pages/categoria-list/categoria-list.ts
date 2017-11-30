@@ -29,7 +29,6 @@ export class CategoriaListPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CategoriaListPage');
   }
 
   novaCategoria(){
@@ -41,19 +40,15 @@ export class CategoriaListPage {
     this.categoriaService.listarCategorias().subscribe(
       data=>{
         var resposta = JSON.parse(data);
-        console.log(resposta);
         if(resposta.length > 0){
           for(var i = 0; i < resposta.length; i ++){
             var categoria = new Categoria();
             this.listaCategorias.push(categoria.categoriaFromJSON(resposta[i]));
           }
         }
-        console.log(this.listaCategorias);
       },
       err=>{
-        console.log('Erro listar');
-        console.log(err)
-      },
-      () => console.log("Completou Requisição"));
+
+      });
     }
   }

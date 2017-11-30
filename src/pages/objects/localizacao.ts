@@ -12,7 +12,7 @@ export class Localizacao {
   localizacaoFromJSON(loc: any){
     this.latitude = loc.Latitude;
     this.longitude = loc.Longitude;
-    if(loc.Usuario!=''){
+    if(loc.Usuario!=null){
       var user:Usuario = new Usuario();
       user.usuarioFromJSON(loc.Usuario);
       this.usuario = user;

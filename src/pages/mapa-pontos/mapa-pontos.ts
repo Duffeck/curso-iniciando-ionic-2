@@ -71,7 +71,6 @@ export class MapaPontosPage {
                   }
                 })
                 .then(marker => {
-                  console.log('ponto adicionado');
                   /*
                   marker.on(GoogleMapsEvent.MARKER_CLICK)
                   .subscribe(() => {
@@ -79,21 +78,16 @@ export class MapaPontosPage {
                   });
                   */
                 }).catch(err => {
-                  console.log(err);
                 });
               }
             }else{
-              console.log('mapa = null');
             }
           }
         },
         err => {
-          console.log(err);
-        },
-        () => console.log("Listou (ou não) os pontos")
+        }
       );
     }else{
-      console.log('erro ao identificar categoria');
     }
   }
 
@@ -106,11 +100,9 @@ export class MapaPontosPage {
       this.map.clear();
       this.map.remove().then(
         (data) => {
-          console.log(data);
         }
       ).catch(
         (err) => {
-          console.log(err);
         }
       );
     }
@@ -143,7 +135,6 @@ export class MapaPontosPage {
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY)
     .then(() => {
-      console.log('Map is ready!');
       // Now you can use all methods safely.
       this.map.addMarker({
         title: 'Ionic',

@@ -20,20 +20,14 @@ export class UserProvider {
   cadastrarUsuario(user: Usuario){
     var url = Config.url+this.urlPart+'CadastrarUsuario?';
     var options = Config.postOptionsHeader();
-    console.log(url);
-    console.log(user);
     var response = this.http.post(url, user, options).map(res => res.json());
-    console.log(response);
     return response;
   }
 
   loginUsuario(user: Usuario){
     var url = Config.url+this.urlPart+'EfetuarLogin?';
     var options = Config.postOptionsHeader();
-    console.log(url);
-    console.log(user);
     var response = this.http.post(url, user, options).map(res => res.json());
-    console.log(response);
     return response;
   }
 
@@ -52,14 +46,12 @@ export class UserProvider {
 
   salvarLocalizacaoUsuario(localizacao: Localizacao){
     var user = this.retornarUsuario();
+    console.log(user);
     if(user){
-      localizacao.usuario = user;
-      var url = Config.url+this.urlPart+'EfetuarLogin?';
+      user.localizacoes.push(localizacao);
+      var url = Config.url+this.urlPart+'InserirLocalizacao?';
       var options = Config.postOptionsHeader();
-      console.log(url);
-      console.log(user);
       var response = this.http.post(url, user, options).map(res => res.json());
-      console.log(response);
       return response;
     }
   }

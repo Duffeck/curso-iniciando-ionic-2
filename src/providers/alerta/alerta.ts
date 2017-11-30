@@ -14,14 +14,11 @@ import { Alerta } from '../../pages/objects/alerta';
 export class AlertaProvider {
   urlPart = "Alerta/";
   constructor(public http: Http) {
-    console.log('Hello AlertaProvider Provider');
   }
 
   listarAlertas(){
     var url = Config.url+this.urlPart+'ListarAlertas';
-    console.log(url);
     var response = this.http.get(url).map(res => res.json());
-    console.log(JSON.stringify(response));
     return response;
   }
 
@@ -31,9 +28,7 @@ export class AlertaProvider {
         url = url '&descricao=' alerta.descricao;
         url = url '&latitude=' zonaverde.localizacao.latitude;
         url = url '&longitude=' zonaverde.localizacao.longitude;*/
-        console.log(url);
         var response = this.http.get(url).map(res => res.json());
-        console.log(JSON.stringify(response));
         return response;
     }
 }

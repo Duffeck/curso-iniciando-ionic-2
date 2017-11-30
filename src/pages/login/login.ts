@@ -23,7 +23,6 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
   }
 
   loginUsuario(user: Usuario){
@@ -33,7 +32,6 @@ export class LoginPage {
           var resultado = JSON.parse(data);
           if(resultado != '' ){
             var usuario = new Usuario();
-            console.log(JSON.parse(data));
             usuario.usuarioFromJSON(JSON.parse(data));
             localStorage.setItem('user', JSON.stringify(usuario));
             this.apresentarToast('Login efetuado com sucesso');
@@ -47,7 +45,6 @@ export class LoginPage {
         }
       },
       err => {
-        console.log(err);
       },
       () => this.userProvider.alterarUsuarioSistema()
     );
@@ -57,7 +54,6 @@ export class LoginPage {
     if(sucesso){
       this.navCtrl.pop();
     }else{
-      console.log('Deu pau');
     }
   }
 

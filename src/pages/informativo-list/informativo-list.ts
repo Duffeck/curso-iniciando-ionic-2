@@ -18,7 +18,6 @@ export class InformativoListPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad InformativoListPage');
   }
 
   newInformativo(){
