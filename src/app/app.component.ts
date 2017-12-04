@@ -18,6 +18,7 @@ import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdesca
 import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
 import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
 import { DenunciaListPage } from '../pages/denuncia-list/denuncia-list';
+import { HistoricoLocalizacoesPage } from '../pages/historico-localizacoes/historico-localizacoes';
 
 @Component({
   templateUrl: 'app.html'
@@ -45,7 +46,8 @@ export class MyApp {
       //{component: MapaTestePage, title: 'Mapa', icon: 'map'},
       //{component: MapaTesteNativoPage, title: 'Garrafa Pástica', icon: 'map'},
       {component: AreaAdministrativaListPage, title: 'Área Administrativa', icon:'clipboard'},
-      {component: DenunciaListPage, title: 'Denúncias', icon:'alert'}
+      {component: DenunciaListPage, title: 'Denúncias', icon:'alert'},
+      {component: HistoricoLocalizacoesPage, title: 'Histórico Localizações Usuário', icon:'alert'}
     ];
 
     platform.ready().then(() => {

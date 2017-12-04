@@ -48,10 +48,11 @@ export class UserProvider {
     var user = this.retornarUsuario();
     console.log(user);
     if(user){
-      user.localizacoes.push(localizacao);
+      //user.localizacoes.push(localizacao);
+      localizacao.usuario = user;
       var url = Config.url+this.urlPart+'InserirLocalizacao?';
       var options = Config.postOptionsHeader();
-      var response = this.http.post(url, user, options).map(res => res.json());
+      var response = this.http.post(url, localizacao, options).map(res => res.json());
       return response;
     }
   }

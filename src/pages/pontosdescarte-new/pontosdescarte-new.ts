@@ -89,7 +89,7 @@ export class PontosDescartePage {
         },
         () => console.log('completou requisição')
       );
-      //this.criarMapa(lat, lon)
+      this.criarMapa(lat, lon)
     },err=>{
       var loc = new Localizacao();
       loc.latitude = -25.451394;
@@ -104,11 +104,12 @@ export class PontosDescartePage {
         },
         () => console.log('completou requisição')
       );
-      //this.criarMapa(-25.451394, -49.251168);
+      this.criarMapa(-25.451394, -49.251168);
     });
   }
 
   criarMapa(lat, lon){
+    console.log('ue, cade o mapa?');
     this.mapElement = document.getElementById('mapponto');
     let mapOptions: GoogleMapOptions = {
       camera: {
