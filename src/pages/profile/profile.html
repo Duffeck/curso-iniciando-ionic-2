@@ -1,5 +1,5 @@
 <!--
-  Generated template for the HistoricoLocalizacoesPage page.
+  Generated template for the ProfilePage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -10,12 +10,12 @@
     <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Minhas Localizações</ion-title>
+    <ion-title>{{user.nome}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-lista de localizações aqui
+<button ion-button block (click)="exibirLocalizacoes()">Minhas Localizações</button>
 </ion-content>

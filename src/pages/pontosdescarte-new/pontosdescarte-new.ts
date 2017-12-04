@@ -73,13 +73,11 @@ export class PontosDescartePage {
   }
 
   loadMap() {
-    console.log('aqui');
     this.geolocation.getCurrentPosition().then((position) => {
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
       this.pontoForm.localizacao.latitude = lat;
       this.pontoForm.localizacao.longitude = lon;
-      console.log(this.pontoForm.localizacao);
       this.userService.salvarLocalizacaoUsuario(this.pontoForm.localizacao).subscribe(
         data=>{
 
@@ -94,13 +92,10 @@ export class PontosDescartePage {
       var loc = new Localizacao();
       loc.latitude = -25.451394;
       loc.longitude = -49.251168;
-      console.log(loc);
       this.userService.salvarLocalizacaoUsuario(loc).subscribe(
         data=>{
-          console.log(data);
         },
         err=>{
-
         },
         () => console.log('completou requisição')
       );
@@ -109,7 +104,6 @@ export class PontosDescartePage {
   }
 
   criarMapa(lat, lon){
-    console.log('ue, cade o mapa?');
     this.mapElement = document.getElementById('mapponto');
     let mapOptions: GoogleMapOptions = {
       camera: {

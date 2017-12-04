@@ -19,6 +19,7 @@ import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
 import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
 import { DenunciaListPage } from '../pages/denuncia-list/denuncia-list';
 import { HistoricoLocalizacoesPage } from '../pages/historico-localizacoes/historico-localizacoes';
+import { ProfilePage } from '../pages/profile/profile';
 
 @Component({
   templateUrl: 'app.html'
@@ -61,7 +62,7 @@ export class MyApp {
   gerarBotaoLogin(){
     this.user = this.userService.retornarUsuario();
     if(this.user){
-      this.loginPage = {component: LoginPage, title: this.user.nome, icon: 'log-in'};
+      this.loginPage = {component: ProfilePage, title: this.user.nome, icon: 'log-in'};
       this.rootPage = HomePage;
     }else{
       this.loginPage = {component: LoginPage, title: 'Login', icon: 'log-in'};

@@ -58,6 +58,7 @@ export class ResiduosPage {
     this.residuosPrincipal = new Array<Residuo>();
     this.residuoService.listarResiduos(id_residuo).subscribe(
       data => {
+        console.log(data);
         let residuosResponse = JSON.parse(data);
         if(residuosResponse.length > 0){
           for(let i = 0; i < residuosResponse.length; i++){
@@ -68,7 +69,7 @@ export class ResiduosPage {
         }
       },
       err => {
-
+        console.log(err);
       }
     );
   }

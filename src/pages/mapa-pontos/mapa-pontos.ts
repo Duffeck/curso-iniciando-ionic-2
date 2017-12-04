@@ -52,7 +52,6 @@ export class MapaPontosPage {
     if(categoriaa.id){
       this.pontoDescarteService.listarPontosPorCategoria(categoriaa).subscribe(
         data => {
-          console.log(data);
           var resultado = JSON.parse(data);
           if(resultado.length > 0){
             for(var cont = 0; cont < resultado.length; cont ++){
@@ -111,20 +110,15 @@ export class MapaPontosPage {
   }
 
   loadMap() {
-    console.log('ue');
     this.geolocation.getCurrentPosition().then((position) => {
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
-      console.log('localização ok');
       this.criarMapa(lat, lon);
     },err=>{
-      console.log('erro localização');
       this.criarMapa(-25.450418, -49.251285);
     });
   }
   criarMapa(lat, lon){
-    console.log(lat);
-    console.log(lon);
     this.mapElement = document.getElementById('mapcategoria');
     let mapOptions: GoogleMapOptions = {
       camera: {
@@ -187,9 +181,6 @@ export class MapaPontosPage {
           alert('clicked');
         });
       });*/
-    }).catch(err=>{
-      console.log('erro');
-      console.log(err);
     });
   }
 
