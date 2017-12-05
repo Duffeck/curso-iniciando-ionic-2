@@ -14,14 +14,11 @@ import { Config } from '../config';
 export class AlertaProvider {
   urlPart = "Alerta/";
   constructor(public http: Http) {
-    console.log('Hello AlertaProvider Provider');
   }
 
   listarAlertas(){
     var url = Config.url+this.urlPart+'ListarAlertas';
-    console.log(url);
     var response = this.http.get(url).map(res => res.json());
-    console.log(JSON.stringify(response));
     return response;
   }
 
@@ -44,5 +41,4 @@ export class AlertaProvider {
     console.log(JSON.stringify(response));
     return response;
   }
-
 }

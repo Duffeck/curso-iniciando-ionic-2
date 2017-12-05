@@ -1,3 +1,5 @@
+import { Localizacao } from './localizacao';
+
 export class Usuario {
   public id : number;
   public nome : string;
@@ -6,8 +8,10 @@ export class Usuario {
   public pontos : string;
   public raioBusca : number;
   public ehAdministrador : boolean;
+  public localizacoes: Array<Localizacao>;
 
   constructor() {
+    this.localizacoes = new Array<Localizacao>();
   }
 
   usuarioFromJSON(user: any){
@@ -18,7 +22,5 @@ export class Usuario {
     this.pontos = user.Pontos;
     this.raioBusca = user.RaioBusca;
     this.ehAdministrador = user.EhAdministrador;
-    console.log('this');
-    console.log(this);
   }
 }

@@ -4,12 +4,14 @@ import { ComposicaoQuimica } from './composicaoQuimica.ts';
 import { Tipo } from './tipo.ts';
 
 export class Categoria{
+  id: number;
   nome: string;
   descricao: string;
   codGrafico: string;
   cor: string;
   tiposCategorias: any;
   cores: Array<string>;
+  coresIngles: any;
   origens: Array<any>;
   periculosidades: Array<any>;
   composicoesQuimicas: Array<any>;
@@ -26,6 +28,8 @@ export class Categoria{
     //this.cores = ['#FFFF00','#FF0000','#008000','#000000','#FFA500','#FFFFFF','#A0522D','#800080','#0000FF']
     //this.cores = ['amarelo','vermelho','verde','preto','laranjado','branco','marrom','roxo','azul'];
     this.cores = ['Amarelo','Vermelho','Verde','Preto','Laranjado','Branco','Marrom','Roxo','Azul'];
+
+    this.coresIngles = {'Amarelo':'yellow','Vermelho':'red','Verde':'green','Preto':'black','Laranjado':'orange','Branco':'white','Marrom':'brown','Roxo':'purple','Azul':'blue'};
     /*
     this.cores = [
       'Amarelo': '#FFFF00',
@@ -47,7 +51,6 @@ export class Categoria{
   }
 
   componenteCategoriaFromJSON(componente: any, tipo: string){
-    //console.log(componente);
     var comp;
     switch(tipo){
       case 'origem':
@@ -73,6 +76,7 @@ export class Categoria{
 
   categoriaFromJSON(categoria: any){
     this.codGrafico = categoria.CodGrafico;
+    this.id = categoria.Id;
     //this.composicoesQuimicas
     this.cor = categoria.Cor;
     this.descricao = categoria.Descricao;

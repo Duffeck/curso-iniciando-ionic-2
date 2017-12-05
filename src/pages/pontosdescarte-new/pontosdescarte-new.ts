@@ -5,81 +5,65 @@ import { PontoDescarte } from '../objects/pontodescarte';
 import { PontosDescarteProvider } from '../../providers/pontosdescarte/pontosdescarte';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
-import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, CameraPosition, MarkerOptions, Marker } from '@ionic-native/google-maps';
+
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Localizacao } from '../objects/localizacao';
 import { Categoria } from '../objects/categoria';
 import { CategoriaServiceProvider } from '../../providers/categoria-service/categoria-service';
+import { UserProvider } from '../../providers/user/user';
 /**
- * Generated class for the PontosdescarteNewPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+* Generated class for the PontosdescarteNewPage page.
+*
+* See http://ionicframework.com/docs/components/#navigation for more info
+* on Ionic pages and navigation.
+*/
 @IonicPage()
 @Component({
   selector: 'page-pontosdescarte-new',
   templateUrl: 'pontosdescarte-new.html',
 })
 export class PontosDescartePage {
-  pontoForm: PontoDescarte;
+  pontoForm : PontoDescarte;
   map: GoogleMap;
   mapElement: HTMLElement;
-  listaCategorias: Array<any>;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private pontoDescarteService: PontosDescarteProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer, private googleMaps: GoogleMaps, private geolocation: Geolocation, private categoriaService: CategoriaServiceProvider) {
-    //this.pontoForm = new PontoDescarte();
-    //constructor(public navCtrl: NavController, public navParams: NavParams, private pontoDescarteService : PontosDescarteProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer,  {
-      this.pontoForm = new PontoDescarte();
-      this.listaCategorias = new Array<Categoria>();
-      this.loadMap();
-    }
+  listaCategorias : Array<any>;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private pontoDescarteService : PontosDescarteProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer, private googleMaps: GoogleMaps, private geolocation: Geolocation, private categoriaService: CategoriaServiceProvider, private userService: UserProvider) {
+    this.pontoForm = new PontoDescarte();
+    this.pontoForm.categoria = new Categoria();
+    this.listaCategorias = new Array<Categoria>();
+    this.loadMap();
+  }
 
-    ionViewDidLoad() {
-      console.log('ionViewDidLoad PontosdescarteNewPage');
-    }
+  ionViewDidLoad() {
+  }
 
-    ionViewWillEnter(){
-      this.listarCategorias();
-    }
+  ionViewWillEnter(){
+    this.listarCategorias();
+  }
 
-    ionViewWillLeave(){
-      this.destroyMap();
-      console.log('will leave');
+  ionViewWillLeave(){
+    this.destroyMap();
+  }
 
-    }
+  salvarPonto(pontoForm){
+    this.pontoDescarteService.cadastrarPontoDescarte(pontoForm).subscribe(
+      data => {
+      },
+      err => {
+      }
+    );
+    this.navCtrl.pop();
+  }
 
-    cancelarPonto(){
-      this.navCtrl.pop();
-    }
-
-    salvarPonto(pontoForm){
-      console.log(pontoForm.ehParticular);
-      this.pontoDescarteService.cadastrarPontoDescarte(pontoForm).subscribe(
-        data => {
-          console.log('Resposta');
-          console.log(data);
-        },
-        err => {
-          console.log('Erro');
-          console.log(err);
-        },
-        () => console.log('Completou Requisição')
-      );
-      this.navCtrl.pop();
-    }
-
-    destroyMap(){
+  destroyMap(){
     if(this.map != null){
       this.map.clear();
       this.map.remove().then(
         (data) => {
-          console.log('mapa destruído');
-          console.log(data);
         }
       ).catch(
         (err) => {
-          console.log('erro destruir');
-          console.log(err);
         }
       );
     }
@@ -87,20 +71,37 @@ export class PontosDescartePage {
 
   loadMap() {
     this.geolocation.getCurrentPosition().then((position) => {
-      console.log(position);
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
       this.pontoForm.localizacao.latitude = lat;
       this.pontoForm.localizacao.longitude = lon;
+      this.userService.salvarLocalizacaoUsuario(this.pontoForm.localizacao).subscribe(
+        data=>{
+
+        },
+        err=>{
+
+        },
+        () => console.log('completou requisição')
+      );
       this.criarMapa(lat, lon)
     },err=>{
+      var loc = new Localizacao();
+      loc.latitude = -25.451394;
+      loc.longitude = -49.251168;
+      this.userService.salvarLocalizacaoUsuario(loc).subscribe(
+        data=>{
+        },
+        err=>{
+        },
+        () => console.log('completou requisição')
+      );
       this.criarMapa(-25.451394, -49.251168);
     });
   }
 
   criarMapa(lat, lon){
     this.mapElement = document.getElementById('mapponto');
-    console.log(this.mapElement);
     let mapOptions: GoogleMapOptions = {
       camera: {
         target: {
@@ -117,8 +118,6 @@ export class PontosDescartePage {
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY)
     .then(() => {
-      console.log('Map is ready!');
-      console.log(this.map);
       // Now you can use all methods safely.
       this.map.addMarker({
         title: 'Ionic',
@@ -138,7 +137,6 @@ export class PontosDescartePage {
 
     });
   }
-
   listarCategorias(){
     this.categoriaService.listarCategorias().subscribe(
       data=>{
@@ -151,10 +149,6 @@ export class PontosDescartePage {
         }
       },
       err=>{
-        console.log('Erro listar');
-        console.log(err)
-      },
-      () => console.log("Completou Requisição"));
+      });
     }
-
   }

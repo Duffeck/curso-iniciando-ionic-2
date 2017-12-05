@@ -3,46 +3,36 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Usuario } from '../../pages/objects/usuario';
 import { Config } from '../config';
-
+import { Events } from 'ionic-angular';
+import { Localizacao } from '../../pages/objects/localizacao'
 /*
-  Generated class for the UserProvider provider.
+Generated class for the UserProvider provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
+See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+for more info on providers and Angular 2 DI.
 */
 @Injectable()
 export class UserProvider {
-  urlPart = "User/";
-  constructor(public http: Http) {
-    //console.log('Hello UserProvider Provider');
+  urlPart = "Usuarios/";
+  constructor(public http: Http, public events: Events) {
   }
 
-/*
-  searchMovies(movieName) {
-        var url = 'http://api.themoviedb.org/3/search/movie?query=&query=' + encodeURI(movieName) + '&api_key=5fbddf6b517048e25bc3ac1bbeafb919';
-        var response = this.http.get(url).map(res => res.json());
-        return response;
-  }
-*/
   cadastrarUsuario(user: Usuario){
-      var url = Config.url+this.urlPart+'CadastrarUsuario?';
-      url = url + 'nome=' + user.nome;
-      url = url + '&senha=' + user.senha;
-      url = url + '&email=' + user.email;
-      console.log(url);
-      var response = this.http.get(url).map(res => res.json());
-      console.log(response);
-      return response;
+    var url = Config.url+this.urlPart+'CadastrarUsuario?';
+    var options = Config.postOptionsHeader();
+    var response = this.http.post(url, user, options).map(res => res.json());
+    return response;
   }
 
   loginUsuario(user: Usuario){
-      var url = Config.url+this.urlPart+'EfetuarLogin?';
-      url = url + '&senha=' + user.senha;
-      url = url + '&email=' + user.email;
-      console.log(url);
-      var response = this.http.get(url).map(res => res.json());
-      console.log(response);
-      return response;
+    var url = Config.url+this.urlPart+'EfetuarLogin?';
+    var options = Config.postOptionsHeader();
+    var response = this.http.post(url, user, options).map(res => res.json());
+    return response;
+  }
+
+  alterarUsuarioSistema() {
+    this.events.publish('checaUsuario');
   }
 
   retornarUsuario() {
@@ -72,6 +62,34 @@ export class UserProvider {
     var response = this.http.get(url).map(res => res.json());
     console.log(JSON.stringify(response));
     return response;
+  }
+  salvarLocalizacaoUsuario(localizacao: Localizacao){
+    var user = this.retornarUsuario();
+    console.log(user);
+    if(user){
+      //user.localizacoes.push(localizacao);
+      localizacao.usuario = user;
+      var url = Config.url+this.urlPart+'InserirLocalizacao?';
+      var options = Config.postOptionsHeader();
+      var response = this.http.post(url, localizacao, options).map(res => res.json());
+      return response;
+    }
+  }
 
+  listarLocalizacoes(usuario: Usuario){
+    if(usuario.id > 0){
+      var url = Config.url+this.urlPart+'ListarLocalizacoes?id_usuario='+usuario.id;
+      console.log(url);
+      var response = this.http.get(url).map(res => res.json());
+      return response;
+    }
+  }
+
+  sair(){
+    var user = this.retornarUsuario();
+    if(user){
+      localStorage.removeItem('user');
+      this.alterarUsuarioSistema();
+    }
   }
 }

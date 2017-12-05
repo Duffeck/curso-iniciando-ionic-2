@@ -1,9 +1,3 @@
-4 <!--
-  Generated template for the AlertaNewPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar color="corYouSustainable">
     <button ion-button icon-only menuToggle>
@@ -19,26 +13,18 @@
   <ion-list radio-group [(ngModel)]="alertaForm.estado" name="estado">
     <ion-list-header> A lixeira está? </ion-list-header>
     <ion-item>
-      <ion-label>Disponível</ion-label>
+      <ion-label>Disponível {{ponto.estado}}</ion-label>
       <ion-radio value="disponivel" checked></ion-radio>
     </ion-item>
-    <ion-item>
-      <ion-label>Inutilizável</ion-label>
-      <ion-radio value="inutilizavel"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Em manutenção</ion-label>
-      <ion-radio value="em_manutencao"></ion-radio>
-    </ion-item>
-  </ion-list>
-  <ion-item>
-    <ion-label stacked>Descrição</ion-label>
-    <ion-textarea type="text" [(ngModel)]="alertaForm.descricao" name="descricao"></ion-textarea>
-  </ion-item>
-  <button ion-button color="light" left (click)="cancelarAlerta()">
-    <ion-icon name="close"></ion-icon>&nbsp;Cancelar</button>
-  <button float-right ion-button color="corYouSustainable" right (click)="salvarAlerta(alertaForm)">
-    <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar</button>
 
+    <ion-item>
+      <ion-label stacked>Descrição</ion-label>
+      <ion-textarea type="text" [(ngModel)]="alertaForm.descricao" name="descricao"></ion-textarea>
+    </ion-item>
+    <button ion-button color="light" left (click)="cancelarAlerta()">
+      <ion-icon name="close"></ion-icon>&nbsp;Cancelar</button>
+      <button float-right ion-button color="corYouSustainable" right (click)="salvarAlerta(alertaForm)">
+        <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar</button>
 
-</ion-content>
+      </ion-list>
+    </ion-content>

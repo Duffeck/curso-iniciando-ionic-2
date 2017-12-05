@@ -2,7 +2,6 @@ export class AreaAdministrativa {
   public id : number;
   public descricao: String;
   public nome: String;
-
   constructor(){
 
   }

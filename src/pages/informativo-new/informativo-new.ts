@@ -18,11 +18,9 @@ export class InformativoNewPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public informativoService: InformativoProvider) {
     this.informativoForm = new Informativo();
-    //console.log(this.informativoForm);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad InformativoNewPage');
   }
 
   cancelarInformativo(){
@@ -33,14 +31,9 @@ export class InformativoNewPage {
 
     this.informativoService.cadastrarInformativo(informativo).subscribe(
           data => {
-            console.log('Resposta');
-            console.log(data);
           },
           err => {
-            console.log('Erro');
-            console.log(err);
-          },
-          () => console.log('Completou Requisição')
+          }
       );
     this.navCtrl.pop();
   }

@@ -7,7 +7,6 @@ import { ZonaVerdePage } from '../zonaverde/zonaverde';
 import { ZonaVerdeDetailPage } from '../zonaverde-detail/zonaverde-detail';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 
 /**
  * Generated class for the ZonaverdePage page.
@@ -43,8 +42,6 @@ export class ZonaVerdeListPage {
   ionViewDidLoad() {
     this.zonaVerdeService.listarZonasVerdes().subscribe(
       data =>{
-        console.log('Data:'+ data.length);
-        console.log(JSON.parse(data));
         let zonasResponse = JSON.parse(data);
         if(zonasResponse.length>0){
           for(var i=0; i < zonasResponse.length; i++){
@@ -52,17 +49,11 @@ export class ZonaVerdeListPage {
             zn.zonaFromJSON(zonasResponse[i]);
             this.adicionarZonaVerde(zn);
           }
-          console.log('lengthok');
         }else{
-          console.log('0');
         }
       },
       err => {
-        console.log('erroooooooooooo');
-        console.log(err);
-      },
-      () => console.log('Completou Requisição'));
-    console.log('ionViewDidLoad ZonaVerdeListPage');
+      });
   }
 
   adicionarZonaVerde(zona : ZonaVerde){
@@ -70,6 +61,5 @@ export class ZonaVerdeListPage {
       this.zonas = new Array(0);
     }
     this.zonas.push(zona);
-    console.log(this.zonas);
   }
 }

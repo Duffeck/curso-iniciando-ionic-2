@@ -19,15 +19,14 @@ import { PontoDescarte } from '../objects/pontodescarte';
 export class PontosDescarteDetailPage {
   ponto : PontoDescarte;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    console.log(navParams.data);
     this.ponto = navParams.get('ponto');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PontosdescarteDetailPage');
   }
 
-  newAlerta(ponto){
+
+  newAlerta(ponto : PontoDescarte){
     this.navCtrl.push(AlertaNewPage, {ponto: ponto});
   }
 }

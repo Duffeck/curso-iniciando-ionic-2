@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController} from 'ionic-angular';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 
 import { AlertaProvider } from '../../providers/alerta/alerta';
 import { Alerta } from '../objects/alerta';
@@ -23,8 +22,6 @@ export class AlertaListPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertaService: AlertaProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer) {
     this.alertaService.listarAlertas().subscribe(
       data =>{
-        console.log('Data:'+ data.length);
-        console.log(JSON.parse(data));
         let alertasResponse = JSON.parse(data);
         if(alertasResponse.length>0){
           for(var i=0; i < alertasResponse.length; i++){
@@ -32,20 +29,14 @@ export class AlertaListPage {
             al.alertaFromJSON(alertasResponse[i]);
             this.adicionarAlertas(al);
           }
-          console.log('lengthok');
         }else{
-          console.log('0');
         }
       },
       err => {
-        console.log('erroooooooooooo');
-        console.log(err);
-      },
-      () => console.log('Completou Requisição'));
+      });
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AlertaListPage');
   }
 
   adicionarAlertas(alerta : Alerta){
@@ -53,7 +44,6 @@ export class AlertaListPage {
       this.alertas = new Array(0);
     }
     this.alertas.push(alerta);
-    console.log(this.alertas);
   }
 
   alertasDescarteDetail(alerta){

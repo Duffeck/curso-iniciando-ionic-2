@@ -3,11 +3,8 @@ import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-an
 
 import { Alerta } from '../objects/alerta';
 import { AlertaProvider } from '../../providers/alerta/alerta';
-
-import { PontoDescarte } from '../objects/pontodescarte';
-
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
+import { PontoDescarte } from '../objects/pontodescarte';
 /**
  * Generated class for the AlertaNewPage page.
  *
@@ -27,7 +24,6 @@ export class AlertaNewPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AlertaNewPage');
   }
 
   cancelarAlerta(){
@@ -35,19 +31,13 @@ export class AlertaNewPage {
   }
 
   salvarAlerta(alertaForm){
-    console.log("salvando");
-    this.alertaService.cadastrarAlerta(alertaForm).subscribe(
+     this.alertaService.cadastrarAlerta(alertaForm).subscribe(
           data => {
-            console.log('Resposta');
-            console.log(data);
           },
           err => {
-            console.log('Erro');
-            console.log(err);
-          },
-          () => console.log('Completou Requisição')
+
+          }
       );
-      console.log(alertaForm.Descricao);
     this.navCtrl.pop();
   }
 

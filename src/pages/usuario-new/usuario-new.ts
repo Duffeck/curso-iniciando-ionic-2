@@ -21,22 +21,18 @@ export class UsuarioNewPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UsuarioNewPage');
   }
 
   salvarUsuario(user: Usuario){
       this.userProvider.cadastrarUsuario(user).subscribe(
           data => {
-              console.log(data);
               if(data){
                 this.apresentarToast('Cadastro efetuado com sucesso');
                 this.navCtrl.pop();
               }
           },
           err => {
-              console.log(err);
-          },
-          () => console.log('Completou Requisição')
+          }
       );
   }
 

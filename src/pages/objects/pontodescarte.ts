@@ -19,8 +19,12 @@ export class PontoDescarte {
     this.estado = pd.Estado;
     this.ehParticular = pd.EhPArticular;
     this.alerta = pd.Alerta;
-    this.localizacao = pd.Localizacao;
-    this.categoria = pd.Categoria;
-    console.log(this);
+    var loc = new Localizacao();
+    loc.localizacaoFromJSON(pd.Localizacao);
+    this.localizacao = loc;
+    if(pd.Categoria != undefined){
+      var cat = new Categoria();
+      this.categoria = cat.categoriaFromJSON(pd.Categoria);
+    }
   }
 }

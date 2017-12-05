@@ -5,20 +5,18 @@ import { PontosDescartePage } from '../pontosdescarte-new/pontosdescarte-new';
 import { PontosDescarteDetailPage } from '../pontosdescarte-detail/pontosdescarte-detail';
 import { PontoDescarte } from '../objects/pontodescarte';
 import { PontosDescarteProvider } from '../../providers/pontosdescarte/pontosdescarte';
-
 import { AreaAdministrativa } from '../objects/areaAdministrativa';
 
 import { Usuario } from '../objects/usuario';
 import { UserProvider } from '../../providers/user/user';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 /**
- * Generated class for the PontosdescarteListPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+* Generated class for the PontosdescarteListPage page.
+*
+* See http://ionicframework.com/docs/components/#navigation for more info
+* on Ionic pages and navigation.
+*/
 @IonicPage()
 @Component({
   selector: 'page-pontosdescarte-list',
@@ -32,16 +30,13 @@ export class PontosDescarteListPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PontosDescarteListPageo');
   }
 
   ionViewWillEnter(){
-    console.log("will enter")
     this.listarPontos();
   }
 
   ionViewWillLeave(){
-    console.log("will leave");
     this.pontos = new Array(0);
   }
 
@@ -50,7 +45,6 @@ export class PontosDescarteListPage {
       this.pontos = new Array(0);
     }
     this.pontos.push(ponto);
-    console.log(this.pontos);
   }
   newPonto(){
     this.navCtrl.push(PontosDescartePage);
@@ -105,8 +99,7 @@ export class PontosDescarteListPage {
             console.log(err);
           },
           () => console.log('Completou Requisição'));
-      }
-    console.log('ionViewDidLoad PontosdescarteListPage');
-  }
-
+        }
+        console.log('ionViewDidLoad PontosdescarteListPage');
+    }
 }

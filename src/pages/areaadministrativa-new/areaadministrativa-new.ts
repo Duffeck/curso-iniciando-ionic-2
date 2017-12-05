@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 
 import { AreaAdministrativa } from '../objects/areaAdministrativa';
-import { AreaAdministrativaProvider } from '../../providers/areaadministrativa-service/areaadministrativa-service';
+import { AreaAdministrativaServiceProvider } from '../../providers/areaadministrativa-service/areaadministrativa-service';
 
 /**
  * Generated class for the AreaadministrativaNewPage page.
@@ -20,12 +19,12 @@ import { AreaAdministrativaProvider } from '../../providers/areaadministrativa-s
 })
 export class AreaAdministrativaNewPage {
   areaForm : AreaAdministrativa;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private areaAdministrativaService : AreaAdministrativaProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private areaAdministrativaService : AreaAdministrativaServiceProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer) {
     this.areaForm = new AreaAdministrativa();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AreaadministrativaNewPage');
   }
 
   cancelarArea(){
@@ -35,14 +34,10 @@ export class AreaAdministrativaNewPage {
   salvarArea(areaForm){
     this.areaAdministrativaService.cadastrarArea(areaForm).subscribe(
           data => {
-            console.log('Resposta');
-            console.log(data);
           },
           err => {
-            console.log('Erro');
-            console.log(err);
-          },
-          () => console.log('Completou Requisição')
+
+          }
       );
     this.navCtrl.pop();
   }

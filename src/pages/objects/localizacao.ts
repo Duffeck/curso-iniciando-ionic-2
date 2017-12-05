@@ -1,15 +1,26 @@
+import { Usuario } from './usuario';
+
 export class Localizacao {
   public id : number;
   public latitude : number;
   public longitude : number;
+  public usuario: Usuario;
+  public dataCriacao: string;
 
   constructor(){
+    this.usuario = null;
   }
 
-  localizacaoFromJSON(lc: any){
-    this.id = lc.Id;
-    this.latitude = lc.Latitude;
-    this.longitude = lc.Longitude;
-    console.log(this);
+  localizacaoFromJSON(loc: any){
+    this.id = loc.Id;
+    this.latitude = loc.Latitude;
+    this.longitude = loc.Longitude;
+    if(loc.Usuario!=null){
+      var user:Usuario = new Usuario();
+      user.usuarioFromJSON(loc.Usuario);
+      this.usuario = user;
+    }
+    //this.dataCriacao = new Date(loc.DataCriacao).toISOString();
+    this.dataCriacao = loc.DataCriacao;
   }
 }

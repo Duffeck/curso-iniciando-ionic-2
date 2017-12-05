@@ -13,4 +13,4 @@ import { AreaAdministrativaListPage } from './areaadministrativa-list';
     AreaAdministrativaListPage
   ]
 })
-export class AreaAdministrativaListPageModule {}
+export class AreaadministrativaListPageModule {}

@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { AreaAdministrativaDetailPage } from './areaadministrativa-detail';
+
+import { AreaAdministrativaDetailPage  } from './areaadministrativa-detail';
 
 @NgModule({
   declarations: [
-    AreaAdministrativaDetailPage,
+    AreaAdministrativaDetailPage ,
   ],
   imports: [
-    IonicPageModule.forChild(AreaAdministrativaDetailPage),
+    IonicPageModule.forChild(AreaAdministrativaDetailPage ),
   ],
   exports: [
     AreaAdministrativaDetailPage
   ]
 })
-export class AreaAdministrativaDetailPageModule {}
+export class AreaadministrativaDetailPageModule {}
