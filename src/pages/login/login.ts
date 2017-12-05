@@ -35,6 +35,7 @@ export class LoginPage {
             usuario.usuarioFromJSON(JSON.parse(data));
             localStorage.setItem('user', JSON.stringify(usuario));
             this.apresentarToast('Login efetuado com sucesso');
+            this.userProvider.alterarUsuarioSistema();
           }else{
             localStorage.setItem('user', JSON.stringify(null));
             this.apresentarToast('Email e Senha não correspondem. Tente novamente');
@@ -45,8 +46,7 @@ export class LoginPage {
         }
       },
       err => {
-      },
-      () => this.userProvider.alterarUsuarioSistema()
+      }
     );
   }
 

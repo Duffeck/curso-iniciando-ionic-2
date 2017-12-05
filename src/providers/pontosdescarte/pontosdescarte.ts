@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { PontoDescarte } from '../../pages/objects/pontodescarte';
 import { Config } from '../config';
 import { Categoria } from '../../pages/objects/categoria';
+import { Localizacao } from '../../pages/objects/localizacao';
 
 /*sss
 Generated class for the ZonaverdeProvider provider.
@@ -37,8 +38,16 @@ export class PontosDescarteProvider {
     return response;
   }
 
-  listarPontosPorCategoria(categoria: Categoria){
+  listarPontosPorCategoria(categoria: Categoria, localizacao: Localizacao){
+    var distancia = parseInt(localStorage.getItem('distancia'));
+
     var url = Config.url+this.urlPart+'listarPontosPorCategoria?id_categoria='+categoria.id;
+    if(localizacao.latitude && localizacao.longitude){
+      url += "&distancia=" + distancia
+      + "&latitude="+localizacao.latitude
+      + "&longitude="+localizacao.longitude;
+    }
+    console.log(url);
     var response = this.http.get(url).map(res => res.json());
     return response;
   }

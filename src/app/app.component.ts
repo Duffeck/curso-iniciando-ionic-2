@@ -20,6 +20,7 @@ import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/are
 import { DenunciaListPage } from '../pages/denuncia-list/denuncia-list';
 import { HistoricoLocalizacoesPage } from '../pages/historico-localizacoes/historico-localizacoes';
 import { ProfilePage } from '../pages/profile/profile';
+import { ConfiguracaoPage } from '../pages/configuracao/configuracao';
 
 @Component({
   templateUrl: 'app.html'
@@ -48,7 +49,8 @@ export class MyApp {
       //{component: MapaTesteNativoPage, title: 'Garrafa Pástica', icon: 'map'},
       {component: AreaAdministrativaListPage, title: 'Área Administrativa', icon:'clipboard'},
       {component: DenunciaListPage, title: 'Denúncias', icon:'alert'},
-      {component: HistoricoLocalizacoesPage, title: 'Histórico Localizações Usuário', icon:'alert'}
+      {component: HistoricoLocalizacoesPage, title: 'Histórico Localizações Usuário', icon:'alert'},
+      {component: ConfiguracaoPage, title: 'Configurar', icon:'cog'}
     ];
 
     platform.ready().then(() => {
@@ -66,6 +68,7 @@ export class MyApp {
       this.rootPage = HomePage;
     }else{
       this.loginPage = {component: LoginPage, title: 'Login', icon: 'log-in'};
+      this.rootPage = HomePage;
     }
   }
   openPage(page: any) : void{

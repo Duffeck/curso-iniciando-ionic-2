@@ -56,4 +56,20 @@ export class UserProvider {
       return response;
     }
   }
+
+  listarLocalizacoes(usuario: Usuario){
+    if(usuario.id > 0){
+      var url = Config.url+this.urlPart+'InserirLocalizacao?id_usuario='+usuario.id;
+      var response = this.http.get(url).map(res => res.json());
+      return response;
+    }
+  }
+
+  sair(){
+    var user = this.retornarUsuario();
+    if(user){
+      localStorage.removeItem('user');
+      this.alterarUsuarioSistema();
+    }
+  }
 }

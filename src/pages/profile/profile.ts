@@ -32,6 +32,10 @@ export class ProfilePage {
   }
 
   exibirLocalizacoes(){
-    this.navCtrl.push(HistoricoLocalizacoesPage);
+    this.navCtrl.push(HistoricoLocalizacoesPage, {'user': this.user});
+  }
+
+  sair(){
+    this.userService.sair();
   }
 }

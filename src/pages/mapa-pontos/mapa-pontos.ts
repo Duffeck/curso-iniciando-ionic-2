@@ -13,6 +13,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Categoria } from '../objects/categoria';
 import { PontosDescarteProvider } from '../../providers/pontosdescarte/pontosdescarte';
 import { PontoDescarte } from '../objects/pontodescarte';
+import { Localizacao } from '../objects/localizacao';
 
 /**
 * Generated class for the MapaPontosPage page.
@@ -30,10 +31,12 @@ export class MapaPontosPage {
   mapElement: HTMLElement;
   categoria: Categoria;
   pontosDescarte: Array<PontoDescarte>;
+  minhaLocalizacao: Localizacao;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private geolocation: Geolocation, private pontoDescarteService : PontosDescarteProvider) {
     this.categoria = this.navParams.get('categoria');
     this.pontosDescarte = new Array<PontoDescarte>();
+    this.minhaLocalizacao = new Localizacao();
   }
 
   ionViewWillEnter(){
@@ -50,7 +53,7 @@ export class MapaPontosPage {
 
   listarPontos(categoriaa: Categoria){
     if(categoriaa.id){
-      this.pontoDescarteService.listarPontosPorCategoria(categoriaa).subscribe(
+      this.pontoDescarteService.listarPontosPorCategoria(categoriaa, this.minhaLocalizacao).subscribe(
         data => {
           var resultado = JSON.parse(data);
           if(resultado.length > 0){
@@ -63,7 +66,6 @@ export class MapaPontosPage {
               for(var i=0; i < this.pontosDescarte.length; i++){
                 this.map.addMarker({
                   title: this.pontosDescarte[i].estado,
-                  //icon: this.pontosDescarte[i].categoria.coresIngles[this.pontosDescarte[i].categoria.cor],
                   icon: 'blue',
                   animation: 'DROP',
                   position: {
@@ -72,12 +74,7 @@ export class MapaPontosPage {
                   }
                 })
                 .then(marker => {
-                  /*
-                  marker.on(GoogleMapsEvent.MARKER_CLICK)
-                  .subscribe(() => {
-                    alert('clicked');
-                  });
-                  */
+
                 }).catch(err => {
                 });
               }
@@ -113,8 +110,12 @@ export class MapaPontosPage {
     this.geolocation.getCurrentPosition().then((position) => {
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
+      this.minhaLocalizacao.latitude = lat;
+      this.minhaLocalizacao.longitude = lon;
       this.criarMapa(lat, lon);
     },err=>{
+      this.minhaLocalizacao.latitude = -25.450418;
+      this.minhaLocalizacao.longitude = -49.251285;
       this.criarMapa(-25.450418, -49.251285);
     });
   }
@@ -152,35 +153,6 @@ export class MapaPontosPage {
         });
       });
       this.listarPontos(this.categoria);
-      /*
-      this.map.addMarker({
-        title: 'Ionic',
-        icon: 'red',
-        animation: 'DROP',
-        position: {
-          lat: -25.449456,
-          lng: -49.252133
-        }
-      }).then(marker => {
-        marker.on(GoogleMapsEvent.MARKER_CLICK)
-        .subscribe(() => {
-          alert('clicked');
-        });
-      });
-      this.map.addMarker({
-        title: 'Ionic',
-        icon: 'red',
-        animation: 'DROP',
-        position: {
-          lat: -25.451150,
-          lng: -49.251999
-        }
-      }).then(marker => {
-        marker.on(GoogleMapsEvent.MARKER_CLICK)
-        .subscribe(() => {
-          alert('clicked');
-        });
-      });*/
     });
   }
 

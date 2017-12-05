@@ -17,13 +17,12 @@ Ionic pages and navigation.
 
 
 <ion-content>
-  {{filtro}}
   <!--
-<ion-list>
-<ion-item-sliding>
-<ion-item>
-<ion-avatar item-start>
-<img src="https://res-3.cloudinary.com/gaveteiro/image/upload/c_pad,h_283,w_283/n57flsdhlm6m1l5cvas9.jpg">
+  <ion-list>
+  <ion-item-sliding>
+  <ion-item>
+  <ion-avatar item-start>
+  <img src="https://res-3.cloudinary.com/gaveteiro/image/upload/c_pad,h_283,w_283/n57flsdhlm6m1l5cvas9.jpg">
 </ion-avatar>
 <h2>Lata de Refrigerante</h2>
 <ion-icon item-end name="ios-arrow-dropleft"></ion-icon>
@@ -50,16 +49,18 @@ Mapa
       <ion-icon item-end name="ios-arrow-dropleft"></ion-icon>
     </ion-item>
     <ion-item-options side="right">
+      <!--
       <button ion-button color="verde">
-        <ion-icon name="create"></ion-icon>
-        Editar
-      </button>
-      <button ion-button color="secondary" (click)="mostrarMapa(residuo.categoria)">
-        <ion-icon name="map"></ion-icon>
-        Mapa
-      </button>
-    </ion-item-options>
-  </ion-item-sliding>
+      <ion-icon name="create"></ion-icon>
+      Editar
+    </button>
+  -->
+  <button ion-button color="secondary" (click)="mostrarMapa(residuo.categoria)">
+    <ion-icon name="map"></ion-icon>
+    Mapa
+  </button>
+</ion-item-options>
+</ion-item-sliding>
 </ion-list>
 <!--
 <ion-card *ngFor="let residuo of residuos">

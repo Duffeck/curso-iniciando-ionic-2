@@ -64,6 +64,7 @@ import { DenunciaListPage } from '../pages/denuncia-list/denuncia-list';
 import { MapaPontosPage } from '../pages/mapa-pontos/mapa-pontos';
 import { HistoricoLocalizacoesPage } from '../pages/historico-localizacoes/historico-localizacoes';
 import { ProfilePage } from '../pages/profile/profile';
+import { ConfiguracaoPage } from '../pages/configuracao/configuracao';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { ProfilePage } from '../pages/profile/profile';
     DenunciaListPage,
     MapaPontosPage,
     HistoricoLocalizacoesPage,
-    ProfilePage
+    ProfilePage,
+    ConfiguracaoPage
   ],
   imports: [
     BrowserModule,
@@ -147,7 +149,8 @@ import { ProfilePage } from '../pages/profile/profile';
     DenunciaListPage,
     MapaPontosPage,
     HistoricoLocalizacoesPage,
-    ProfilePage
+    ProfilePage,
+    ConfiguracaoPage
   ],
   providers: [
     StatusBar,

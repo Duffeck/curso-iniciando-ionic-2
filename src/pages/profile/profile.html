@@ -17,5 +17,8 @@
 
 
 <ion-content padding>
-<button ion-button block (click)="exibirLocalizacoes()">Minhas Localizações</button>
+<button ion-button block (click)="exibirLocalizacoes()" color="corYouSustainable">Minhas Localizações</button>
+<ion-fab *ngIf="user" bottom left>
+  <button ion-fab color="danger" (click)="sair()"><ion-icon name="log-out"></ion-icon></button>
+</ion-fab>
 </ion-content>

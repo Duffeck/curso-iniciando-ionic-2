@@ -4,6 +4,7 @@ export class Localizacao {
   public latitude : number;
   public longitude : number;
   public usuario: Usuario;
+  public dataCriacao: string;
 
   constructor(){
     this.usuario = null;
@@ -17,5 +18,7 @@ export class Localizacao {
       user.usuarioFromJSON(loc.Usuario);
       this.usuario = user;
     }
+    //this.dataCriacao = new Date(loc.DataCriacao).toISOString();
+    this.dataCriacao = loc.DataCriacao;
   }
 }
