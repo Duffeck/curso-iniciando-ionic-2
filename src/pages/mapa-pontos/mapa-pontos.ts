@@ -112,13 +112,18 @@ export class MapaPontosPage {
       var lon = position.coords.longitude;
       this.minhaLocalizacao.latitude = lat;
       this.minhaLocalizacao.longitude = lon;
-      this.criarMapa(lat, lon);
+      console.log('leu posicao');
+      this.listarPontos(this.categoria);
+      //this.criarMapa(lat, lon);
     },err=>{
       this.minhaLocalizacao.latitude = -25.450418;
       this.minhaLocalizacao.longitude = -49.251285;
-      this.criarMapa(-25.450418, -49.251285);
+      console.log('nao leu posicao');
+      this.listarPontos(this.categoria);
+      //this.criarMapa(-25.450418, -49.251285);
     });
   }
+
   criarMapa(lat, lon){
     this.mapElement = document.getElementById('mapcategoria');
     let mapOptions: GoogleMapOptions = {

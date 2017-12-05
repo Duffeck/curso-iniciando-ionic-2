@@ -59,7 +59,8 @@ export class UserProvider {
 
   listarLocalizacoes(usuario: Usuario){
     if(usuario.id > 0){
-      var url = Config.url+this.urlPart+'InserirLocalizacao?id_usuario='+usuario.id;
+      var url = Config.url+this.urlPart+'ListarLocalizacoes?id_usuario='+usuario.id;
+      console.log(url);
       var response = this.http.get(url).map(res => res.json());
       return response;
     }
