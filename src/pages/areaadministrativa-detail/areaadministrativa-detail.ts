@@ -7,6 +7,7 @@ import { AreaAdministrativaProvider } from '../../providers/areaadministrativa-s
 import { RotaColetaListPage } from '../rotacoleta-list/rotacoleta-list';
 import { EventListPage } from '../event-list/event-list';
 import { PontosDescarteListPage } from '../pontosdescarte-list/pontosdescarte-list';
+import { UsuarioListPage } from '../usuario-list/usuario-list';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
@@ -40,6 +41,10 @@ export class AreaAdministrativaDetailPage {
   }
   listEventos(area){
       this.navCtrl.push(EventListPage, {area : area});
+  }
+
+  listUsuarios(area){
+      this.navCtrl.push(UsuarioListPage, {area : area});
   }
 
 }

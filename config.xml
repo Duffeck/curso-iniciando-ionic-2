@@ -103,4 +103,11 @@
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="cordova-plugin-camera" spec="^2.4.1" />
     <plugin name="cordova-plugin-firebase" spec="^0.1.24" />
+    <plugin name="cordova-plugin-googlemaps" spec="^2.1.1">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyASEN0sTWlbe-ovlrvoIuUNwISfL9ZMZTs" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyC602q5tcvp_t6YLzVLavJPVfAlq9FgU2Q" />
+    </plugin>
+    <plugin name="cordova-plugin-geolocation" spec="^2.4.3">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
+    </plugin>
 </widget>

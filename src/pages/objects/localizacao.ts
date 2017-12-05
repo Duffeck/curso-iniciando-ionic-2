@@ -1,7 +1,7 @@
 export class Localizacao {
   public id : number;
-  public latitude : string;
-  public longitude : string;
+  public latitude : number;
+  public longitude : number;
 
   constructor(){
   }

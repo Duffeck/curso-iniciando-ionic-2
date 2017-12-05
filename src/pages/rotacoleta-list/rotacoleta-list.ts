@@ -73,7 +73,7 @@ export class RotaColetaListPage {
   }
 
   listarRotas(){
-    this.rotaColetaService.listarRotas().subscribe(
+    this.rotaColetaService.listarRotas(this.area.id).subscribe(
       data =>{
         console.log('Data:'+ data.length);
         console.log(JSON.parse(data));
@@ -82,10 +82,10 @@ export class RotaColetaListPage {
           for(var i=0; i < rotasResponse.length; i++){
             var rc = new RotaColeta();
             rc.rotaFromJSON(rotasResponse[i]);
-            if(rc.areaId==this.area.id){
-                console.log("entrou");
+            /*if(rc.areaId==this.area.id){
+                console.log("entrou");*/
                 this.adicionarRotaDescarte(rc);
-            }
+            //}
 
           }
           console.log('lengthok');

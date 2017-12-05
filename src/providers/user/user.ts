@@ -53,4 +53,25 @@ export class UserProvider {
       return false;
     }
   }
+
+  checkarAdm(usuario : Usuario){
+    if(usuario == null){
+      return false;
+    }
+    var url = Config.url+this.urlPart+'CheckarAdm?';
+    url = url + '&email=' + usuario.email;
+    console.log(url);
+    var response = this.http.get(url).map(res => res.json());
+    console.log(response);
+    return response;
+  }
+
+  listarUsuariosArea(id : number){
+    var url = Config.url+this.urlPart+'ListarUsuariosArea?' + 'id=' +id;
+    console.log(url);
+    var response = this.http.get(url).map(res => res.json());
+    console.log(JSON.stringify(response));
+    return response;
+
+  }
 }

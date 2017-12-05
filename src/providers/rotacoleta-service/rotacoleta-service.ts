@@ -28,8 +28,8 @@ export class RotaColetaProvider {
       return response;
   }
 
-  listarRotas(){
-    var url = Config.url+this.urlPart+'ListarRotas';
+  listarRotas(id : number){
+    var url = Config.url+this.urlPart+'ListarRotas?' + 'id=' +id;
     console.log(url);
     var response = this.http.get(url).map(res => res.json());
     console.log(JSON.stringify(response));

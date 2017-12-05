@@ -52,6 +52,19 @@ import { RotaColetaListPage } from '../pages/rotacoleta-list/rotacoleta-list';
 import { RotaColetaNewPage } from '../pages/rotacoleta-new/rotacoleta-new';
 import { RotaColetaDetailPage } from '../pages/rotacoleta-detail/rotacoleta-detail';
 import { RotaColetaProvider } from '../providers/rotacoleta-service/rotacoleta-service';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { MapaTestePage } from '../pages/mapa-teste/mapa-teste';
+import { ConectivityServiceProvider } from '../providers/conectivity-service/conectivity-service';
+import { Network } from '@ionic-native/network';
+import { Geolocation } from '@ionic-native/geolocation';
+import { MapaTesteNativoPage } from '../pages/mapa-teste-nativo/mapa-teste-nativo';
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
+import { CategoriaNewPage } from '../pages/categoria-new/categoria-new';
+import { DenunciaNewPage } from '../pages/denuncia-new/denuncia-new';
+import { DenunciaServiceProvider } from '../providers/denuncia-service/denuncia-service';
+import { DenunciaListPage } from '../pages/denuncia-list/denuncia-list';
 
 @NgModule({
   declarations: [
@@ -84,7 +97,9 @@ import { RotaColetaProvider } from '../providers/rotacoleta-service/rotacoleta-s
     AreaAdministrativaDetailPage,
     RotaColetaListPage,
     RotaColetaNewPage,
-    RotaColetaDetailPage
+    RotaColetaDetailPage,
+    CategoriaListPage,
+    CategoriaNewPage
   ],
   imports: [
     BrowserModule,
@@ -127,7 +142,9 @@ import { RotaColetaProvider } from '../providers/rotacoleta-service/rotacoleta-s
     AreaAdministrativaDetailPage,
     RotaColetaListPage,
     RotaColetaNewPage,
-    RotaColetaDetailPage
+    RotaColetaDetailPage,
+    CategoriaListPage,
+    CategoriaNewPage
   ],
   providers: [
     StatusBar,
@@ -149,7 +166,9 @@ import { RotaColetaProvider } from '../providers/rotacoleta-service/rotacoleta-s
     FotoServiceProvider,
     Firebase,
     AreaAdministrativaProvider,
-    RotaColetaProvider
+    RotaColetaProvider,
+    GoogleMaps,
+    Geolocation
   ]
 })
 export class AppModule {}

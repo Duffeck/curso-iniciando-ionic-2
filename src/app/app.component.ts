@@ -15,6 +15,8 @@ import { ZonaVerdeListPage } from '../pages/zonaverde-list/zonaverde-list';
 import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdescarte-list';
 import { AlertaListPage } from '../pages/alerta-list/alerta-list';
 import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
+import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
+import { DenunciaListPage } from '../pages/denuncia-list/denuncia-list';
 
 @Component({
   templateUrl: 'app.html'
@@ -31,6 +33,7 @@ export class MyApp {
     this.pages = [
       {component: HomePage, title: 'Home', icon: 'home'},
       {component: EventListPage, title: 'Eventos', icon: 'calendar'},
+      {component: CategoriaListPage, title: 'Categorias', icon: 'bookmark'},
       {component: ResiduosPage, title: 'Resíduos', icon: 'trash'},
       {component: InformativoListPage, title: 'Informativos', icon: 'alert'},
       {component: ZonaVerdeListPage, title: 'Zona Verde', icon: 'leaf'},
