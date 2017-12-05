@@ -35,13 +35,11 @@ export class CategoriaSelecionarPage {
           }
         }
       },
-      err => {},
-      () => console.log('Completou Requisição')
+      err => {}
     );
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CategoriaSelecionarPage');
   }
 
   close(){

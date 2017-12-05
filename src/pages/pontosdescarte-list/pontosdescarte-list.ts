@@ -6,17 +6,13 @@ import { PontosDescarteDetailPage } from '../pontosdescarte-detail/pontosdescart
 import { PontoDescarte } from '../objects/pontodescarte';
 import { PontosDescarteProvider } from '../../providers/pontosdescarte/pontosdescarte';
 
-import { Usuario } from '../objects/usuario';
-import { UserProvider } from '../../providers/user/user';
-
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
 /**
- * Generated class for the PontosdescarteListPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+* Generated class for the PontosdescarteListPage page.
+*
+* See http://ionicframework.com/docs/components/#navigation for more info
+* on Ionic pages and navigation.
+*/
 @IonicPage()
 @Component({
   selector: 'page-pontosdescarte-list',
@@ -29,28 +25,15 @@ export class PontosDescarteListPage {
   }
 
   ionViewDidLoad() {
-    this.pontosDescarteService.listarPontosDescarte().subscribe(
-      data =>{
-        console.log('Data:'+ data.length);
-        console.log(JSON.parse(data));
-        let pontosResponse = JSON.parse(data);
-        if(pontosResponse.length>0){
-          for(var i=0; i < pontosResponse.length; i++){
-            var pd = new PontoDescarte();
-            pd.pontoFromJSON(pontosResponse[i]);
-            this.adicionarPontoDescarte(pd);
-          }
-          console.log('lengthok');
-        }else{
-          console.log('0');
-        }
-      },
-      err => {
-        console.log('erroooooooooooo');
-        console.log(err);
-      },
-      () => console.log('Completou Requisição'));
-    console.log('ionViewDidLoad PontosdescarteListPage');
+
+  }
+
+  ionViewWillEnter(){
+    this.listarPontos();
+  }
+
+  ionViewWillLeave(){
+    this.pontos = new Array(0);
   }
 
   adicionarPontoDescarte(ponto : PontoDescarte){
@@ -58,7 +41,6 @@ export class PontosDescarteListPage {
       this.pontos = new Array(0);
     }
     this.pontos.push(ponto);
-    console.log(this.pontos);
   }
   newPonto(){
     this.navCtrl.push(PontosDescartePage);
@@ -68,4 +50,20 @@ export class PontosDescarteListPage {
     this.navCtrl.push(PontosDescarteDetailPage, {ponto: ponto});
   }
 
-}
+  listarPontos(){
+    this.pontosDescarteService.listarPontosDescarte().subscribe(
+      data =>{
+        let pontosResponse = JSON.parse(data);
+        if(pontosResponse.length>0){
+          for(var i=0; i < pontosResponse.length; i++){
+            var pd = new PontoDescarte();
+            pd.pontoFromJSON(pontosResponse[i]);
+            this.adicionarPontoDescarte(pd);
+          }
+        }else{
+        }
+      },
+      err => {
+      });
+    }
+  }

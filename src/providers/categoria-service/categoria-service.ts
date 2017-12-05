@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Config } from '../config';
+import { Categoria } from '../../pages/objects/categoria';
 /*
   Generated class for the CategoriaServiceProvider provider.
 
@@ -12,7 +13,6 @@ import { Config } from '../config';
 export class CategoriaServiceProvider {
   urlPart = "Categoria/";
   constructor(public http: Http) {
-    console.log('Hello CategoriaServiceProvider Provider');
   }
 
   listarComponentesCategoria(componente: string){
@@ -34,12 +34,23 @@ export class CategoriaServiceProvider {
       break;
     }
     if(url != ""){
-      console.log(url);
       var response = this.http.get(url).map(res => res.json());
-      console.log(response);
       return response;
     }else{
       return null;
     }
+  }
+
+  cadastrarCategoria(categoria: Categoria){
+    var url = Config.url+this.urlPart + "/SalvarCategoria/";
+    var options = Config.postOptionsHeader();
+    var response = this.http.post(url, categoria, options).map(res => res.json());
+    return response;
+  }
+
+  listarCategorias(){
+    var url = Config.url+this.urlPart+"/ListarTodasCategorias/";
+    var response = this.http.get(url).map(res => res.json());
+    return response;
   }
 }

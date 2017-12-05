@@ -1,8 +1,8 @@
 <!--
-  Generated template for the ZonaverdePage page.
+Generated template for the ZonaverdePage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
 -->
 <ion-header>
 
@@ -16,14 +16,14 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <div #mapponto id="mapponto"></div>
   <ion-list>
     <ion-item>
       <ion-label stacked>Descrição</ion-label>
       <ion-textarea type="text" [(ngModel)]="pontoForm.estado" name="estado"></ion-textarea>
     </ion-item>
-    <ion-list radio-group [(ngModel)]="pontoForm.ehParticular" name="ehParticular">
+    <!--<ion-list radio-group [(ngModel)]="pontoForm.ehParticular" name="ehParticular">
       <ion-list-header> É particular? </ion-list-header>
       <ion-item>
         <ion-label>Sim</ion-label>
@@ -33,11 +33,28 @@
         <ion-label>Não</ion-label>
         <ion-radio value="false" checked></ion-radio>
       </ion-item>
-    </ion-list>
-    <button ion-button color="light" left (click)="cancelarPonto()">
-      <ion-icon name="close"></ion-icon>&nbsp;Cancelar</button>
-    <button float-right ion-button color="corYouSustainable" right (click)="salvarPonto(pontoForm)">
-      <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar</button>
+    </ion-list>-->
+    <ion-item>
+      <ion-label>Categoria</ion-label>
+      <ion-select [(ngModel)]="pontoForm.categoria">
+        <ion-option *ngFor="let categoria of listaCategorias" [value]="categoria">{{categoria.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Latitude</ion-label>
+      <ion-textarea type="text" [(ngModel)]="pontoForm.localizacao.latitude" name="latitude"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Longitude</ion-label>
+      <ion-textarea type="text" [(ngModel)]="pontoForm.localizacao.longitude" name="longitude"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <button item-left ion-button color="light" left (click)="cancelarPonto()">
+        <ion-icon name="close"></ion-icon>&nbsp;Cancelar
+      </button>
+      <button item-right float-right ion-button color="corYouSustainable" right (click)="salvarPonto(pontoForm)">
+        <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar
+      </button>
+    </ion-item>
   </ion-list>
-
 </ion-content>

@@ -5,7 +5,7 @@ import { Alerta } from '../objects/alerta';
 import { AlertaProvider } from '../../providers/alerta/alerta';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
+import { PontoDescarte } from '../objects/pontodescarte';
 /**
  * Generated class for the AlertaNewPage page.
  *
@@ -21,29 +21,23 @@ export class AlertaNewPage {
   alertaForm: Alerta
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertaService: AlertaProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer) {
     this.alertaForm = new Alerta();
+    this.alertaForm.ponto = new PontoDescarte();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AlertaNewPage');
   }
 
   cancelarAlerta(){
     this.navCtrl.pop();
   }
 
-  salvarAlerta(){
-    console.log("IHUU");
-    /*this.alertaService.cadastrarPontoDescarte(pontoForm).subscribe(
+  salvarAlerta(alertaForm){
+     this.alertaService.cadastrarAlerta(alertaForm).subscribe(
           data => {
-            console.log('Resposta');
-            console.log(data);
           },
           err => {
-            console.log('Erro');
-            console.log(err);
-          },
-          () => console.log('Completou Requisição')
-      );*/
+          }
+      );
     this.navCtrl.pop();
   }
 

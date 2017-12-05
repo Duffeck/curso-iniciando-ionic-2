@@ -1,0 +1,34 @@
+<!--
+  Generated template for the CategoriaListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="corYouSustainable">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Categorias</ion-title>
+  </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let categoria of listaCategorias">
+    <ion-card-header>
+      {{categoria.nome}}
+    </ion-card-header>
+    <ion-card-content>
+      {{categoria.descricao}}<br />
+      {{categoria.cor}}
+    </ion-card-content>
+  </ion-card>
+  <ion-fab *ngIf="usuario" bottom right>
+  <!--<ion-fab bottom right>-->
+    <button ion-fab color="corYouSustainable" (click)="novaCategoria()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

@@ -46,7 +46,6 @@ export class EstadosRadioPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EstadosRadioPage');
   }
 
   selecionarEstado(uf: string){

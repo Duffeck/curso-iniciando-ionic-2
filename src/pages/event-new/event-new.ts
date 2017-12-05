@@ -31,23 +31,20 @@ export class EventNewPage {
   }
 
   salvarEvent(eventForm){
-    console.log(eventForm);
     this.eventoService.cadastrarEvento(eventForm).subscribe(
           data => {
-            console.log('Resposta');
-            console.log(data);
+            if(data > 0){
+              eventForm.id = data;
+              this.eventoService.transferirArquivo(eventForm);
+            }
           },
           err => {
-            console.log('Erro');
-            console.log(err);
-          },
-          () => console.log('Completou Requisição')
+          }
       );
     this.navCtrl.pop();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EventNewPage');
   }
 
   openListEstados(){
@@ -68,22 +65,16 @@ export class EventNewPage {
     }
     this.imagePicker.getPictures({maximumImagesCount: 1}).then((results) => {
       if(results.length > 0){
+        this.eventForm.uriFoto = results[0];
         this.base64.encodeFile(results[0]).then((base64File: string) => {
-          this.inserirURIImagem(base64File);
+          this.eventForm.urlFoto = (base64File);
         }, (err) => {
-          console.log(err);
         });
       }else{
-        console.log('nao');
       }
     },
     (err) => {
-      console.log(err);
     });
-  }
-
-  inserirURIImagem(uri: string){
-    this.eventForm.urlFoto =uri;
   }
 
   selecionarData(){
@@ -92,8 +83,8 @@ export class EventNewPage {
       mode: 'date',
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
     }).then(
-      date => console.log('Got date: ', date),
-      err => console.log('Error occurred while getting date: ', err)
+      date => {},
+      err => {}
     );
   }
 }

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InformativoProvider } from '../../providers/informativo/informativo';
 import { Informativo } from '../objects/informativo';
-import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the InformativoPopPage page.
  *
@@ -28,13 +27,10 @@ export class InformativoPopPage {
             }
           },
           err => {
-            console.log('Erro');
-            console.log(err);
           },
-          () => console.log('Completou Requisição')
+
       );
     this.navCtrl.pop();
-    console.log('ionViewDidLoad InformativoPopPage');
   }
 
 }

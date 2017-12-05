@@ -15,6 +15,11 @@
     <allow-navigation href="http://10.96.25.174:8100" />
     <allow-navigation href="http://undefined:8100" />
     <allow-navigation href="http://192.168.137.1:8100" />
+    <allow-navigation href="http://192.168.0.19:8101" />
+    <allow-navigation href="http://192.168.42.113:8100" />
+    <allow-navigation href="http://192.168.42.113:8101" />
+    <allow-navigation href="http://192.168.137.22:8100" />
+    <allow-navigation href="http://192.168.42.141:8100" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -88,16 +93,25 @@
     </platform>
     <engine name="android" spec="^6.2.3" />
     <plugin name="com-badrit-base64" spec="^0.2.0" />
-    <plugin name="com.synconset.imagepicker" spec="~2.1.8">
+    <plugin name="com.synconset.imagepicker" spec="^2.1.10">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="Selecionar imagem" />
     </plugin>
     <plugin name="cordova-plugin-camera" spec="^2.4.1" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
+    <plugin name="cordova-plugin-file" spec="^4.0.0" />
     <plugin name="cordova-plugin-file-transfer" spec="^1.6.3" />
     <plugin name="cordova-plugin-filechooser" spec="^1.0.1" />
     <plugin name="cordova-plugin-firebase" spec="^0.1.24" />
+    <plugin name="cordova-plugin-geolocation" spec="^2.4.3">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
+    </plugin>
+    <plugin name="cordova-plugin-googlemaps" spec="^2.0.11">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyASEN0sTWlbe-ovlrvoIuUNwISfL9ZMZTs" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyC602q5tcvp_t6YLzVLavJPVfAlq9FgU2Q" />
+    </plugin>
+    <plugin name="cordova-plugin-network-information" spec="^1.3.3" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="^2.2.2" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.1" />
