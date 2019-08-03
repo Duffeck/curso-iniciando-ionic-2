@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-an
 import { ZonaVerde } from '../objects/zonaverde';
 import { ZonaverdeProvider } from '../../providers/zonaverde/zonaverde';
 import { ZonaVerdePage } from '../zonaverde/zonaverde';
+import { ZonaVerdeDetailPage } from '../zonaverde-detail/zonaverde-detail';
 
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -29,9 +30,9 @@ export class ZonaVerdeListPage {
     this.navCtrl.pop();
   }
 
-  salvarZonaVerde(){
-
-  }
+ zonaVerdeDetail(zona : ZonaVerde){
+   this.navCtrl.push(ZonaVerdeDetailPage, {zona : zona})
+ }
 
   newZona(){
     this.navCtrl.push(ZonaVerdePage);

@@ -30,9 +30,9 @@ import { InformativoListPage } from '../pages/informativo-list/informativo-list'
 import { ZonaverdeProvider } from '../providers/zonaverde/zonaverde';
 import { ZonaVerdeListPage } from '../pages/zonaverde-list/zonaverde-list';
 import { ZonaVerdePage} from '../pages/zonaverde/zonaverde';
-
-import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
-import { CategoriaNewPage } from '../pages/categoria-new/categoria-new';
+import { ZonaVerdeDetailPage} from '../pages/zonaverde-detail/zonaverde-detail';
+//import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
+//import { CategoriaNewPage } from '../pages/categoria-new/categoria-new';
 import { PontosDescarteProvider } from '../providers/pontosdescarte/pontosdescarte';
 import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdescarte-list';
 import { PontosDescartePage} from '../pages/pontosdescarte-new/pontosdescarte-new';
@@ -46,6 +46,17 @@ import { Camera } from '@ionic-native/camera';
 import { ResiduoProvider } from '../providers/residuo/residuo';
 import { FotoServiceProvider } from '../providers/foto-service/foto-service';
 import { KeyPipe } from '../pipes/key/key';
+import { AreaAdministrativaProvider } from '../providers/areaadministrativa-service/areaadministrativa-service';
+//import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
+//import { AreaAdministrativaNewPage} from '../pages/areaadministrativa-new/areaadministrativa-new';
+//import { AreaAdministrativaDetailPage } from '../pages/areaadministrativa-detail/areaadministrativa-detail';
+import { RotaColetaListPage } from '../pages/rotacoleta-list/rotacoleta-list';
+import { RotaColetaNewPage } from '../pages/rotacoleta-new/rotacoleta-new';
+import { RotaColetaDetailPage } from '../pages/rotacoleta-detail/rotacoleta-detail';
+import { RotaColetaProvider } from '../providers/rotacoleta-service/rotacoleta-service';
+//import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+//import { File } from '@ionic-native/file';
+import { MapaTestePage } from '../pages/mapa-teste/mapa-teste';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 //import { MapaTestePage } from '../pages/mapa-teste/mapa-teste';
@@ -54,6 +65,11 @@ import { Network } from '@ionic-native/network';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MapaTesteNativoPage } from '../pages/mapa-teste-nativo/mapa-teste-nativo';
 import { GoogleMaps } from '@ionic-native/google-maps';
+import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
+import { CategoriaNewPage } from '../pages/categoria-new/categoria-new';
+//import { DenunciaNewPage } from '../pages/denuncia-new/denuncia-new';
+//import { DenunciaServiceProvider } from '../providers/denuncia-service/denuncia-service';
+//import { DenunciaListPage } from '../pages/denuncia-list/denuncia-list';
 import { AreaAdministrativaServiceProvider } from '../providers/areaadministrativa-service/areaadministrativa-service';
 import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
 import { AreaAdministrativaNewPage} from '../pages/areaadministrativa-new/areaadministrativa-new';
@@ -83,6 +99,7 @@ import { ConfiguracaoPage } from '../pages/configuracao/configuracao';
     InformativoListPage,
     ZonaVerdePage,
     ZonaVerdeListPage,
+    ZonaVerdeDetailPage,
     PontosDescarteListPage,
     PontosDescartePage,
     PontosDescarteDetailPage,
@@ -91,6 +108,9 @@ import { ConfiguracaoPage } from '../pages/configuracao/configuracao';
     AlertaDetailPage,
     ResiduosNewPage,
     KeyPipe,
+    RotaColetaListPage,
+    RotaColetaNewPage,
+    RotaColetaDetailPage,
     MapaTesteNativoPage,
     CategoriaListPage,
     CategoriaNewPage,
@@ -132,6 +152,7 @@ import { ConfiguracaoPage } from '../pages/configuracao/configuracao';
     InformativoListPage,
     ZonaVerdePage,
     ZonaVerdeListPage,
+    ZonaVerdeDetailPage,
     PontosDescarteListPage,
     PontosDescartePage,
     PontosDescarteDetailPage,
@@ -139,6 +160,9 @@ import { ConfiguracaoPage } from '../pages/configuracao/configuracao';
     AlertaNewPage,
     AlertaDetailPage,
     ResiduosNewPage,
+    RotaColetaListPage,
+    RotaColetaNewPage,
+    RotaColetaDetailPage,
     MapaTesteNativoPage,
     CategoriaListPage,
     CategoriaNewPage,
@@ -171,6 +195,8 @@ import { ConfiguracaoPage } from '../pages/configuracao/configuracao';
     ResiduoProvider,
     FotoServiceProvider,
     Firebase,
+    AreaAdministrativaProvider,
+    RotaColetaProvider,
     FileTransfer,
     FileTransferObject,
     File,

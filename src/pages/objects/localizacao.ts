@@ -1,6 +1,7 @@
 import { Usuario } from './usuario';
 
 export class Localizacao {
+  public id : number;
   public latitude : number;
   public longitude : number;
   public usuario: Usuario;
@@ -11,6 +12,7 @@ export class Localizacao {
   }
 
   localizacaoFromJSON(loc: any){
+    this.id = loc.Id;
     this.latitude = loc.Latitude;
     this.longitude = loc.Longitude;
     if(loc.Usuario!=null){

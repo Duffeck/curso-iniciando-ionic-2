@@ -4,12 +4,6 @@ import { CategoriaSelecionarPage } from '../categoria-selecionar/categoria-selec
 import { Categoria } from '../objects/categoria';
 import { CategoriaServiceProvider } from '../../providers/categoria-service/categoria-service';
 
-/**
-* Generated class for the CategoriaNewPage page.
-*
-* See http://ionicframework.com/docs/components/#navigation for more info
-* on Ionic pages and navigation.
-*/
 @IonicPage()
 @Component({
   selector: 'page-categoria-new',

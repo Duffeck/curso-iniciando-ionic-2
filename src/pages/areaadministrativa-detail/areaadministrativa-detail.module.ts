@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
+
 import { AreaAdministrativaDetailPage  } from './areaadministrativa-detail';
 
 @NgModule({
@@ -10,7 +11,7 @@ import { AreaAdministrativaDetailPage  } from './areaadministrativa-detail';
     IonicPageModule.forChild(AreaAdministrativaDetailPage ),
   ],
   exports: [
-    AreaAdministrativaDetailPage 
+    AreaAdministrativaDetailPage
   ]
 })
 export class AreaadministrativaDetailPageModule {}

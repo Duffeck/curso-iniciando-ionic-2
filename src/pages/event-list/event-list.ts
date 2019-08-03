@@ -7,6 +7,8 @@ import { Usuario } from '../objects/usuario';
 import { EventoServiceProvider } from '../../providers/evento-service/evento-service';
 import { UserProvider } from '../../providers/user/user';
 
+import { AreaAdministrativa } from '../objects/areaAdministrativa';
+
 /**
 * Generated class for the EventListPage page.
 *
@@ -21,25 +23,21 @@ import { UserProvider } from '../../providers/user/user';
 export class EventListPage {
   eventos : Array<Event>;
   usuario : Usuario;
-
+  area : AreaAdministrativa;
   constructor(public navCtrl: NavController, public navParams: NavParams, private userService: UserProvider, private eventoService: EventoServiceProvider) {
+    this.area = navParams.get("area");
     this.eventos = new Array(0);
   }
 
   ionViewDidLoad() {
     this.usuario = this.userService.retornarUsuario();
-  }
-
-  ionViewWillEnter() {
     this.listarEventos();
   }
 
-  ionViewWillLeave() {
-    this.eventos = new Array(0);
-  }
+  listarEventos(){
+    if(this.area==null){
+    this.eventoService.listarEventos().subscribe(
 
-  listarEventos(id_evento: number = 0){
-    this.eventoService.listarEventos(id_evento).subscribe(
       data =>{
         let eventosResponse = JSON.parse(data);
         if(eventosResponse.length>0){
@@ -51,8 +49,35 @@ export class EventListPage {
         }
       },
       err => {
+        console.log('erroooooooooooo');
+        console.log(err);
+      },
+      () => console.log('Completou Requisição'));
+      console.log('ionViewDidLoad EventListPage');
+    }else{
+      this.eventoService.listarEventosArea(this.area.id).subscribe(
+        data =>{
+          console.log('Data:'+ data.length);
+          console.log(JSON.parse(data));
+          let eventosResponse = JSON.parse(data);
+          if(eventosResponse.length>0){
+            for(var i=0; i < eventosResponse.length; i++){
+              var ev = new Event();
+              ev.eventoFromJSON(eventosResponse[i]);
+              this.adicionarEventoLista(ev);
+            }
+            console.log('lengthok');
+          }else{
+            console.log('0');
+          }
+        },
+        err => {
+          console.log('erroooooooooooo');
+          console.log(err);
+        },
+        () => console.log('Completou Requisição'));
+        console.log('ionViewDidLoad EventListPage');
       }
-    );
   }
 
   newEvent(){

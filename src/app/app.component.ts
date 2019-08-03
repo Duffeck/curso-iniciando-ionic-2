@@ -13,11 +13,12 @@ import { Usuario } from '../pages/objects/usuario';
 import { UserProvider } from '../providers/user/user';
 import { ZonaVerdeListPage } from '../pages/zonaverde-list/zonaverde-list';
 import { PontosDescarteListPage } from '../pages/pontosdescarte-list/pontosdescarte-list';
+import { AlertaListPage } from '../pages/alerta-list/alerta-list';
+import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
+import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
+import { DenunciaListPage } from '../pages/denuncia-list/denuncia-list';
 //import { AlertaListPage } from '../pages/alerta-list/alerta-list';
 //import { MapaTesteNativoPage } from '../pages/mapa-teste-nativo/mapa-teste-nativo';
-import { CategoriaListPage } from '../pages/categoria-list/categoria-list';
-import { AreaAdministrativaListPage } from '../pages/areaadministrativa-list/areaadministrativa-list';
-import { DenunciaListPage } from '../pages/denuncia-list/denuncia-list';
 import { HistoricoLocalizacoesPage } from '../pages/historico-localizacoes/historico-localizacoes';
 import { ProfilePage } from '../pages/profile/profile';
 import { ConfiguracaoPage } from '../pages/configuracao/configuracao';
@@ -40,13 +41,11 @@ export class MyApp {
       {component: HomePage, title: 'Home', icon: 'home'},
       {component: EventListPage, title: 'Eventos', icon: 'calendar'},
       {component: CategoriaListPage, title: 'Categorias', icon: 'bookmark'},
-      {component: InformativoListPage, title: 'Informativos', icon: 'alert'},
       {component: ResiduosPage, title: 'Resíduos', icon: 'trash'},
+      {component: InformativoListPage, title: 'Informativos', icon: 'alert'},
       {component: ZonaVerdeListPage, title: 'Zona Verde', icon: 'leaf'},
       {component: PontosDescarteListPage, title: 'Pontos de Descarte', icon: 'trash'},
-      ///{component: AlertaListPage, title: 'Alertas', icon: 'flag'},
-      //{component: MapaTestePage, title: 'Mapa', icon: 'map'},
-      //{component: MapaTesteNativoPage, title: 'Garrafa Pástica', icon: 'map'},
+      {component: AlertaListPage, title: 'Alertas', icon: 'flag'},
       {component: AreaAdministrativaListPage, title: 'Área Administrativa', icon:'clipboard'},
       {component: DenunciaListPage, title: 'Denúncias', icon:'alert'},
       {component: HistoricoLocalizacoesPage, title: 'Histórico Localizações Usuário', icon:'alert'},

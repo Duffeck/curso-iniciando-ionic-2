@@ -1,18 +1,25 @@
 <!--
-  Generated template for the AreaadministrativaDetailPage page.
+Generated template for the AreaadministrativaDetailPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>areaadministrativa-detail</ion-title>
+  <ion-navbar color="corYouSustainable">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Área: {{area.nome}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <h5>{{area.descricao}}</h5>
 
+  <button ion-button block style="background-color: brown" (click)="listPontos(area)"><ion-icon name="trash"></ion-icon>&nbsp;Pontos de Descarte</button>
+  <button ion-button block style="background-color: brown" (click)="listRotas(area)"><ion-icon name="trending-up"></ion-icon>&nbsp;Rotas de Coleta</button>
+  <button ion-button block style="background-color: brown" (click)="listEventos(area)"><ion-icon name="calendar"></ion-icon>&nbsp;Eventos</button>
+  <button ion-button block style="background-color: brown" (click)="listUsuarios(area)"><ion-icon name="people"></ion-icon>&nbsp;Usuários</button>
 </ion-content>

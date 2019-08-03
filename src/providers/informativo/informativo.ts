@@ -29,4 +29,12 @@ export class InformativoProvider {
       return response;
   }
 
+listarInformativos(){
+      var url = Config.url+this.urlPart+'ListarInformativos';
+      console.log(url);
+      var response = this.http.get(url).map(res => res.json());
+      console.log(JSON.stringify(response));
+      return response;
+  }
+
 }

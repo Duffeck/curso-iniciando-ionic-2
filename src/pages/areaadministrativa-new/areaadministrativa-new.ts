@@ -19,6 +19,7 @@ import { AreaAdministrativaServiceProvider } from '../../providers/areaadministr
 })
 export class AreaAdministrativaNewPage {
   areaForm : AreaAdministrativa;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private areaAdministrativaService : AreaAdministrativaServiceProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer) {
     this.areaForm = new AreaAdministrativa();
   }
@@ -33,7 +34,6 @@ export class AreaAdministrativaNewPage {
   salvarArea(areaForm){
     this.areaAdministrativaService.cadastrarArea(areaForm).subscribe(
           data => {
-
           },
           err => {
 

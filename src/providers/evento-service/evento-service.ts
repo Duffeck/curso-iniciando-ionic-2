@@ -27,9 +27,17 @@ export class EventoServiceProvider {
     return response;
   }
 
-  listarEventos(id_evento: number){
+  listarEventos(){
     var url = Config.url+this.urlPart+'ListarEventos?';
-    url = url + 'id_evento='+ id_evento
+    console.log(url);
+    var response = this.http.get(url).map(res => res.json());
+    console.log(JSON.stringify(response));
+    return response;
+  }
+
+  listarEventosArea(id : number){
+    var url = Config.url+this.urlPart+'ListarEventos?id=' + id;
+    console.log(url);
     var response = this.http.get(url).map(res => res.json());
     return response;
   }

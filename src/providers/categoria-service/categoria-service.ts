@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Config } from '../config';
 import { Categoria } from '../../pages/objects/categoria';

@@ -1,6 +1,7 @@
 import { RequestOptions, Headers } from '@angular/http';
 
 export class Config{
+
   //static url:string = "http://localhost:58861/";
   //static fileServer:string = "http://localhost:55869/";
   //static url:string = "http://192.168.42.113:45455/";

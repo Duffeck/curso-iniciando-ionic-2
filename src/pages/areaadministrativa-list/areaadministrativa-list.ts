@@ -2,10 +2,13 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 
 import { AreaAdministrativaNewPage} from '../areaadministrativa-new/areaadministrativa-new';
+import { AreaAdministrativaDetailPage } from '../areaadministrativa-detail/areaadministrativa-detail';
 import { AreaAdministrativa } from '../objects/areaAdministrativa';
-import { AreaAdministrativaServiceProvider } from '../../providers/areaadministrativa-service/areaadministrativa-service';
 
 import { DomSanitizer } from '@angular/platform-browser';
+import { SafeUrlPipe } from '../pipes/safe-url/safe-url';
+
+import { AreaAdministrativaServiceProvider } from '../../providers/areaadministrativa-service/areaadministrativa-service';
 /**
  * Generated class for the AreaadministrativaListPage page.
  *
@@ -19,6 +22,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class AreaAdministrativaListPage {
   areas: Array<AreaAdministrativa>
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private areaService: AreaAdministrativaServiceProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer) {
   }
 

@@ -17,7 +17,17 @@
 
 <ion-content padding>
 
-  <ion-fab bottom right>
+  <ion-card *ngFor="let info of infos">
+    <ion-card-header>
+      {{info.titulo}}
+    </ion-card-header>
+      <br />
+    <ion-card-content>
+      {{info.descricao}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab *ngIf="test" bottom right>
   <!--<ion-fab *ngIf="usuario" bottom right>-->
     <button ion-fab color="corYouSustainable" (click)="newInformativo()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>

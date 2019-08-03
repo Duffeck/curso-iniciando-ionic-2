@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-an
 
 import { Alerta } from '../objects/alerta';
 import { AlertaProvider } from '../../providers/alerta/alerta';
-
 import { DomSanitizer } from '@angular/platform-browser';
 import { PontoDescarte } from '../objects/pontodescarte';
 /**
@@ -36,6 +35,7 @@ export class AlertaNewPage {
           data => {
           },
           err => {
+
           }
       );
     this.navCtrl.pop();

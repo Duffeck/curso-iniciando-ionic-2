@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Config } from '../config';
 import { Alerta } from '../../pages/objects/alerta';
+import { Config } from '../config';
 
 /*
   Generated class for the AlertaProvider provider.
@@ -23,12 +23,22 @@ export class AlertaProvider {
   }
 
   cadastrarAlerta(alerta: Alerta){
-        var url = Config.url+this.urlPart+'cadastrarAlerta?';
-        /*url = url 'estado=' alerta.estado;
-        url = url '&descricao=' alerta.descricao;
-        url = url '&latitude=' zonaverde.localizacao.latitude;
-        url = url '&longitude=' zonaverde.localizacao.longitude;*/
-        var response = this.http.get(url).map(res => res.json());
-        return response;
-    }
+      var url = Config.url+this.urlPart+'cadastrarAlerta?';
+      url = url + 'horario=' + alerta.horario;
+      url = url + '&descricao=' + alerta.descricao;
+      url = url + '&pontoDescarteId=' + alerta.ponto.id;
+      console.log(url);
+      var response = this.http.get(url).map(res => res.json());
+      console.log(JSON.stringify(response));
+      return response;
+  }
+
+  buscarPontoDescarte(id : number){
+    var url = Config.url+this.urlPart+'BuscarPontoDescarte?';
+    url = url + 'id=' + id;
+    console.log(url);
+    var response = this.http.get(url).map(res => res.json());
+    console.log(JSON.stringify(response));
+    return response;
+  }
 }

@@ -5,6 +5,10 @@ import { PontosDescartePage } from '../pontosdescarte-new/pontosdescarte-new';
 import { PontosDescarteDetailPage } from '../pontosdescarte-detail/pontosdescarte-detail';
 import { PontoDescarte } from '../objects/pontodescarte';
 import { PontosDescarteProvider } from '../../providers/pontosdescarte/pontosdescarte';
+import { AreaAdministrativa } from '../objects/areaAdministrativa';
+
+import { Usuario } from '../objects/usuario';
+import { UserProvider } from '../../providers/user/user';
 
 import { DomSanitizer } from '@angular/platform-browser';
 /**
@@ -20,12 +24,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class PontosDescarteListPage {
   pontos: Array<PontoDescarte>
+  area : AreaAdministrativa;
   constructor(public navCtrl: NavController, public navParams: NavParams, private pontosDescarteService: PontosDescarteProvider, public popoverCtrl: PopoverController, private _sanitizer: DomSanitizer) {
-
+    this.area = navParams.get("area");
   }
 
   ionViewDidLoad() {
-
   }
 
   ionViewWillEnter(){
@@ -51,19 +55,51 @@ export class PontosDescarteListPage {
   }
 
   listarPontos(){
-    this.pontosDescarteService.listarPontosDescarte().subscribe(
-      data =>{
-        let pontosResponse = JSON.parse(data);
-        if(pontosResponse.length>0){
-          for(var i=0; i < pontosResponse.length; i++){
-            var pd = new PontoDescarte();
-            pd.pontoFromJSON(pontosResponse[i]);
-            this.adicionarPontoDescarte(pd);
+    if(this.area==null){
+      this.pontosDescarteService.listarPontosDescarte().subscribe(
+        data =>{
+          console.log('Data:'+ data.length);
+          console.log(JSON.parse(data));
+          let pontosResponse = JSON.parse(data);
+          if(pontosResponse.length>0){
+            for(var i=0; i < pontosResponse.length; i++){
+              var pd = new PontoDescarte();
+              pd.pontoFromJSON(pontosResponse[i]);
+              this.adicionarPontoDescarte(pd);
+            }
+            console.log('lengthok');
+          }else{
+            console.log('0');
           }
-        }else{
+        },
+        err => {
+          console.log('erroooooooooooo');
+          console.log(err);
+        },
+        () => console.log('Completou Requisição'));
+      }else{
+        this.pontosDescarteService.listarPontosDescarteArea(this.area.id).subscribe(
+          data =>{
+            console.log('Data:'+ data.length);
+            console.log(JSON.parse(data));
+            let pontosResponse = JSON.parse(data);
+            if(pontosResponse.length>0){
+              for(var i=0; i < pontosResponse.length; i++){
+                var pd = new PontoDescarte();
+                pd.pontoFromJSON(pontosResponse[i]);
+                this.adicionarPontoDescarte(pd);
+              }
+              console.log('lengthok');
+            }else{
+              console.log('0');
+            }
+          },
+          err => {
+            console.log('erroooooooooooo');
+            console.log(err);
+          },
+          () => console.log('Completou Requisição'));
         }
-      },
-      err => {
-      });
+        console.log('ionViewDidLoad PontosdescarteListPage');
     }
-  }
+}

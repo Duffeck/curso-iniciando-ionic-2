@@ -48,13 +48,9 @@ Ionic pages and navigation.
       <ion-label stacked>Longitude</ion-label>
       <ion-textarea type="text" [(ngModel)]="pontoForm.localizacao.longitude" name="longitude"></ion-textarea>
     </ion-item>
-    <ion-item>
-      <button item-left ion-button color="light" left (click)="cancelarPonto()">
-        <ion-icon name="close"></ion-icon>&nbsp;Cancelar
-      </button>
-      <button item-right float-right ion-button color="corYouSustainable" right (click)="salvarPonto(pontoForm)">
-        <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar
-      </button>
-    </ion-item>
+    <button ion-button color="light" left (click)="cancelarPonto()">
+      <ion-icon name="close"></ion-icon>&nbsp;Cancelar</button>
+    <button float-right ion-button color="corYouSustainable" right (click)="salvarPonto(pontoForm)">
+      <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar</button>
   </ion-list>
 </ion-content>

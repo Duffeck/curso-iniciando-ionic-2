@@ -5,6 +5,7 @@ import { PontoDescarte } from '../objects/pontodescarte';
 import { PontosDescarteProvider } from '../../providers/pontosdescarte/pontosdescarte';
 
 import { DomSanitizer } from '@angular/platform-browser';
+
 import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Localizacao } from '../objects/localizacao';
@@ -43,10 +44,6 @@ export class PontosDescartePage {
 
   ionViewWillLeave(){
     this.destroyMap();
-  }
-
-  cancelarPonto(){
-    this.navCtrl.pop();
   }
 
   salvarPonto(pontoForm){
@@ -140,7 +137,6 @@ export class PontosDescartePage {
 
     });
   }
-
   listarCategorias(){
     this.categoriaService.listarCategorias().subscribe(
       data=>{

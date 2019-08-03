@@ -1,0 +1,50 @@
+<!--
+  Generated template for the RotacoletaNewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="corYouSustainable">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Nova Rota</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-textarea type="text" [(ngModel)]="rotaForm.nome" name="nome"></ion-textarea>
+    </ion-item>
+    <ion-list radio-group [(ngModel)]="rotaForm.status" name="status">
+      <ion-list-header> Status </ion-list-header>
+      <ion-item>
+        <ion-label>Ativa</ion-label>
+        <ion-radio value="true"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Inativa</ion-label>
+        <ion-radio value="false" checked></ion-radio>
+      </ion-item>
+    </ion-list>
+    <!--<ion-list radio-group [(ngModel)]="rotaForm.diaUnico" name="diaUnico">
+      <ion-list-header> É dia único? </ion-list-header>
+      <ion-item>
+        <ion-label>Sim</ion-label>
+        <ion-radio value="true"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Não</ion-label>
+        <ion-radio value="false" checked></ion-radio>
+      </ion-item>
+    </ion-list>-->
+    <button ion-button color="light" left (click)="cancelarRota()">
+      <ion-icon name="close"></ion-icon>&nbsp;Cancelar</button>
+    <button float-right ion-button color="corYouSustainable" right (click)="salvarRota(rotaForm)">
+      <ion-icon name="checkmark"></ion-icon>&nbsp;Salvar</button>
+  </ion-list>
+</ion-content>

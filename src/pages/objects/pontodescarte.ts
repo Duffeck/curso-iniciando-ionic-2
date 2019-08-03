@@ -10,7 +10,6 @@ export class PontoDescarte {
   public localizacao : Localizacao;
   public categoria : Categoria;
 
-
   constructor(){
     this.localizacao = new Localizacao();
   }
